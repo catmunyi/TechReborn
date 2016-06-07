@@ -17,7 +17,7 @@ public class ContainerVacuumFreezer extends ContainerCrafting
 	public ContainerVacuumFreezer(TileVacuumFreezer tile, EntityPlayer player)
 	{
 		super(tile.crafter);
-		tile = tile;
+		this.tile = tile;
 		this.player = player;
 
 		// input
