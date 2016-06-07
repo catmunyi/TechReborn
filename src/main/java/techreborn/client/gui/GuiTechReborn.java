@@ -29,12 +29,11 @@ public class GuiTechReborn extends BaseGui
 		int l = (this.height - this.ySize) / 2;
 
         int j = 0;
-		j = getProgressScaled(24, tile);//((IRecipeCrafterProvider) tile).getRecipeCrafter().currentNeededTicks; //tile.getEnergyScaled(5); //alloysmelter.getProgressScaled(24);
+		j = getProgressScaled(24, tile);
 		if (j > 0)
 		{
             this.mc.getTextureManager().bindTexture(overlays);
 			this.drawTexturedModalRect(k + x, l + y, 40, 2, j + 1, 16);
-            System.out.print("" + j);
 		}
     }
 
@@ -44,7 +43,7 @@ public class GuiTechReborn extends BaseGui
         int l = (this.height - this.ySize) / 2;
 
         int j = 0;
-        j = tile.getEnergyScaled(46); //alloysmelter.getProgressScaled(24);
+        j = tile.getEnergyScaled(46);
         if (j > 0)
         {
             int red = 0;
