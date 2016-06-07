@@ -8,8 +8,10 @@ import net.minecraft.util.ResourceLocation;
 import reborncore.api.power.IEnergyInterfaceTile;
 import reborncore.api.recipe.IRecipeCrafterProvider;
 import reborncore.client.gui.BaseGui;
+import reborncore.common.RebornCoreConfig;
 import reborncore.common.powerSystem.TilePowerAcceptor;
 import reborncore.common.recipes.RecipeCrafter;
+import techreborn.config.ConfigTechReborn;
 
 /**
  * Created by Gigabit101 on 07/06/2016.
@@ -62,6 +64,12 @@ public class GuiTechReborn extends BaseGui
         {
             return crafter.currentTickTime * scale / crafter.currentNeededTicks;
         }
+        return 0;
+    }
+
+    //TODO
+    public int getColour()
+    {
         return 0;
     }
 }

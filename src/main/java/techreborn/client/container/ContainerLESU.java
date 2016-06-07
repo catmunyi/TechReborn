@@ -2,7 +2,7 @@ package techreborn.client.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IContainerListener;
-import reborncore.client.gui.BaseSlot;
+import reborncore.client.gui.slots.BaseSlot;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import reborncore.common.container.RebornContainer;
@@ -27,17 +27,8 @@ public class ContainerLESU extends RebornContainer {
 		this.addSlotToContainer(new BaseSlot(tileaesu.inventory, 0, 116, 23));
 		this.addSlotToContainer(new BaseSlot(tileaesu.inventory, 1, 116, 59));
 
-		int i;
-
-		for (i = 0; i < 3; ++i) {
-			for (int j = 0; j < 9; ++j) {
-				this.addSlotToContainer(new BaseSlot(player.inventory, j + i * 9 + 9, 8 + j * 18, 115 + i * 18));
-			}
-		}
-
-		for (i = 0; i < 9; ++i) {
-			this.addSlotToContainer(new BaseSlot(player.inventory, i, 8 + i * 18, 173));
-		}
+		addPlayersInventory(player);
+		addPlayersHotbar(player);
 	}
 
 	@Override

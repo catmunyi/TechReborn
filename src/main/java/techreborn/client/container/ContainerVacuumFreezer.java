@@ -2,44 +2,31 @@ package techreborn.client.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IContainerListener;
-import reborncore.client.gui.BaseSlot;
+import reborncore.client.gui.slots.BaseSlot;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import reborncore.client.gui.SlotOutput;
+import reborncore.client.gui.slots.SlotOutput;
 import techreborn.tiles.TileVacuumFreezer;
 
 public class ContainerVacuumFreezer extends ContainerCrafting
 {
-
 	public int tickTime;
 	public int machineStatus;
 	EntityPlayer player;
 	TileVacuumFreezer tile;
-	public ContainerVacuumFreezer(TileVacuumFreezer tileAlloysmelter, EntityPlayer player)
+	public ContainerVacuumFreezer(TileVacuumFreezer tile, EntityPlayer player)
 	{
-		super(tileAlloysmelter.crafter);
-		tile = tileAlloysmelter;
+		super(tile.crafter);
+		tile = tile;
 		this.player = player;
 
 		// input
-		this.addSlotToContainer(new BaseSlot(tileAlloysmelter.inventory, 0, 56, 34));
+		this.addSlotToContainer(new BaseSlot(tile.inventory, 0, 56, 34));
 		// outputs
-		this.addSlotToContainer(new SlotOutput(tileAlloysmelter.inventory, 1, 116, 35));
+		this.addSlotToContainer(new SlotOutput(tile.inventory, 1, 116, 35));
 
-		int i;
-
-		for (i = 0; i < 3; ++i)
-		{
-			for (int j = 0; j < 9; ++j)
-			{
-				this.addSlotToContainer(new BaseSlot(player.inventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
-			}
-		}
-
-		for (i = 0; i < 9; ++i)
-		{
-			this.addSlotToContainer(new BaseSlot(player.inventory, i, 8 + i * 18, 142));
-		}
+		addPlayersInventory(player);
+		addPlayersHotbar(player);
 	}
 
 	@Override
@@ -79,5 +66,4 @@ public class ContainerVacuumFreezer extends ContainerCrafting
 			machineStatus = value;
 		}
 	}
-
 }

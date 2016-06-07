@@ -1,7 +1,7 @@
 package techreborn.client.container;
 
 import net.minecraft.inventory.IInventory;
-import reborncore.client.gui.BaseSlot;
+import reborncore.client.gui.slots.BaseSlot;
 import net.minecraft.item.ItemStack;
 import techreborn.init.ModItems;
 

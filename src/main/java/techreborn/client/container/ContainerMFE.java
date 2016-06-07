@@ -7,11 +7,11 @@ package techreborn.client.container;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.IContainerListener;
-import reborncore.client.gui.BaseSlot;
+import reborncore.client.gui.slots.BaseSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import reborncore.client.gui.SlotCharge;
+import reborncore.client.gui.slots.SlotCharge;
 import reborncore.common.container.RebornContainer;
 import techreborn.tiles.storage.TileMFE;
 
@@ -32,20 +32,9 @@ public class ContainerMFE extends RebornContainer
 		this.tile = tile;
 		this.player = player;
 
-		int i;
+		addPlayersInventory(player);
+		addPlayersHotbar(player);
 
-		for (i = 0; i < 3; ++i)
-		{
-			for (int j = 0; j < 9; ++j)
-			{
-				this.addSlotToContainer(new BaseSlot(player.inventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
-			}
-		}
-
-		for (i = 0; i < 9; ++i)
-		{
-			this.addSlotToContainer(new BaseSlot(player.inventory, i, 8 + i * 18, 142));
-		}
 		for (int k = 0; k < 4; k++)
 		{
 			final EntityEquipmentSlot slot = equipmentSlots[k];

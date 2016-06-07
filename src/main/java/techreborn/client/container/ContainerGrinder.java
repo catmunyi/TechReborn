@@ -1,13 +1,11 @@
 package techreborn.client.container;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import reborncore.api.tile.IContainerLayout;
-import reborncore.client.gui.BaseSlot;
-import reborncore.client.gui.SlotInput;
-import reborncore.client.gui.SlotOutput;
-import reborncore.common.recipes.RecipeCrafter;
+import reborncore.client.gui.slots.BaseSlot;
+import reborncore.client.gui.slots.SlotInput;
+import reborncore.client.gui.slots.SlotOutput;
 import techreborn.api.gui.SlotUpgrade;
 import techreborn.tiles.teir1.TileGrinder;
 
@@ -43,20 +41,8 @@ public class ContainerGrinder extends ContainerCrafting implements IContainerLay
 
 	@Override
 	public void addPlayerSlots() {
-		int i;
-
-		for (i = 0; i < 3; ++i)
-		{
-			for (int j = 0; j < 9; ++j)
-			{
-				this.addSlotToContainer(new BaseSlot(player.inventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
-			}
-		}
-
-		for (i = 0; i < 9; ++i)
-		{
-			this.addSlotToContainer(new BaseSlot(player.inventory, i, 8 + i * 18, 142));
-		}
+		addPlayersInventory(player);
+		addPlayersHotbar(player);
 	}
 
 	@Override
