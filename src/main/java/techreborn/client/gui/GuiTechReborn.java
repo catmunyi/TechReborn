@@ -2,10 +2,14 @@ package techreborn.client.gui;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import reborncore.api.power.IEnergyInterfaceTile;
+import reborncore.api.recipe.IRecipeCrafterProvider;
 import reborncore.client.gui.BaseGui;
 import reborncore.common.powerSystem.TilePowerAcceptor;
+import reborncore.common.recipes.RecipeCrafter;
 
 /**
  * Created by Gigabit101 on 07/06/2016.
@@ -25,12 +29,12 @@ public class GuiTechReborn extends BaseGui
 		int l = (this.height - this.ySize) / 2;
 
         int j = 0;
-		j = tile.getEnergyScaled(5); //alloysmelter.getProgressScaled(24);
+		j = getProgressScaled(24, tile);//((IRecipeCrafterProvider) tile).getRecipeCrafter().currentNeededTicks; //tile.getEnergyScaled(5); //alloysmelter.getProgressScaled(24);
 		if (j > 0)
 		{
             this.mc.getTextureManager().bindTexture(overlays);
 			this.drawTexturedModalRect(k + x, l + y, 40, 2, j + 1, 16);
-//            System.out.print("" + j);
+            System.out.print("" + j);
 		}
     }
 
@@ -39,14 +43,26 @@ public class GuiTechReborn extends BaseGui
         int k = (this.width - this.xSize) / 2;
         int l = (this.height - this.ySize) / 2;
 
-        int j = 100;
-       // j = tile.getEnergyScaled(24); //alloysmelter.getProgressScaled(24);
+        int j = 0;
+        j = tile.getEnergyScaled(46); //alloysmelter.getProgressScaled(24);
         if (j > 0)
         {
+            int red = 0;
+            int orange = 13;
+            int green = 26;
+
             this.mc.getTextureManager().bindTexture(overlays);
-//            this.drawTexturedModalRect(k + x, l + y, 40, 2, j + 1, 16);
-            this.drawTexturedModalRect(k + x, l + y + 12 - j, 0, 20 - j, 14, j + 2);
-//            System.out.print("" + j);
+            this.drawTexturedModalRect(k + x, l + y + 12 - j, green, 48 - j, 14, j + 2);
         }
+    }
+
+    public int getProgressScaled(int scale, TilePowerAcceptor tile)
+    {
+        RecipeCrafter crafter = ((IRecipeCrafterProvider) tile).getRecipeCrafter();
+        if (crafter.currentTickTime != 0 && crafter.currentNeededTicks != 0)
+        {
+            return crafter.currentTickTime * scale / crafter.currentNeededTicks;
+        }
+        return 0;
     }
 }
