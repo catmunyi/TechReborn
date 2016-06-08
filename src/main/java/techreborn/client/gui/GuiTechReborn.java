@@ -2,6 +2,7 @@ package techreborn.client.gui;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import reborncore.api.recipe.IRecipeCrafterProvider;
@@ -9,6 +10,7 @@ import reborncore.client.gui.BaseGui;
 import reborncore.common.powerSystem.TilePowerAcceptor;
 import reborncore.common.recipes.RecipeCrafter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,15 +57,15 @@ public class GuiTechReborn extends BaseGui
 			int tesla = 26;
 			this.drawTexturedModalRect(k + x, l + y + 12 - j, rf, 48 - j, 14, j + 2);
 		}
-		if (posX > k + x && posX < k + x + 13)
-		{
-			if (posY > l + y - 36 && posY < l + y + 12)
-			{
-				List list = new ArrayList();
-				list.add(tile.getEnergy() / 4 + "T/" + tile.getMaxPower() / 4 + "T");
-				this.drawHoveringText(list, posX + 1, posY + 1);
-			}
-		}
+//		if (posX > k + x && posX < k + x + 13)
+//		{
+//			if (posY > l + y - 36 && posY < l + y + 12)
+//			{
+//				List list = new ArrayList();
+//				list.add(tile.getEnergy() / 4 + "T/" + tile.getMaxPower() / 4 + "T");
+//				this.drawHoveringText(list, posX + 1, posY + 1);
+//			}
+//		}
 	}
 
 	public void drawPowerBar(TilePowerAcceptor tile)
@@ -85,5 +87,11 @@ public class GuiTechReborn extends BaseGui
 	public int getColour()
 	{
 		return 0;
+	}
+
+	@Override
+	protected void renderToolTip(ItemStack stack, int x, int y)
+	{
+		super.renderToolTip(stack, x, y);
 	}
 }
