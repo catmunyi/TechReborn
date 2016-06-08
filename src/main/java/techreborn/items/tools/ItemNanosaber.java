@@ -51,7 +51,7 @@ public class ItemNanosaber extends ItemSword implements IEnergyItemInfo
 			@SideOnly(Side.CLIENT) public float apply(ItemStack stack, @Nullable World worldIn,
 					@Nullable EntityLivingBase entityIn)
 			{
-				if (stack != null && stack.getTagCompound().getBoolean("isActive"))
+				if (stack != null && stack.getTagCompound() != null && stack.getTagCompound().getBoolean("isActive"))
 				{
 					return 1.0F;
 				}
@@ -173,7 +173,6 @@ public class ItemNanosaber extends ItemSword implements IEnergyItemInfo
 		}
 		double charge = (PoweredItem.getEnergy(stack) / getMaxPower(stack));
 		return 1 - charge;
-
 
 	}
 

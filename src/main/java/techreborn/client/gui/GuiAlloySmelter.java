@@ -22,7 +22,7 @@ public class GuiAlloySmelter extends GuiTechReborn
     protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_)
     {
         super.drawGuiContainerBackgroundLayer(p_146976_1_, p_146976_2_, p_146976_3_);
-        drawPowerBar(alloysmelter, 15, 50);
-        drawProgressBar(alloysmelter, 79, 35);
+        drawPowerBar(alloysmelter);
+        drawProgressBar(alloysmelter, 82, 35);
     }
 }
