@@ -1,9 +1,5 @@
 package techreborn.blocks;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import me.modmuss50.jsonDestroyer.api.ITexturedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -26,6 +22,10 @@ import techreborn.client.TechRebornCreativeTabMisc;
 import techreborn.init.ModSounds;
 import techreborn.items.ItemParts;
 import techreborn.items.tools.ItemTreeTap;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Created by modmuss50 on 19/02/2016.
@@ -54,8 +54,7 @@ public class BlockRubberLog extends Block implements ITexturedBlock
 		return new BlockStateContainer(this, SAP_SIDE, HAS_SAP);
 	}
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
+	@Override public IBlockState getStateFromMeta(int meta)
 	{
 		boolean hasSap = false;
 		int tempMeta = meta;
@@ -68,8 +67,7 @@ public class BlockRubberLog extends Block implements ITexturedBlock
 		return this.getDefaultState().withProperty(SAP_SIDE, facing).withProperty(HAS_SAP, hasSap);
 	}
 
-	@Override
-	public int getMetaFromState(IBlockState state)
+	@Override public int getMetaFromState(IBlockState state)
 	{
 		int tempMeta = 0;
 		EnumFacing facing = state.getValue(SAP_SIDE);
@@ -94,8 +92,7 @@ public class BlockRubberLog extends Block implements ITexturedBlock
 		return tempMeta;
 	}
 
-	@Override
-	public String getTextureNameFromState(IBlockState IBlockState, EnumFacing enumFacing)
+	@Override public String getTextureNameFromState(IBlockState IBlockState, EnumFacing enumFacing)
 	{
 		if (enumFacing == EnumFacing.DOWN || enumFacing == EnumFacing.UP)
 		{
@@ -111,20 +108,17 @@ public class BlockRubberLog extends Block implements ITexturedBlock
 		return "techreborn:blocks/rubber_log_side";
 	}
 
-	@Override
-	public int amountOfStates()
+	@Override public int amountOfStates()
 	{
 		return 8;
 	}
 
-	@Override
-	public boolean canSustainLeaves(IBlockState state, IBlockAccess world, BlockPos pos)
+	@Override public boolean canSustainLeaves(IBlockState state, IBlockAccess world, BlockPos pos)
 	{
 		return true;
 	}
 
-	@Override
-	public boolean isWood(net.minecraft.world.IBlockAccess world, BlockPos pos)
+	@Override public boolean isWood(net.minecraft.world.IBlockAccess world, BlockPos pos)
 	{
 		return true;
 	}
@@ -146,8 +140,7 @@ public class BlockRubberLog extends Block implements ITexturedBlock
 		}
 	}
 
-	@Override
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
+	@Override public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
 	{
 		super.updateTick(worldIn, pos, state, rand);
 		if (!state.getValue(HAS_SAP))
@@ -164,34 +157,36 @@ public class BlockRubberLog extends Block implements ITexturedBlock
 		}
 	}
 
-	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
+	@Override public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
 			EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
 	{
 		super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
-		if (playerIn.getHeldItem(EnumHand.MAIN_HAND) != null
-				&& playerIn.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemTreeTap)
+		if (playerIn.getHeldItem(EnumHand.MAIN_HAND) != null && playerIn.getHeldItem(EnumHand.MAIN_HAND)
+				.getItem() instanceof ItemTreeTap)
 			if (state.getValue(HAS_SAP))
 			{
 				if (state.getValue(SAP_SIDE) == side)
 				{
 					worldIn.setBlockState(pos,
 							state.withProperty(HAS_SAP, false).withProperty(SAP_SIDE, EnumFacing.getHorizontal(0)));
-					worldIn.playSound(null, pos.getX(), pos.getY(),
-							pos.getZ(), ModSounds.extract,
-							SoundCategory.BLOCKS, 0.6F, 1F);
+					worldIn.playSound(null, pos.getX(), pos.getY(), pos.getZ(), ModSounds.extract, SoundCategory.BLOCKS,
+							0.6F, 1F);
 					if (!worldIn.isRemote)
 					{
-						Random rand = new Random();
-						BlockPos itemPos = pos.offset(side);
-						EntityItem item = new EntityItem(worldIn, itemPos.getX(), itemPos.getY(), itemPos.getZ(),
-								ItemParts.getPartByName("rubberSap").copy());
-						float factor = 0.05F;
 						playerIn.getHeldItem(EnumHand.MAIN_HAND).damageItem(1, playerIn);
-						item.motionX = rand.nextGaussian() * factor;
-						item.motionY = rand.nextGaussian() * factor + 0.2F;
-						item.motionZ = rand.nextGaussian() * factor;
-						worldIn.spawnEntityInWorld(item);
+						if (!playerIn.inventory.addItemStackToInventory(ItemParts.getPartByName("rubberSap").copy()))
+						{
+							Random rand = new Random();
+							BlockPos itemPos = pos.offset(side);
+							EntityItem item = new EntityItem(worldIn, itemPos.getX(), itemPos.getY(), itemPos.getZ(),
+									ItemParts.getPartByName("rubberSap").copy());
+							float factor = 0.05F;
+							item.motionX = rand.nextGaussian() * factor;
+							item.motionY = rand.nextGaussian() * factor + 0.2F;
+							item.motionZ = rand.nextGaussian() * factor;
+							worldIn.spawnEntityInWorld(item);
+						}
+
 					}
 					return true;
 				}
@@ -199,14 +194,12 @@ public class BlockRubberLog extends Block implements ITexturedBlock
 		return false;
 	}
 
-	@Override
-	public int damageDropped(IBlockState state)
+	@Override public int damageDropped(IBlockState state)
 	{
 		return 0;
 	}
 
-	@Override
-	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
+	@Override public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
 	{
 		List<ItemStack> drops = new ArrayList<>();
 		drops.add(new ItemStack(this));
