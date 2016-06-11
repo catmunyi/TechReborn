@@ -23,7 +23,6 @@ import techreborn.blocks.generator.BlockDieselGenerator;
 import techreborn.blocks.generator.BlockDragonEggSiphoner;
 import techreborn.blocks.generator.BlockGasTurbine;
 import techreborn.blocks.generator.BlockGenerator;
-import techreborn.blocks.generator.BlockHeatGenerator;
 import techreborn.blocks.generator.BlockLightningRod;
 import techreborn.blocks.generator.BlockMagicEnergyAbsorber;
 import techreborn.blocks.generator.BlockMagicEnergyConverter;
@@ -77,7 +76,6 @@ import techreborn.tiles.generator.TileDieselGenerator;
 import techreborn.tiles.generator.TileDragonEggSiphoner;
 import techreborn.tiles.generator.TileGasTurbine;
 import techreborn.tiles.generator.TileGenerator;
-import techreborn.tiles.generator.TileHeatGenerator;
 import techreborn.tiles.generator.TileSemifluidGenerator;
 import techreborn.tiles.generator.TileSolarPanel;
 import techreborn.tiles.generator.TileThermalGenerator;
@@ -139,7 +137,6 @@ public class ModBlocks
 	public static Block ComputerCube;
 	public static Block FusionCoil;
 	public static Block LightningRod;
-	public static Block heatGenerator;
 	public static Block industrialSawmill;
 	public static Block chargeBench;
 	public static Block playerDetector;
@@ -243,9 +240,17 @@ public class ModBlocks
 
 		ore = new BlockOre(Material.ROCK);
 		registerBlock(ore, ItemBlockOre.class, "techreborn.ore");
+		Core.proxy.registerCustomBlockSateLocation(ore, "storage/ores");
+		for (int i = 0; i < BlockOre.ores.length; i++) {
+			Core.proxy.registerSubBlockInventoryLocation(ore, i, "storage/ores", BlockOre.ores[i]);
+		}
 
 		ore2 = new BlockOre2(Material.ROCK);
 		registerBlock(ore2, ItemBlockOre2.class, "techreborn.ore2");
+		Core.proxy.registerCustomBlockSateLocation(ore2, "storage/ores");
+		for (int i = 0; i < BlockOre2.ores.length; i++) {
+			Core.proxy.registerSubBlockInventoryLocation(ore2, i, "storage/ores", BlockOre2.ores[i]);
+		}
 
 		storage = new BlockStorage(Material.IRON);
 		registerBlock(storage, ItemBlockStorage.class, "techreborn.storage");
@@ -335,10 +340,6 @@ public class ModBlocks
 
 		LightningRod = new BlockLightningRod(Material.ROCK);
 		registerBlock(LightningRod, "lightningrod");
-
-		heatGenerator = new BlockHeatGenerator(Material.ROCK);
-		registerBlock(heatGenerator, "heatgenerator");
-		GameRegistry.registerTileEntity(TileHeatGenerator.class, "TileHeatGeneratorTR");
 
 		industrialSawmill = new BlockIndustrialSawmill(Material.ROCK);
 		registerBlock(industrialSawmill, "industrialSawmill");
