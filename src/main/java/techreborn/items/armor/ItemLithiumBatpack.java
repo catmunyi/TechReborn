@@ -24,7 +24,7 @@ import java.util.List;
 public class ItemLithiumBatpack extends ItemArmor implements IEnergyItemInfo, ITexturedItem {
 
 	public static final int maxCharge = ConfigTechReborn.LithiumBatpackCharge;
-	public static final int tier = ConfigTechReborn.LithiumBatpackTier;
+	public static final int tier = 3;
 	public double transferLimit = 10000;
 
 	public ItemLithiumBatpack() {

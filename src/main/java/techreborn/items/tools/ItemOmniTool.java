@@ -32,7 +32,7 @@ import java.util.List;
 public class ItemOmniTool extends ItemPickaxe implements IEnergyItemInfo, ITexturedItem {
 
 	public static final int maxCharge = ConfigTechReborn.OmniToolCharge;
-	public static final int tier = ConfigTechReborn.OmniToolTier;
+	public static final int tier = 3;
 	public int cost = 100;
 	public int hitCost = 125;
 

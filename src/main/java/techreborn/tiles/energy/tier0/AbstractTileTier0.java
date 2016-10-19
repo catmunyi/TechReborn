@@ -11,6 +11,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import reborncore.api.tile.IContainerProvider;
 import reborncore.api.tile.IInventoryProvider;
+import reborncore.common.tile.TileBase;
 import reborncore.common.util.inventory.Inventory;
 import reborncore.common.util.inventory.InventoryItemHandler;
 
@@ -20,9 +21,8 @@ import java.util.Map;
 /**
  * Created by Lordmau5 on 16.06.2016.
  */
-public abstract class AbstractTileTier0 extends TileEntity implements ITickable, IInventoryProvider, IContainerProvider {
+public abstract class AbstractTileTier0 extends TileBase implements ITickable, IInventoryProvider, IContainerProvider {
 
-	private Inventory inventory;
 	private int fuelPerOperation;
 
 	private int burnTime;
@@ -34,10 +34,8 @@ public abstract class AbstractTileTier0 extends TileEntity implements ITickable,
 
 	private Map<EnumFacing, IItemHandler> sidedHandlers = new HashMap<>();
 
-	public AbstractTileTier0(int fuelPerOperation, Inventory inventory) {
+	public AbstractTileTier0(int fuelPerOperation) {
 		this.fuelPerOperation = fuelPerOperation;
-		this.inventory = inventory;
-
 		for (EnumFacing facing : EnumFacing.VALUES) {
 			this.sidedHandlers.put(facing, new InventoryItemHandler(getContainer(), facing));
 		}
@@ -87,8 +85,16 @@ public abstract class AbstractTileTier0 extends TileEntity implements ITickable,
 
 	abstract void processItems();
 
-	private void markBlockForUpdate() {
-		this.getWorld().notifyBlockUpdate(this.getPos(), this.getWorld().getBlockState(this.getPos()), this.getWorld().getBlockState(this.getPos()), 3);
+	public int getBurnTimeRemainingScaled(int scale) {
+		if (this.currentItemBurnTime == 0) {
+			this.currentItemBurnTime = 200;
+		}
+
+		return this.burnTime * scale / this.currentItemBurnTime;
+	}
+
+	public int getCookProgressScaled(int scale) {
+		return this.progress * scale / 200;
 	}
 
 	@Override
@@ -101,8 +107,4 @@ public abstract class AbstractTileTier0 extends TileEntity implements ITickable,
 		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && this.sidedHandlers.containsKey(facing) ? (T) this.sidedHandlers.get(facing) : super.getCapability(capability, facing);
 	}
 
-	@Override
-	public IInventory getInventory() {
-		return this.inventory;
-	}
 }

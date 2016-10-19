@@ -14,6 +14,10 @@ import techreborn.Core;
 import techreborn.api.reactor.FusionReactorRecipeHelper;
 import techreborn.api.recipe.machines.AssemblingMachineRecipe;
 import techreborn.api.recipe.machines.ImplosionCompressorRecipe;
+import techreborn.client.container.energy.tier0.ContainerIronAlloyFurnace;
+import techreborn.client.container.energy.tier1.*;
+import techreborn.client.container.energy.tier2.*;
+import techreborn.client.container.energy.tier3.ContainerFusionReactor;
 import techreborn.client.gui.*;
 import techreborn.compat.CompatManager;
 import techreborn.compat.jei.alloySmelter.AlloySmelterRecipeCategory;
@@ -213,16 +217,16 @@ public class TechRebornJeiPlugin extends BlankModPlugin {
 
 		IRecipeTransferRegistry recipeTransferRegistry = registry.getRecipeTransferRegistry();
 		recipeTransferRegistry
-			.addRecipeTransferHandler(ContainerAlloyFurnace.class, RecipeCategoryUids.ALLOY_SMELTER, 0, 2, 4, 36);
+			.addRecipeTransferHandler(ContainerAlloySmelter.class, RecipeCategoryUids.ALLOY_SMELTER, 0, 2, 4, 36);
 		recipeTransferRegistry
 			.addRecipeTransferHandler(ContainerAlloySmelter.class, RecipeCategoryUids.ALLOY_SMELTER, 0, 2, 8, 36);
 		recipeTransferRegistry
-			.addRecipeTransferHandler(ContainerAlloyFurnace.class, VanillaRecipeCategoryUid.FUEL, 3, 1, 4, 36);
+			.addRecipeTransferHandler(ContainerIronAlloyFurnace.class, VanillaRecipeCategoryUid.FUEL, 3, 1, 4, 36);
 		recipeTransferRegistry
 			.addRecipeTransferHandler(ContainerAssemblingMachine.class, RecipeCategoryUids.ASSEMBLING_MACHINE, 0, 2,
 				8, 36);
 		recipeTransferRegistry
-			.addRecipeTransferHandler(ContainerBlastFurnace.class, RecipeCategoryUids.BLAST_FURNACE, 0, 2, 4, 36);
+			.addRecipeTransferHandler(ContainerIndustrialBlastFurnace.class, RecipeCategoryUids.BLAST_FURNACE, 0, 2, 4, 36);
 		recipeTransferRegistry
 			.addRecipeTransferHandler(ContainerCentrifuge.class, RecipeCategoryUids.CENTRIFUGE, 0, 2, 11, 36);
 		recipeTransferRegistry

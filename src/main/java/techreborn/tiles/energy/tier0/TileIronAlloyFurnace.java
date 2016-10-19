@@ -1,5 +1,6 @@
 package techreborn.tiles.energy.tier0;
 
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import reborncore.api.recipe.IBaseRecipeType;
 import reborncore.api.recipe.RecipeHandler;
@@ -11,11 +12,12 @@ import techreborn.client.container.energy.tier0.ContainerIronAlloyFurnace;
 
 public class TileIronAlloyFurnace extends AbstractTileTier0 {
 
+	private Inventory inventory = new Inventory("TileIronAlloyFurnace", 4, 64, this);
 	private int inputSlot1 = 2;
 	private int inputSlot2 = 3;
 
 	public TileIronAlloyFurnace() {
-		super(200, new Inventory("TileIronAlloyFurnace", 4, 64));
+		super(200);
 	}
 
 	private boolean hasAllInputs(IBaseRecipeType recipeType) {
@@ -110,5 +112,10 @@ public class TileIronAlloyFurnace extends AbstractTileTier0 {
 	@Override
 	public RebornContainer getContainer() {
 		return RebornContainer.getContainerFromClass(ContainerIronAlloyFurnace.class, this);
+	}
+
+	@Override
+	public IInventory getInventory() {
+		return inventory;
 	}
 }

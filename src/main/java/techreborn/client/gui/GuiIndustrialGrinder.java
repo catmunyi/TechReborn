@@ -59,7 +59,7 @@ public class GuiIndustrialGrinder extends GuiContainer {
 			drawTexturedModalRect(k + 14, l + 24, 179, 88, 9, 37);
 		}
 
-		if (!grinder.getMutliBlock()) {
+		if (!grinder.getMultiBlock()) {
 			this.fontRendererObj.drawString(I18n.translateToLocal("techreborn.message.missingmultiblock"), k + 38, l + 52 + 12, -1);
 		}
 

@@ -32,6 +32,13 @@ public class TileExtractor extends TileMachineInventory implements IRecipeCrafte
 		super.machineTick();
 	}
 
+	public int getProgressScaled(int scale) {
+		if (crafter.currentTickTime != 0) {
+			return crafter.currentTickTime * scale / crafter.currentNeededTicks;
+		}
+		return 0;
+	}
+
 	@Override
 	public void machineFinish() {
 		this.crafter.machineFinish();

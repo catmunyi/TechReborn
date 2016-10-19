@@ -30,7 +30,7 @@ import java.util.Random;
 public class ItemRockCutter extends ItemPickaxe implements IEnergyItemInfo, ITexturedItem {
 
 	public static final int maxCharge = ConfigTechReborn.RockCutterCharge;
-	public static final int tier = ConfigTechReborn.RockCutterTier;
+	public static final int tier = 2;
 	public int cost = 500;
 
 	public ItemRockCutter() {

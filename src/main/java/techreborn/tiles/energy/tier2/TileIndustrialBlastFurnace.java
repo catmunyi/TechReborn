@@ -1,5 +1,6 @@
 package techreborn.tiles.energy.tier2;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -16,6 +17,7 @@ import techreborn.api.Reference;
 import techreborn.api.recipe.ITileRecipeHandler;
 import techreborn.api.recipe.machines.BlastFurnaceRecipe;
 import techreborn.blocks.BlockMachineCasing;
+import techreborn.blocks.advanced_machine.BlockBlastFurnace;
 import techreborn.client.container.energy.tier2.ContainerIndustrialBlastFurnace;
 import techreborn.init.ModBlocks;
 import techreborn.multiblocks.MultiBlockCasing;
@@ -148,5 +150,15 @@ public class TileIndustrialBlastFurnace extends TileMachineInventory implements 
 	@Override
 	public RebornContainer getContainer() {
 		return RebornContainer.getContainerFromClass(ContainerIndustrialBlastFurnace.class, this);
+	}
+
+	public int getFacingInt()
+	{
+		Block block = worldObj.getBlockState(pos).getBlock();
+		if (block instanceof BlockBlastFurnace)
+		{
+			return ((BlockBlastFurnace) block).getFacing(worldObj.getBlockState(pos)).getIndex();
+		}
+		return 0;
 	}
 }

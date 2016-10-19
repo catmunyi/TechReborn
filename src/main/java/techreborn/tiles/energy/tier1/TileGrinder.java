@@ -72,4 +72,11 @@ public class TileGrinder extends TileMachineInventory implements IRecipeCrafterP
 	public RebornContainer getContainer() {
 		return RebornContainer.getContainerFromClass(ContainerGrinder.class, this);
 	}
+
+	public int getProgressScaled(int scale) {
+		if (crafter.currentTickTime != 0) {
+			return crafter.currentTickTime * scale / crafter.currentNeededTicks;
+		}
+		return 0;
+	}
 }

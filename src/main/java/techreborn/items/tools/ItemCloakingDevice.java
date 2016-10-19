@@ -18,7 +18,7 @@ import techreborn.items.ItemTextureBase;
 import java.util.List;
 
 public class ItemCloakingDevice extends ItemTextureBase implements IEnergyItemInfo {
-	public static int Teir = ConfigTechReborn.CloakingDeviceTier;
+	public static int Teir = 2;
 	public static int MaxCharge = ConfigTechReborn.CloakingDeviceCharge;
 	public static int Limit = 100;
 	public static boolean isActive;

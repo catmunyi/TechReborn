@@ -6,7 +6,7 @@ public class ItemDiamondJackhammer extends ItemJackhammer {
 
 	public ItemDiamondJackhammer() {
 		super(ToolMaterial.DIAMOND, "techreborn.diamondJackhammer", ConfigTechReborn.DiamondJackhammerCharge,
-			ConfigTechReborn.DiamondJackhammerTier);
+			2);
 		this.cost = 100;
 		this.efficiencyOnProperMaterial = 16F;
 	}

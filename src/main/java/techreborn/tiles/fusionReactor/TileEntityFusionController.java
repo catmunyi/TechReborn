@@ -1,5 +1,6 @@
 package techreborn.tiles.fusionReactor;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,6 +12,7 @@ import reborncore.common.tile.TileMachineInventory;
 import reborncore.common.util.ItemUtils;
 import techreborn.api.reactor.FusionReactorRecipe;
 import techreborn.api.reactor.FusionReactorRecipeHelper;
+import techreborn.blocks.BlockFusionControlComputer;
 import techreborn.client.container.energy.tier3.ContainerFusionReactor;
 import techreborn.init.ModBlocks;
 
@@ -281,5 +283,15 @@ public class TileEntityFusionController extends TileMachineInventory {
 	@Override
 	public RebornContainer getContainer() {
 		return RebornContainer.getContainerFromClass(ContainerFusionReactor.class, this);
+	}
+
+	public int getFacingInt()
+	{
+		Block block = worldObj.getBlockState(pos).getBlock();
+		if (block instanceof BlockFusionControlComputer)
+		{
+			return ((BlockFusionControlComputer) block).getFacing(worldObj.getBlockState(pos)).getIndex();
+		}
+		return 0;
 	}
 }

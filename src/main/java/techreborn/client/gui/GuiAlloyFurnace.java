@@ -13,7 +13,7 @@ public class GuiAlloyFurnace extends GuiTechReborn {
 		this.xSize = 176;
 		this.ySize = 167;
 		this.alloyfurnace = tileAlloyFurnace;
-		this.containerAlloyFurnace = (ContainerAlloyFurnace) this.inventorySlots;
+		this.containerAlloyFurnace = (ContainerIronAlloyFurnace) this.inventorySlots;
 	}
 
 	@Override

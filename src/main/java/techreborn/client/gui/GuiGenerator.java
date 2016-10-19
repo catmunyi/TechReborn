@@ -45,8 +45,8 @@ public class GuiGenerator extends GuiContainer {
 			this.drawTexturedModalRect(k + 109, l + 21 + 12, 176, 0, j + 1, 16);
 		}
 
-		if (containerGenerator.burnTime != 0) {
-			j = containerGenerator.getScaledBurnTime(13);
+		if (generator.burnTime != 0) {
+			j = generator.getScaledBurnTime(13);
 			this.drawTexturedModalRect(k + 80, l + 38 + 12 - j, 176, 30 - j, 14, j + 1);
 		}
 	}

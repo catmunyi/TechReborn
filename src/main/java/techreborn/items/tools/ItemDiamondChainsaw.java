@@ -8,7 +8,7 @@ public class ItemDiamondChainsaw extends ItemChainsaw {
 
 	public ItemDiamondChainsaw() {
 		super(ToolMaterial.DIAMOND, "techreborn.diamondChainsaw", ConfigTechReborn.DiamondChainsawCharge,
-			ConfigTechReborn.DiamondChainsawTier, 2.5F);
+			2, 2.5F);
 		this.cost = 250;
 	}
 

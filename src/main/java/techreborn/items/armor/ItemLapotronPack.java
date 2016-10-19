@@ -24,7 +24,7 @@ import java.util.List;
 public class ItemLapotronPack extends ItemArmor implements IEnergyItemInfo, ITexturedItem {
 
 	public static final int maxCharge = ConfigTechReborn.LapotronPackCharge;
-	public static final int tier = ConfigTechReborn.LapotronPackTier;
+	public static final int tier = 2;
 	public double transferLimit = 100000;
 
 	public ItemLapotronPack() {

@@ -37,7 +37,7 @@ public class GuiBlastFurnace extends GuiContainer {
 		this.xSize = 176;
 		this.ySize = 167;
 		blastfurnace = tileblastfurnace;
-		this.containerBlastFurnace = (ContainerBlastFurnace) this.inventorySlots;
+		this.containerBlastFurnace = (ContainerIndustrialBlastFurnace) this.inventorySlots;
 	}
 
 	@Override

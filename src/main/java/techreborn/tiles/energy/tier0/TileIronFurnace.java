@@ -1,5 +1,6 @@
 package techreborn.tiles.energy.tier0;
 
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import reborncore.common.container.RebornContainer;
@@ -8,10 +9,11 @@ import techreborn.client.container.energy.tier0.ContainerIronFurnace;
 
 public class TileIronFurnace extends AbstractTileTier0 {
 
+	private Inventory inventory = new Inventory("TileIronFurnace", 3, 64, this);
 	private int inputSlot = 2;
 
 	public TileIronFurnace() {
-		super(160, new Inventory("TileIronFurnace", 3, 64));
+		super(160);
 	}
 
 	@Override
@@ -64,4 +66,11 @@ public class TileIronFurnace extends AbstractTileTier0 {
 	public RebornContainer getContainer() {
 		return RebornContainer.getContainerFromClass(ContainerIronFurnace.class, this);
 	}
+
+	@Override
+	public IInventory getInventory() {
+		return inventory;
+	}
+
+
 }

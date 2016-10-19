@@ -16,7 +16,7 @@ public class TileGenerator extends AbstractTileGenerator implements IInventoryPr
 	private Inventory inventory = new Inventory("TileGenerator", 2, 64, this);
 	private int fuelSlot = 0;
 
-	private int burnTime;
+	public int burnTime;
 	private int currentItemBurnTime;
 
 	private ItemStack burnItem;
