@@ -12,36 +12,36 @@ import techreborn.init.ModBlocks;
  */
 public class TileWaterMill extends AbstractTileGenerator {
 
-    private int waterBlocks;
+	private int waterBlocks;
 
-    public TileWaterMill() {
-        super(EnumPowerTier.LOW, 4);
-    }
+	public TileWaterMill() {
+		super(EnumPowerTier.LOW, 4);
+	}
 
-    @Override
-    public void updateRequirements() {
-        updateWaterCount();
-    }
+	@Override
+	public void updateRequirements() {
+		updateWaterCount();
+	}
 
-    private void updateWaterCount() {
-        this.waterBlocks = 0;
+	private void updateWaterCount() {
+		this.waterBlocks = 0;
 
-        for (int x = this.getPos().getX() - 1; x < this.getPos().getZ() + 2; x++) {
-            for (int y = this.getPos().getY() - 1; y < this.getPos().getY() + 2; y++) {
-                for (int z = this.getPos().getZ() - 1; z < this.getPos().getZ() + 2; z++) {
-                    Block block = this.getWorld().getBlockState(getPos()).getBlock();
-                    if (block == Blocks.WATER || block == Blocks.FLOWING_WATER) {
-                        this.waterBlocks++;
-                    }
-                }
-            }
-        }
+		for (int x = this.getPos().getX() - 1; x < this.getPos().getZ() + 2; x++) {
+			for (int y = this.getPos().getY() - 1; y < this.getPos().getY() + 2; y++) {
+				for (int z = this.getPos().getZ() - 1; z < this.getPos().getZ() + 2; z++) {
+					Block block = this.getWorld().getBlockState(getPos()).getBlock();
+					if (block == Blocks.WATER || block == Blocks.FLOWING_WATER) {
+						this.waterBlocks++;
+					}
+				}
+			}
+		}
 
-        setEuPerTick(this.waterBlocks);
-    }
+		setEuPerTick(this.waterBlocks);
+	}
 
-    @Override
-    public ItemStack getWrenchDrop(EntityPlayer entityPlayer) {
-        return new ItemStack(ModBlocks.waterMill, 1);
-    }
+	@Override
+	public ItemStack getWrenchDrop(EntityPlayer entityPlayer) {
+		return new ItemStack(ModBlocks.waterMill, 1);
+	}
 }

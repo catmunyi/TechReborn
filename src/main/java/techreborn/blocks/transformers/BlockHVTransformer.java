@@ -17,20 +17,20 @@ import java.util.List;
  */
 public class BlockHVTransformer extends BlockTransformer {
 
-    public BlockHVTransformer() {
-        super("hvtransformer");
-    }
+	public BlockHVTransformer() {
+		super("hvtransformer");
+	}
 
-    @Override
-    public TileEntity createNewTileEntity(World world, int p_149915_2_) {
-        return new TileHVTransformer();
-    }
+	@Override
+	public TileEntity createNewTileEntity(World world, int p_149915_2_) {
+		return new TileHVTransformer();
+	}
 
-    @Override
-    public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-        ArrayList<ItemStack> list = new ArrayList<>();
-        list.add(new ItemStack(ModBlocks.machineframe, 1, 1));
-        return list;
-    }
+	@Override
+	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+		ArrayList<ItemStack> list = new ArrayList<>();
+		list.add(new ItemStack(ModBlocks.machineframe, 1, 1));
+		return list;
+	}
 
 }

@@ -8,11 +8,11 @@ import techreborn.tiles.energy.tier1.TileCompressor;
 
 public class ContainerCompressor extends ContainerCrafting {
 
-    public ContainerCompressor(TileCompressor tileEntity, EntityPlayer player) {
-        super(tileEntity, player);
+	public ContainerCompressor(TileCompressor tileEntity, EntityPlayer player) {
+		super(tileEntity, player);
 
-        this.addSlotToContainer(new SlotInput(tileEntity.getInventory(), getNextSlotIndex(), 56, 34));
-        this.addSlotToContainer(new SlotOutput(tileEntity.getInventory(), getNextSlotIndex(), 116, 34));
-    }
+		this.addSlotToContainer(new SlotInput(tileEntity.getInventory(), getNextSlotIndex(), 56, 34));
+		this.addSlotToContainer(new SlotOutput(tileEntity.getInventory(), getNextSlotIndex(), 116, 34));
+	}
 
 }

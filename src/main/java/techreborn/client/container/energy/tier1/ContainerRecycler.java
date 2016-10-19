@@ -8,10 +8,10 @@ import techreborn.tiles.energy.tier1.TileRecycler;
 
 public class ContainerRecycler extends ContainerBase {
 
-    public ContainerRecycler(TileRecycler tileEntity, EntityPlayer player) {
-        super(tileEntity, player);
+	public ContainerRecycler(TileRecycler tileEntity, EntityPlayer player) {
+		super(tileEntity, player);
 
-        this.addSlotToContainer(new BaseSlot(tileEntity.getInventory(), getNextSlotIndex(), 56, 34));
-        this.addSlotToContainer(new SlotOutput(tileEntity.getInventory(), getNextSlotIndex(), 116, 34));
-    }
+		this.addSlotToContainer(new BaseSlot(tileEntity.getInventory(), getNextSlotIndex(), 56, 34));
+		this.addSlotToContainer(new SlotOutput(tileEntity.getInventory(), getNextSlotIndex(), 116, 34));
+	}
 }

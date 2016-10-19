@@ -8,19 +8,19 @@ import techreborn.init.ModBlocks;
 
 public class TileChunkLoader extends TileMachineBase {
 
-    //public int euTick = 32;
+	//public int euTick = 32;
 
-    public TileChunkLoader() {
-        super(EnumPowerTier.HIGH, 10000, 0, 1);
-    }
+	public TileChunkLoader() {
+		super(EnumPowerTier.HIGH, 10000, 0, 1);
+	}
 
-    @Override
-    public void machineFinish() {
-        // ?!
-    }
+	@Override
+	public void machineFinish() {
+		// ?!
+	}
 
-    @Override
-    public ItemStack getWrenchDrop(EntityPlayer entityPlayer) {
-        return new ItemStack(ModBlocks.chunkLoader, 1);
-    }
+	@Override
+	public ItemStack getWrenchDrop(EntityPlayer entityPlayer) {
+		return new ItemStack(ModBlocks.chunkLoader, 1);
+	}
 }

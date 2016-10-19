@@ -15,44 +15,44 @@ import java.util.Collections;
 import java.util.List;
 
 public class IndustrialGrinderRecipeWrapper extends BaseRecipeWrapper<IndustrialGrinderRecipe> {
-    private final IDrawableAnimated progress;
+	private final IDrawableAnimated progress;
 
-    public IndustrialGrinderRecipeWrapper(
-            @Nonnull
-                    IJeiHelpers jeiHelpers,
-            @Nonnull
-                    IndustrialGrinderRecipe baseRecipe) {
-        super(baseRecipe);
-        IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
-        IDrawableStatic progressStatic = guiHelper.createDrawable(GuiIndustrialGrinder.texture, 176, 14, 24, 17);
+	public IndustrialGrinderRecipeWrapper(
+		@Nonnull
+			IJeiHelpers jeiHelpers,
+		@Nonnull
+			IndustrialGrinderRecipe baseRecipe) {
+		super(baseRecipe);
+		IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
+		IDrawableStatic progressStatic = guiHelper.createDrawable(GuiIndustrialGrinder.texture, 176, 14, 24, 17);
 
-        int ticksPerCycle = baseRecipe.tickTime();
-        this.progress = guiHelper.createAnimatedDrawable(progressStatic, ticksPerCycle,
-                IDrawableAnimated.StartDirection.LEFT, false);
-    }
+		int ticksPerCycle = baseRecipe.tickTime();
+		this.progress = guiHelper.createAnimatedDrawable(progressStatic, ticksPerCycle,
+			IDrawableAnimated.StartDirection.LEFT, false);
+	}
 
-    @Override
-    @Nonnull
-    public List<FluidStack> getFluidInputs() {
-        if (baseRecipe.fluidStack != null) {
-            return Collections.singletonList(baseRecipe.fluidStack);
-        } else {
-            return Collections.emptyList();
-        }
-    }
+	@Override
+	@Nonnull
+	public List<FluidStack> getFluidInputs() {
+		if (baseRecipe.fluidStack != null) {
+			return Collections.singletonList(baseRecipe.fluidStack);
+		} else {
+			return Collections.emptyList();
+		}
+	}
 
-    @Override
-    public void drawAnimations(
-            @Nonnull
-                    Minecraft minecraft, int recipeWidth, int recipeHeight) {
-        super.drawAnimations(minecraft, recipeWidth, recipeHeight);
-        progress.draw(minecraft, 44, 20);
+	@Override
+	public void drawAnimations(
+		@Nonnull
+			Minecraft minecraft, int recipeWidth, int recipeHeight) {
+		super.drawAnimations(minecraft, recipeWidth, recipeHeight);
+		progress.draw(minecraft, 44, 20);
 
-        int x = 70;
-        int y = 40;
-        int lineHeight = minecraft.fontRendererObj.FONT_HEIGHT;
+		int x = 70;
+		int y = 40;
+		int lineHeight = minecraft.fontRendererObj.FONT_HEIGHT;
 
-        minecraft.fontRendererObj.drawString("Time: " + baseRecipe.tickTime / 20 + " s", x, y, 0x444444);
-        minecraft.fontRendererObj.drawString("EU: " + baseRecipe.euPerTick + " EU/t", x, y += lineHeight, 0x444444);
-    }
+		minecraft.fontRendererObj.drawString("Time: " + baseRecipe.tickTime / 20 + " s", x, y, 0x444444);
+		minecraft.fontRendererObj.drawString("EU: " + baseRecipe.euPerTick + " EU/t", x, y += lineHeight, 0x444444);
+	}
 }

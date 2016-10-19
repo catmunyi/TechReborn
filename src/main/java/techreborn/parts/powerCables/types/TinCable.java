@@ -7,8 +7,8 @@ import techreborn.parts.powerCables.EnumCableType;
  * Created by modmuss50 on 05/03/2016.
  */
 public class TinCable extends CableMultipart {
-    @Override
-    public EnumCableType getCableType() {
-        return EnumCableType.TIN;
-    }
+	@Override
+	public EnumCableType getCableType() {
+		return EnumCableType.TIN;
+	}
 }

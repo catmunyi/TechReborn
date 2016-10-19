@@ -7,12 +7,12 @@ import techreborn.utils.upgrade.IMachineUpgrade;
 
 public class SlotUpgrade extends BaseSlot {
 
-    public SlotUpgrade(IInventory inventoryIn, int index, int xPosition, int yPosition) {
-        super(inventoryIn, index, xPosition, yPosition);
-    }
+	public SlotUpgrade(IInventory inventoryIn, int index, int xPosition, int yPosition) {
+		super(inventoryIn, index, xPosition, yPosition);
+	}
 
-    @Override
-    public boolean isItemValid(ItemStack stack) {
-        return stack.getItem() instanceof IMachineUpgrade;
-    }
+	@Override
+	public boolean isItemValid(ItemStack stack) {
+		return stack.getItem() instanceof IMachineUpgrade;
+	}
 }

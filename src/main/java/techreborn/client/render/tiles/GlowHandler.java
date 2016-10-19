@@ -22,61 +22,61 @@ import java.util.Map;
 
 public class GlowHandler {
 
-    public HashMap<Class<? extends TileMachineBase>, List<GlowInformation>> informationHashMap = new HashMap<>();
+	public HashMap<Class<? extends TileMachineBase>, List<GlowInformation>> informationHashMap = new HashMap<>();
 
-    private TESRGlowing tesrGlowing = null;
+	private TESRGlowing tesrGlowing = null;
 
-    public void register(Class<? extends TileMachineBase> te, GlowInformation... glowInformations) {
-        List<GlowInformation> list = new ArrayList<>();
-        for (GlowInformation glowInformation : glowInformations) {
-            list.add(glowInformation);
-        }
-        informationHashMap.put(te, list);
-        if (tesrGlowing == null) {
-            tesrGlowing = new TESRGlowing();
-        }
-        ClientRegistry.bindTileEntitySpecialRenderer(te, tesrGlowing);
-    }
+	public void register(Class<? extends TileMachineBase> te, GlowInformation... glowInformations) {
+		List<GlowInformation> list = new ArrayList<>();
+		for (GlowInformation glowInformation : glowInformations) {
+			list.add(glowInformation);
+		}
+		informationHashMap.put(te, list);
+		if (tesrGlowing == null) {
+			tesrGlowing = new TESRGlowing();
+		}
+		ClientRegistry.bindTileEntitySpecialRenderer(te, tesrGlowing);
+	}
 
-    public void load() {
-        MinecraftForge.EVENT_BUS.register(this);
-        MinecraftForge.EVENT_BUS.post(new GlowRegisterEvent(this));
-    }
+	public void load() {
+		MinecraftForge.EVENT_BUS.register(this);
+		MinecraftForge.EVENT_BUS.post(new GlowRegisterEvent(this));
+	}
 
-    @SubscribeEvent
-    public void onStitch(TextureStitchEvent.Pre e) {
-        for (Map.Entry<Class<? extends TileMachineBase>, List<GlowInformation>> glowSet : informationHashMap.entrySet()) {
-            for (GlowInformation information : glowSet.getValue()) {
-                information.setTextureAtlasSprite(e.getMap().registerSprite(information.getTextureLocation()));
-            }
-        }
-    }
+	@SubscribeEvent
+	public void onStitch(TextureStitchEvent.Pre e) {
+		for (Map.Entry<Class<? extends TileMachineBase>, List<GlowInformation>> glowSet : informationHashMap.entrySet()) {
+			for (GlowInformation information : glowSet.getValue()) {
+				information.setTextureAtlasSprite(e.getMap().registerSprite(information.getTextureLocation()));
+			}
+		}
+	}
 
-    @SubscribeEvent
-    public void registerGlow(GlowRegisterEvent e) {
-        e.handler.register(TileAssemblingMachine.class, new GlowInformation(null, new ResourceLocation("techreborn", "blocks/machines/tier1_machines/electric_alloy_smelter_front_on_glow"), BlockAssemblingMachine.ACTIVE));
-        e.handler.register(TileAlloySmelter.class, new GlowInformation(null, new ResourceLocation("techreborn", "blocks/machines/tier1_machines/electric_alloy_smelter_front_on_glow"), BlockAlloySmelter.ACTIVE));
-        for (EnumFacing side : EnumFacing.HORIZONTALS) {
-            e.handler.register(TilePlasmaGenerator.class, new GlowInformation(side, new ResourceLocation("techreborn", "blocks/machines/generators/plasmagenerator_side_glow"), null));
-        }
-    }
+	@SubscribeEvent
+	public void registerGlow(GlowRegisterEvent e) {
+		e.handler.register(TileAssemblingMachine.class, new GlowInformation(null, new ResourceLocation("techreborn", "blocks/machines/tier1_machines/electric_alloy_smelter_front_on_glow"), BlockAssemblingMachine.ACTIVE));
+		e.handler.register(TileAlloySmelter.class, new GlowInformation(null, new ResourceLocation("techreborn", "blocks/machines/tier1_machines/electric_alloy_smelter_front_on_glow"), BlockAlloySmelter.ACTIVE));
+		for (EnumFacing side : EnumFacing.HORIZONTALS) {
+			e.handler.register(TilePlasmaGenerator.class, new GlowInformation(side, new ResourceLocation("techreborn", "blocks/machines/generators/plasmagenerator_side_glow"), null));
+		}
+	}
 
-    public class GlowRegisterEvent extends Event {
+	public class GlowRegisterEvent extends Event {
 
-        GlowHandler handler;
+		GlowHandler handler;
 
-        public GlowRegisterEvent(GlowHandler handler) {
-            this.handler = handler;
-        }
+		public GlowRegisterEvent(GlowHandler handler) {
+			this.handler = handler;
+		}
 
-        public GlowHandler getHandler() {
-            return handler;
-        }
-    }
+		public GlowHandler getHandler() {
+			return handler;
+		}
+	}
 
-    public static GlowHandler createAndLoad() {
-        ClientProxy.handler = new GlowHandler();
-        ClientProxy.handler.load();
-        return ClientProxy.handler;
-    }
+	public static GlowHandler createAndLoad() {
+		ClientProxy.handler = new GlowHandler();
+		ClientProxy.handler.load();
+		return ClientProxy.handler;
+	}
 }

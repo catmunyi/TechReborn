@@ -8,62 +8,61 @@ import reborncore.common.powerSystem.PowerSystem;
 import techreborn.client.container.energy.storage.ContainerBatBox;
 import techreborn.tiles.energy.storage.TileBatBox;
 
-
 public class GuiBatbox extends GuiContainer {
 
-    public static final ResourceLocation texture = new ResourceLocation("techreborn", "textures/gui/batbox.png");
+	public static final ResourceLocation texture = new ResourceLocation("techreborn", "textures/gui/batbox.png");
 
-    TileBatBox generator;
+	TileBatBox generator;
 
-    ContainerBatBox containerGenerator;
+	ContainerBatBox containerGenerator;
 
-    public GuiBatbox(EntityPlayer player, TileBatBox generator) {
-        super(new ContainerBatBox(generator, player));
-        this.xSize = 176;
-        this.ySize = 167;
-        this.generator = generator;
-        this.containerGenerator = (ContainerBatBox) this.inventorySlots;
-    }
+	public GuiBatbox(EntityPlayer player, TileBatBox generator) {
+		super(new ContainerBatBox(generator, player));
+		this.xSize = 176;
+		this.ySize = 167;
+		this.generator = generator;
+		this.containerGenerator = (ContainerBatBox) this.inventorySlots;
+	}
 
-    @Override
-    public void initGui() {
-        int k = (this.width - this.xSize) / 2;
-        int l = (this.height - this.ySize) / 2;
-        super.initGui();
-    }
+	@Override
+	public void initGui() {
+		int k = (this.width - this.xSize) / 2;
+		int l = (this.height - this.ySize) / 2;
+		super.initGui();
+	}
 
-    @Override
-    protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_) {
-        this.mc.getTextureManager().bindTexture(texture);
-        int k = (this.width - this.xSize) / 2;
-        int l = (this.height - this.ySize) / 2;
-        this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
+	@Override
+	protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_) {
+		this.mc.getTextureManager().bindTexture(texture);
+		int k = (this.width - this.xSize) / 2;
+		int l = (this.height - this.ySize) / 2;
+		this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
 
-        int j = 0;
+		int j = 0;
 
-        j = generator.getEnergyScaled(24);
-        if (j > 0) {
-            this.drawTexturedModalRect(k + 109, l + 21 + 12, 176, 0, j + 1, 16);
-        }
-        //
-        // if (containerGenerator.burnTime != 0)
-        // {
-        // j = containerGenerator.getScaledBurnTime(13);
-        // this.drawTexturedModalRect(k + 80, l + 38 + 12 - j, 176, 30 - j, 14,
-        // j + 1);
-        // }
-    }
+		j = generator.getEnergyScaled(24);
+		if (j > 0) {
+			this.drawTexturedModalRect(k + 109, l + 21 + 12, 176, 0, j + 1, 16);
+		}
+		//
+		// if (containerGenerator.burnTime != 0)
+		// {
+		// j = containerGenerator.getScaledBurnTime(13);
+		// this.drawTexturedModalRect(k + 80, l + 38 + 12 - j, 176, 30 - j, 14,
+		// j + 1);
+		// }
+	}
 
-    protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_) {
-        String name = I18n.translateToLocal("tile.techreborn.batbox.name");
-        this.fontRendererObj.drawString(name, this.xSize / 2 - this.fontRendererObj.getStringWidth(name) / 2, 6,
-                4210752);
+	protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_) {
+		String name = I18n.translateToLocal("tile.techreborn.batbox.name");
+		this.fontRendererObj.drawString(name, this.xSize / 2 - this.fontRendererObj.getStringWidth(name) / 2, 6,
+			4210752);
 
-        this.fontRendererObj.drawString(I18n.translateToLocalFormatted("container.inventory", new Object[0]), 8,
-                this.ySize - 96 + 2, 4210752);
-        this.fontRendererObj.drawString(PowerSystem.getLocaliszedPower(generator.getMaxPower()), 25, this.ySize - 140,
-                4210752);
-        this.fontRendererObj.drawString(PowerSystem.getLocaliszedPower(containerGenerator.getEnergy()), 25, this.ySize - 150,
-                4210752);
-    }
+		this.fontRendererObj.drawString(I18n.translateToLocalFormatted("container.inventory", new Object[0]), 8,
+			this.ySize - 96 + 2, 4210752);
+		this.fontRendererObj.drawString(PowerSystem.getLocaliszedPower(generator.getMaxPower()), 25, this.ySize - 140,
+			4210752);
+		this.fontRendererObj.drawString(PowerSystem.getLocaliszedPower(containerGenerator.getEnergy()), 25, this.ySize - 150,
+			4210752);
+	}
 }

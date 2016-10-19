@@ -8,7 +8,7 @@ import techreborn.init.ModBlocks;
  */
 public class TileBatBox extends TileEnergyStorage {
 
-    public TileBatBox() {
-        super("BatBox", ModBlocks.batBox, EnumPowerTier.LOW, 40000);
-    }
+	public TileBatBox() {
+		super("BatBox", ModBlocks.batBox, EnumPowerTier.LOW, 40000);
+	}
 }

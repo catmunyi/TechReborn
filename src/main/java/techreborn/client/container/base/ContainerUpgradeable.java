@@ -9,13 +9,13 @@ import techreborn.api.gui.SlotUpgrade;
  */
 public abstract class ContainerUpgradeable extends ContainerBase {
 
-    public ContainerUpgradeable(TileEnergyUpgradeable tileEntity, EntityPlayer player) {
-        super(tileEntity, player);
+	public ContainerUpgradeable(TileEnergyUpgradeable tileEntity, EntityPlayer player) {
+		super(tileEntity, player);
 
         /* Initialize Upgrade Slots */
-        this.addSlotToContainer(new SlotUpgrade(tileEntity.getInventoryUpgrades(), getNextSlotIndex(), 152, 8));
-        this.addSlotToContainer(new SlotUpgrade(tileEntity.getInventoryUpgrades(), getNextSlotIndex(), 152, 26));
-        this.addSlotToContainer(new SlotUpgrade(tileEntity.getInventoryUpgrades(), getNextSlotIndex(), 152, 44));
-        this.addSlotToContainer(new SlotUpgrade(tileEntity.getInventoryUpgrades(), getNextSlotIndex(), 152, 62));
-    }
+		this.addSlotToContainer(new SlotUpgrade(tileEntity.getInventoryUpgrades(), getNextSlotIndex(), 152, 8));
+		this.addSlotToContainer(new SlotUpgrade(tileEntity.getInventoryUpgrades(), getNextSlotIndex(), 152, 26));
+		this.addSlotToContainer(new SlotUpgrade(tileEntity.getInventoryUpgrades(), getNextSlotIndex(), 152, 44));
+		this.addSlotToContainer(new SlotUpgrade(tileEntity.getInventoryUpgrades(), getNextSlotIndex(), 152, 62));
+	}
 }

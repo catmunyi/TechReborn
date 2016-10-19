@@ -9,8 +9,8 @@ import techreborn.init.ModBlocks;
  */
 public class TileMVTransformer extends TileTransformer {
 
-    public TileMVTransformer() {
-        super("MVTransformer", ModBlocks.mvt, EnumPowerTier.HIGH, ConfigTechReborn.MVTransformerMaxInput * 2);
-    }
+	public TileMVTransformer() {
+		super("MVTransformer", ModBlocks.mvt, EnumPowerTier.HIGH, ConfigTechReborn.MVTransformerMaxInput * 2);
+	}
 
 }

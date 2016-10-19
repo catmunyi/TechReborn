@@ -9,21 +9,21 @@ import techreborn.init.ModItems;
 
 public class ContainerDestructoPack extends RebornContainer {
 
-    private EntityPlayer player;
-    private Inventory inventory;
+	private EntityPlayer player;
+	private Inventory inventory;
 
-    public ContainerDestructoPack(EntityPlayer player) {
-        this.player = player;
-        this.inventory = new Inventory("destructopack", 1, 64, null);
+	public ContainerDestructoPack(EntityPlayer player) {
+		this.player = player;
+		this.inventory = new Inventory("destructopack", 1, 64, null);
 
-        addPlayersHotbar(player);
-        addPlayersInventory(player);
+		addPlayersHotbar(player);
+		addPlayersInventory(player);
 
-        addSlotToContainer(new SlotFilteredVoid(this.inventory, 0, 80, 36, new ItemStack[]{new ItemStack(ModItems.parts, 1, 37)}));
-    }
+		addSlotToContainer(new SlotFilteredVoid(this.inventory, 0, 80, 36, new ItemStack[] { new ItemStack(ModItems.parts, 1, 37) }));
+	}
 
-    @Override
-    public boolean canInteractWith(EntityPlayer player) {
-        return true;
-    }
+	@Override
+	public boolean canInteractWith(EntityPlayer player) {
+		return true;
+	}
 }

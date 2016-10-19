@@ -12,35 +12,35 @@ import javax.annotation.Nullable;
  */
 public class GlowInformation {
 
-    //Null for front facing
-    @Nullable
-    EnumFacing dir;
+	//Null for front facing
+	@Nullable
+	EnumFacing dir;
 
-    private ResourceLocation textureLocation;
-    public TextureAtlasSprite textureAtlasSprite;
+	private ResourceLocation textureLocation;
+	public TextureAtlasSprite textureAtlasSprite;
 
-    @Nullable
-    public PropertyBool isActive;
+	@Nullable
+	public PropertyBool isActive;
 
-    public GlowInformation(EnumFacing dir, ResourceLocation texture, PropertyBool isActive) {
-        this.dir = dir;
-        this.textureLocation = texture;
-        this.isActive = isActive;
-    }
+	public GlowInformation(EnumFacing dir, ResourceLocation texture, PropertyBool isActive) {
+		this.dir = dir;
+		this.textureLocation = texture;
+		this.isActive = isActive;
+	}
 
-    public EnumFacing getDir() {
-        return dir;
-    }
+	public EnumFacing getDir() {
+		return dir;
+	}
 
-    public ResourceLocation getTextureLocation() {
-        return textureLocation;
-    }
+	public ResourceLocation getTextureLocation() {
+		return textureLocation;
+	}
 
-    public TextureAtlasSprite getTextureAtlasSprite() {
-        return textureAtlasSprite;
-    }
+	public TextureAtlasSprite getTextureAtlasSprite() {
+		return textureAtlasSprite;
+	}
 
-    public void setTextureAtlasSprite(TextureAtlasSprite textureAtlasSprite) {
-        this.textureAtlasSprite = textureAtlasSprite;
-    }
+	public void setTextureAtlasSprite(TextureAtlasSprite textureAtlasSprite) {
+		this.textureAtlasSprite = textureAtlasSprite;
+	}
 }

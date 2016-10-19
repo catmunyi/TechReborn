@@ -6,7 +6,7 @@ import techreborn.tiles.energy.storage.TileBatBox;
 
 public class ContainerBatBox extends ContainerEnergyStorage {
 
-    public ContainerBatBox(TileBatBox tileEntity, EntityPlayer player) {
-        super(tileEntity, player);
-    }
+	public ContainerBatBox(TileBatBox tileEntity, EntityPlayer player) {
+		super(tileEntity, player);
+	}
 }

@@ -12,31 +12,31 @@ import techreborn.tiles.energy.generator.TilePlasmaGenerator;
 
 public class BlockPlasmaGenerator extends BlockMachineBase implements ITexturedBlock {
 
-    private final String prefix = "techreborn:blocks/machines/generators/";
+	private final String prefix = "techreborn:blocks/machines/generators/";
 
-    public BlockPlasmaGenerator(Material material) {
-        super();
-        setUnlocalizedName("techreborn.plasmagenerator");
-        setCreativeTab(TechRebornCreativeTab.instance);
-    }
+	public BlockPlasmaGenerator(Material material) {
+		super();
+		setUnlocalizedName("techreborn.plasmagenerator");
+		setCreativeTab(TechRebornCreativeTab.instance);
+	}
 
-    @Override
-    public String getTextureNameFromState(IBlockState state, EnumFacing side) {
-        if (side == EnumFacing.UP) {
-            return prefix + "plasmagenerator_top_on";
-        } else if (side == EnumFacing.DOWN) {
-            return prefix + "plasmagenerator_bottom";
-        }
-        return prefix + "plasmagenerator_side_on";
-    }
+	@Override
+	public String getTextureNameFromState(IBlockState state, EnumFacing side) {
+		if (side == EnumFacing.UP) {
+			return prefix + "plasmagenerator_top_on";
+		} else if (side == EnumFacing.DOWN) {
+			return prefix + "plasmagenerator_bottom";
+		}
+		return prefix + "plasmagenerator_side_on";
+	}
 
-    @Override
-    public int amountOfStates() {
-        return 9;
-    }
+	@Override
+	public int amountOfStates() {
+		return 9;
+	}
 
-    @Override
-    public TileEntity createNewTileEntity(World world, int meta) {
-        return new TilePlasmaGenerator();
-    }
+	@Override
+	public TileEntity createNewTileEntity(World world, int meta) {
+		return new TilePlasmaGenerator();
+	}
 }

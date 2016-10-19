@@ -35,242 +35,242 @@ import java.util.Random;
  */
 public class TechRebornWorldGen implements IWorldGenerator {
 
-    public static RubberTreeGenerator treeGenerator = new RubberTreeGenerator();
-    public final TechRebornRetroGen retroGen = new TechRebornRetroGen();
-    public File configFile;
-    public File hConfigFile;
-    public boolean jsonInvalid = false;
-    WorldGenConfig config;
-    WorldGenConfig defaultConfig;
+	public static RubberTreeGenerator treeGenerator = new RubberTreeGenerator();
+	public final TechRebornRetroGen retroGen = new TechRebornRetroGen();
+	public File configFile;
+	public File hConfigFile;
+	public boolean jsonInvalid = false;
+	WorldGenConfig config;
+	WorldGenConfig defaultConfig;
 
-    private void init() {
-        defaultConfig = new WorldGenConfig();
-        defaultConfig.overworldOres = new ArrayList<>();
-        defaultConfig.endOres = new ArrayList<>();
-        defaultConfig.neatherOres = new ArrayList<>();
+	private void init() {
+		defaultConfig = new WorldGenConfig();
+		defaultConfig.overworldOres = new ArrayList<>();
+		defaultConfig.endOres = new ArrayList<>();
+		defaultConfig.neatherOres = new ArrayList<>();
 
-        defaultConfig.overworldOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Galena"), 8, 16, 10, 60));
-        defaultConfig.overworldOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Iridium"), 1, 1, 10, 60));
-        defaultConfig.overworldOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Ruby"), 6, 3, 10, 60));
-        defaultConfig.overworldOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Sapphire"), 6, 3, 10, 60));
-        defaultConfig.overworldOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Bauxite"), 6, 10, 10, 60));
-        defaultConfig.overworldOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Lead"), 6, 16, 20, 60));
-        defaultConfig.overworldOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Silver"), 6, 16, 20, 60));
-        defaultConfig.overworldOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("copper"), 8, 16, 20, 60));
-        defaultConfig.overworldOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("tin"), 8, 16, 20, 60));
+		defaultConfig.overworldOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Galena"), 8, 16, 10, 60));
+		defaultConfig.overworldOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Iridium"), 1, 1, 10, 60));
+		defaultConfig.overworldOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Ruby"), 6, 3, 10, 60));
+		defaultConfig.overworldOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Sapphire"), 6, 3, 10, 60));
+		defaultConfig.overworldOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Bauxite"), 6, 10, 10, 60));
+		defaultConfig.overworldOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Lead"), 6, 16, 20, 60));
+		defaultConfig.overworldOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Silver"), 6, 16, 20, 60));
+		defaultConfig.overworldOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("copper"), 8, 16, 20, 60));
+		defaultConfig.overworldOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("tin"), 8, 16, 20, 60));
 
-        defaultConfig.neatherOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Pyrite"), 6, 3, 10, 250));
-        defaultConfig.neatherOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Cinnabar"), 6, 3, 10, 250));
-        defaultConfig.neatherOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Sphalerite"), 6, 3, 10, 250));
+		defaultConfig.neatherOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Pyrite"), 6, 3, 10, 250));
+		defaultConfig.neatherOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Cinnabar"), 6, 3, 10, 250));
+		defaultConfig.neatherOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Sphalerite"), 6, 3, 10, 250));
 
-        defaultConfig.endOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Tungsten"), 6, 3, 10, 250));
-        defaultConfig.endOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Sheldonite"), 6, 3, 10, 250));
-        defaultConfig.endOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Peridot"), 6, 3, 10, 250));
-        defaultConfig.endOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Sodalite"), 6, 3, 10, 250));
-    }
+		defaultConfig.endOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Tungsten"), 6, 3, 10, 250));
+		defaultConfig.endOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Sheldonite"), 6, 3, 10, 250));
+		defaultConfig.endOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Peridot"), 6, 3, 10, 250));
+		defaultConfig.endOres.add(new OreConfig(ModBlocks.ore.getBlockStateFromName("Sodalite"), 6, 3, 10, 250));
+	}
 
-    public void load() {
-        init();
-        //Converts the old format to the new one
-        if (configFile.exists()) {
-            if (!hConfigFile.exists()) {
-                try {
-                    //Reads json
-                    BufferedReader reader = new BufferedReader(new FileReader(configFile));
-                    //Converts to hjson
-                    String hJson = JsonValue.readHjson(reader).toString(Stringify.HJSON);
-                    //Saves as the new HJson file
-                    FileWriter writer = new FileWriter(hConfigFile);
-                    writer.write(hJson);
-                    writer.close();
-                    reader.close();
-                    //Delete old json file
-                    configFile.delete();
+	public void load() {
+		init();
+		//Converts the old format to the new one
+		if (configFile.exists()) {
+			if (!hConfigFile.exists()) {
+				try {
+					//Reads json
+					BufferedReader reader = new BufferedReader(new FileReader(configFile));
+					//Converts to hjson
+					String hJson = JsonValue.readHjson(reader).toString(Stringify.HJSON);
+					//Saves as the new HJson file
+					FileWriter writer = new FileWriter(hConfigFile);
+					writer.write(hJson);
+					writer.close();
+					reader.close();
+					//Delete old json file
+					configFile.delete();
 
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        if (hConfigFile.exists()) {
-            loadFromJson();
-        } else {
-            config = defaultConfig;
-        }
-//		config.overworldOres.addAll(getMissingOres(config.overworldOres, defaultConfig.overworldOres));
-//		config.neatherOres.addAll(getMissingOres(config.neatherOres, defaultConfig.neatherOres));
-//		config.endOres.addAll(getMissingOres(config.endOres, defaultConfig.endOres));
-        if (!jsonInvalid) {
-            save();
-        }
-    }
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		if (hConfigFile.exists()) {
+			loadFromJson();
+		} else {
+			config = defaultConfig;
+		}
+		//		config.overworldOres.addAll(getMissingOres(config.overworldOres, defaultConfig.overworldOres));
+		//		config.neatherOres.addAll(getMissingOres(config.neatherOres, defaultConfig.neatherOres));
+		//		config.endOres.addAll(getMissingOres(config.endOres, defaultConfig.endOres));
+		if (!jsonInvalid) {
+			save();
+		}
+	}
 
-    private List<OreConfig> getMissingOres(List<OreConfig> config, List<OreConfig> defaultOres) {
-        List<OreConfig> missingOres = new ArrayList<>();
-        for (OreConfig defaultOre : defaultOres) {
-            boolean hasFoundOre = false;
-            for (OreConfig ore : config) {
-                if (ore.blockName.equals(defaultOre.blockName) && ore.meta == defaultOre.meta) {
-                    hasFoundOre = true;
-                    ore.state = defaultOre.state; // Should allow for states to
-                    // be saved/loaded
-                }
-            }
-            if (!hasFoundOre) {
-                missingOres.add(defaultOre);
-            }
-        }
-        return missingOres;
-    }
+	private List<OreConfig> getMissingOres(List<OreConfig> config, List<OreConfig> defaultOres) {
+		List<OreConfig> missingOres = new ArrayList<>();
+		for (OreConfig defaultOre : defaultOres) {
+			boolean hasFoundOre = false;
+			for (OreConfig ore : config) {
+				if (ore.blockName.equals(defaultOre.blockName) && ore.meta == defaultOre.meta) {
+					hasFoundOre = true;
+					ore.state = defaultOre.state; // Should allow for states to
+					// be saved/loaded
+				}
+			}
+			if (!hasFoundOre) {
+				missingOres.add(defaultOre);
+			}
+		}
+		return missingOres;
+	}
 
-    private void loadFromJson() {
-        try {
-            Gson gson = new Gson();
-            BufferedReader reader = new BufferedReader(new FileReader(hConfigFile));
-            String jsonString = JsonValue.readHjson(reader).toString();
-            Type typeOfHashMap = new TypeToken<WorldGenConfig>() {
-            }.getType();
-            config = gson.fromJson(jsonString, typeOfHashMap);
-            ArrayUtils.addAll(config.endOres, config.neatherOres, config.overworldOres).stream().forEach(oreConfig -> {
-                if (oreConfig.minYHeight > oreConfig.maxYHeight) {
-                    printError(oreConfig.blockName + " ore generation value is invalid, the min y height is bigger than the max y height, this ore value will be disabled in code");
+	private void loadFromJson() {
+		try {
+			Gson gson = new Gson();
+			BufferedReader reader = new BufferedReader(new FileReader(hConfigFile));
+			String jsonString = JsonValue.readHjson(reader).toString();
+			Type typeOfHashMap = new TypeToken<WorldGenConfig>() {
+			}.getType();
+			config = gson.fromJson(jsonString, typeOfHashMap);
+			ArrayUtils.addAll(config.endOres, config.neatherOres, config.overworldOres).stream().forEach(oreConfig -> {
+				if (oreConfig.minYHeight > oreConfig.maxYHeight) {
+					printError(oreConfig.blockName + " ore generation value is invalid, the min y height is bigger than the max y height, this ore value will be disabled in code");
 
-                    oreConfig.minYHeight = -1;
-                    oreConfig.maxYHeight = -1;
-                }
+					oreConfig.minYHeight = -1;
+					oreConfig.maxYHeight = -1;
+				}
 
-                if (oreConfig.minYHeight < 0 || oreConfig.maxYHeight < 0) {
-                    printError(oreConfig.blockName + " ore generation value is invalid, the min y height or the max y height is less than 0, this ore value will be disabled in code");
-                    oreConfig.minYHeight = -1;
-                    oreConfig.maxYHeight = -1;
-                }
+				if (oreConfig.minYHeight < 0 || oreConfig.maxYHeight < 0) {
+					printError(oreConfig.blockName + " ore generation value is invalid, the min y height or the max y height is less than 0, this ore value will be disabled in code");
+					oreConfig.minYHeight = -1;
+					oreConfig.maxYHeight = -1;
+				}
 
-            });
-        } catch (Exception e) {
-            Core.logHelper.error(
-                    "The ores.json file was invalid, bad things are about to happen, I will try and save the world now :");
-            config = defaultConfig;
-            jsonInvalid = true;
-            Core.logHelper.error(
-                    "The ores.json file was ignored and the default values loaded, you file will NOT be over written");
-            e.printStackTrace();
-        }
-    }
+			});
+		} catch (Exception e) {
+			Core.logHelper.error(
+				"The ores.json file was invalid, bad things are about to happen, I will try and save the world now :");
+			config = defaultConfig;
+			jsonInvalid = true;
+			Core.logHelper.error(
+				"The ores.json file was ignored and the default values loaded, you file will NOT be over written");
+			e.printStackTrace();
+		}
+	}
 
-    public void printError(String string) {
-        Core.logHelper.error("###############-ERROR-####################");
-        Core.logHelper.error("");
-        Core.logHelper.error(string);
-        Core.logHelper.error("");
-        Core.logHelper.error("###############-ERROR-####################");
-    }
+	public void printError(String string) {
+		Core.logHelper.error("###############-ERROR-####################");
+		Core.logHelper.error("");
+		Core.logHelper.error(string);
+		Core.logHelper.error("");
+		Core.logHelper.error("###############-ERROR-####################");
+	}
 
-    private void save() {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String json = gson.toJson(config);
-        String hJson = JsonValue.readHjson(json).toString(Stringify.HJSON);
-        try {
-            FileWriter writer = new FileWriter(hConfigFile);
-            writer.write(hJson);
-            writer.close();
-        } catch (IOException e) {
-            Core.logHelper.error("The ores.json file was invalid, something bad happened");
-            e.printStackTrace();
-        }
-    }
+	private void save() {
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		String json = gson.toJson(config);
+		String hJson = JsonValue.readHjson(json).toString(Stringify.HJSON);
+		try {
+			FileWriter writer = new FileWriter(hConfigFile);
+			writer.write(hJson);
+			writer.close();
+		} catch (IOException e) {
+			Core.logHelper.error("The ores.json file was invalid, something bad happened");
+			e.printStackTrace();
+		}
+	}
 
-    public List<OreConfig> getAllGenOresFromList(List<OreConfig> configList) {
-        List<OreConfig> list = new ArrayList<>();
-        for (OreConfig config : configList) {
-            if (config.veinSize != 0 && config.veinsPerChunk != 0 && config.shouldSpawn) {
-                list.add(config);
-            }
-        }
-        return list;
-    }
+	public List<OreConfig> getAllGenOresFromList(List<OreConfig> configList) {
+		List<OreConfig> list = new ArrayList<>();
+		for (OreConfig config : configList) {
+			if (config.veinSize != 0 && config.veinsPerChunk != 0 && config.shouldSpawn) {
+				list.add(config);
+			}
+		}
+		return list;
+	}
 
-    @Override
-    public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
-                         IChunkProvider chunkProvider) {
-        // TODO this could be optimised to not run every chunk gen
-        if (!config.generateTechRebornFeatures) {
-            return;
-        }
-        boolean genTree = false;
-        List<OreConfig> list = new ArrayList<>();
-        Predicate<IBlockState> predicate = BlockMatcher.forBlock(Blocks.STONE);
-        if (world.provider.getDimension() == 0) {
-            list.addAll(getAllGenOresFromList(config.overworldOres));
-            genTree = true;
-        } else if (world.provider.getDimension() == -1) {
-            list.addAll(getAllGenOresFromList(config.neatherOres));
-            predicate = BlockMatcher.forBlock(Blocks.NETHERRACK);
-        } else if (world.provider.getDimension() == 1) {
-            list.addAll(getAllGenOresFromList(config.endOres));
-            predicate = BlockMatcher.forBlock(Blocks.END_STONE);
-        }
+	@Override
+	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
+	                     IChunkProvider chunkProvider) {
+		// TODO this could be optimised to not run every chunk gen
+		if (!config.generateTechRebornFeatures) {
+			return;
+		}
+		boolean genTree = false;
+		List<OreConfig> list = new ArrayList<>();
+		Predicate<IBlockState> predicate = BlockMatcher.forBlock(Blocks.STONE);
+		if (world.provider.getDimension() == 0) {
+			list.addAll(getAllGenOresFromList(config.overworldOres));
+			genTree = true;
+		} else if (world.provider.getDimension() == -1) {
+			list.addAll(getAllGenOresFromList(config.neatherOres));
+			predicate = BlockMatcher.forBlock(Blocks.NETHERRACK);
+		} else if (world.provider.getDimension() == 1) {
+			list.addAll(getAllGenOresFromList(config.endOres));
+			predicate = BlockMatcher.forBlock(Blocks.END_STONE);
+		}
 
-        if (!list.isEmpty() && config.generateOres) {
-            int xPos, yPos, zPos;
-            for (OreConfig ore : list) {
-                WorldGenMinable worldGenMinable = new WorldGenMinable(ore.state, ore.veinSize, predicate);
-                if (ore.state != null) {
-                    for (int i = 0; i < ore.veinsPerChunk; i++) {
-                        xPos = chunkX * 16 + random.nextInt(16);
-                        if (ore.maxYHeight == -1 || ore.minYHeight == -1) {
-                            continue;
-                        }
-                        yPos = 10 + random.nextInt(ore.maxYHeight - ore.minYHeight);
-                        zPos = chunkZ * 16 + random.nextInt(16);
-                        BlockPos pos = new BlockPos(xPos, yPos, zPos);
-                        try {
-                            worldGenMinable.generate(world, random, pos);
-                        } catch (ArrayIndexOutOfBoundsException e) {
-                            Core.logHelper.error("Something bad is happening during world gen the ore " + ore.blockNiceName + " caused a crash when generating. Report this to the TechReborn devs with a log");
-                        }
+		if (!list.isEmpty() && config.generateOres) {
+			int xPos, yPos, zPos;
+			for (OreConfig ore : list) {
+				WorldGenMinable worldGenMinable = new WorldGenMinable(ore.state, ore.veinSize, predicate);
+				if (ore.state != null) {
+					for (int i = 0; i < ore.veinsPerChunk; i++) {
+						xPos = chunkX * 16 + random.nextInt(16);
+						if (ore.maxYHeight == -1 || ore.minYHeight == -1) {
+							continue;
+						}
+						yPos = 10 + random.nextInt(ore.maxYHeight - ore.minYHeight);
+						zPos = chunkZ * 16 + random.nextInt(16);
+						BlockPos pos = new BlockPos(xPos, yPos, zPos);
+						try {
+							worldGenMinable.generate(world, random, pos);
+						} catch (ArrayIndexOutOfBoundsException e) {
+							Core.logHelper.error("Something bad is happening during world gen the ore " + ore.blockNiceName + " caused a crash when generating. Report this to the TechReborn devs with a log");
+						}
 
-                    }
-                }
-            }
-        }
-        if (genTree && config.rubberTreeConfig.shouldSpawn) {
-            int chance = config.rubberTreeConfig.chance;
-            boolean isValidSpawn = false;
-            Biome biomeGenBase = world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 72, chunkZ * 16));
-            if (BiomeDictionary.isBiomeOfType(biomeGenBase, BiomeDictionary.Type.SWAMP)) {
-                // TODO check the config file for bounds on this, might cause
-                // issues
-                chance -= random.nextInt(10) + 10;
-                isValidSpawn = true;
-            }
-            if (BiomeDictionary.isBiomeOfType(biomeGenBase, BiomeDictionary.Type.FOREST)
-                    || BiomeDictionary.isBiomeOfType(biomeGenBase, BiomeDictionary.Type.JUNGLE)) {
-                chance -= random.nextInt(5) + 3;
-                isValidSpawn = true;
-            }
-            if (!isValidSpawn) {
-                return;
-            }
-            if (chance <= 0) {
-                chance = 1;
-            }
-            if (random.nextInt(chance) == 0) {
-                int x = (chunkX * 16) + random.nextInt(15);
-                int z = (chunkZ * 16) + random.nextInt(15);
-                for (int i = 0; i < config.rubberTreeConfig.clusterSize; i++) {
-                    int y = world.getActualHeight() - 1;
-                    while (world.isAirBlock(new BlockPos(x, y, z)) && y > 0) {
-                        y--;
-                    }
-                    treeGenerator.generate(world, random, new BlockPos(x, 72, z));
-                    x += random.nextInt(16) - 8;
-                    z += random.nextInt(16) - 8;
-                }
+					}
+				}
+			}
+		}
+		if (genTree && config.rubberTreeConfig.shouldSpawn) {
+			int chance = config.rubberTreeConfig.chance;
+			boolean isValidSpawn = false;
+			Biome biomeGenBase = world.getBiomeForCoordsBody(new BlockPos(chunkX * 16, 72, chunkZ * 16));
+			if (BiomeDictionary.isBiomeOfType(biomeGenBase, BiomeDictionary.Type.SWAMP)) {
+				// TODO check the config file for bounds on this, might cause
+				// issues
+				chance -= random.nextInt(10) + 10;
+				isValidSpawn = true;
+			}
+			if (BiomeDictionary.isBiomeOfType(biomeGenBase, BiomeDictionary.Type.FOREST)
+				|| BiomeDictionary.isBiomeOfType(biomeGenBase, BiomeDictionary.Type.JUNGLE)) {
+				chance -= random.nextInt(5) + 3;
+				isValidSpawn = true;
+			}
+			if (!isValidSpawn) {
+				return;
+			}
+			if (chance <= 0) {
+				chance = 1;
+			}
+			if (random.nextInt(chance) == 0) {
+				int x = (chunkX * 16) + random.nextInt(15);
+				int z = (chunkZ * 16) + random.nextInt(15);
+				for (int i = 0; i < config.rubberTreeConfig.clusterSize; i++) {
+					int y = world.getActualHeight() - 1;
+					while (world.isAirBlock(new BlockPos(x, y, z)) && y > 0) {
+						y--;
+					}
+					treeGenerator.generate(world, random, new BlockPos(x, 72, z));
+					x += random.nextInt(16) - 8;
+					z += random.nextInt(16) - 8;
+				}
 
-            }
-            retroGen.markChunk(ChunkCoord.of(chunkX, chunkZ));
-        }
-    }
+			}
+			retroGen.markChunk(ChunkCoord.of(chunkX, chunkZ));
+		}
+	}
 }

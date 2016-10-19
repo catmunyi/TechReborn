@@ -6,7 +6,7 @@ import techreborn.tiles.energy.storage.TileMFSU;
 
 public class ContainerMFSU extends ContainerEnergyEquipment {
 
-    public ContainerMFSU(TileMFSU tileEntity, EntityPlayer player) {
-        super(tileEntity, player);
-    }
+	public ContainerMFSU(TileMFSU tileEntity, EntityPlayer player) {
+		super(tileEntity, player);
+	}
 }

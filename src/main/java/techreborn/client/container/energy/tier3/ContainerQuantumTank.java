@@ -9,11 +9,11 @@ import techreborn.tiles.energy.tier3.TileQuantumTank;
 
 public class ContainerQuantumTank extends ContainerBase {
 
-    public ContainerQuantumTank(TileQuantumTank tileEntity, EntityPlayer player) {
-        super(tileEntity, player);
+	public ContainerQuantumTank(TileQuantumTank tileEntity, EntityPlayer player) {
+		super(tileEntity, player);
 
-        this.addSlotToContainer(new SlotFluid(tileEntity.getInventory(), getNextSlotIndex(), 80, 17));
-        this.addSlotToContainer(new SlotOutput(tileEntity.getInventory(), getNextSlotIndex(), 80, 53));
-        this.addSlotToContainer(new SlotFake(tileEntity.getInventory(), getNextSlotIndex(), 59, 42, false, false, 1));
-    }
+		this.addSlotToContainer(new SlotFluid(tileEntity.getInventory(), getNextSlotIndex(), 80, 17));
+		this.addSlotToContainer(new SlotOutput(tileEntity.getInventory(), getNextSlotIndex(), 80, 53));
+		this.addSlotToContainer(new SlotFake(tileEntity.getInventory(), getNextSlotIndex(), 59, 42, false, false, 1));
+	}
 }

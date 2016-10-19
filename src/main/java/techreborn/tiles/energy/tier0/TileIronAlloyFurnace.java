@@ -11,104 +11,104 @@ import techreborn.client.container.energy.tier0.ContainerIronAlloyFurnace;
 
 public class TileIronAlloyFurnace extends AbstractTileTier0 {
 
-    private int inputSlot1 = 2;
-    private int inputSlot2 = 3;
+	private int inputSlot1 = 2;
+	private int inputSlot2 = 3;
 
-    public TileIronAlloyFurnace() {
-        super(200, new Inventory("TileIronAlloyFurnace", 4, 64));
-    }
+	public TileIronAlloyFurnace() {
+		super(200, new Inventory("TileIronAlloyFurnace", 4, 64));
+	}
 
-    private boolean hasAllInputs(IBaseRecipeType recipeType) {
-        if (recipeType == null) {
-            return false;
-        }
+	private boolean hasAllInputs(IBaseRecipeType recipeType) {
+		if (recipeType == null) {
+			return false;
+		}
 
-        for (ItemStack input : recipeType.getInputs()) {
-            boolean hasItem = false;
-            for (int inputSlot_id = 0; inputSlot_id < 2; inputSlot_id++) {
-                ItemStack inputStack = getInventory().getStackInSlot(inputSlot_id);
-                if (inputStack == null)
-                    continue;
+		for (ItemStack input : recipeType.getInputs()) {
+			boolean hasItem = false;
+			for (int inputSlot_id = 0; inputSlot_id < 2; inputSlot_id++) {
+				ItemStack inputStack = getInventory().getStackInSlot(inputSlot_id);
+				if (inputStack == null)
+					continue;
 
-                if (ItemUtils.isItemEqual(input, inputStack, true, true, recipeType.useOreDic()) && inputStack.stackSize >= input.stackSize) {
-                    hasItem = true;
-                    break;
-                }
-            }
-            if (!hasItem) {
-                return false;
-            }
-        }
-        return true;
-    }
+				if (ItemUtils.isItemEqual(input, inputStack, true, true, recipeType.useOreDic()) && inputStack.stackSize >= input.stackSize) {
+					hasItem = true;
+					break;
+				}
+			}
+			if (!hasItem) {
+				return false;
+			}
+		}
+		return true;
+	}
 
-    @Override
-    void processItems() {
-        if (this.canSmelt()) {
-            ItemStack itemstack = null;
-            for (IBaseRecipeType recipeType : RecipeHandler.getRecipeClassFromName(Reference.alloySmelteRecipe)) {
-                if (hasAllInputs(recipeType)) {
-                    itemstack = recipeType.getOutput(0);
-                    break;
-                }
-            }
+	@Override
+	void processItems() {
+		if (this.canSmelt()) {
+			ItemStack itemstack = null;
+			for (IBaseRecipeType recipeType : RecipeHandler.getRecipeClassFromName(Reference.alloySmelteRecipe)) {
+				if (hasAllInputs(recipeType)) {
+					itemstack = recipeType.getOutput(0);
+					break;
+				}
+			}
 
-            if (getInventory().getStackInSlot(this.outputSlot) == null) {
-                getInventory().setInventorySlotContents(this.outputSlot, itemstack.copy());
-            } else if (getInventory().getStackInSlot(this.outputSlot).getItem() == itemstack.getItem()) {
-                getInventory().decrStackSize(this.outputSlot, -itemstack.stackSize);
-            }
+			if (getInventory().getStackInSlot(this.outputSlot) == null) {
+				getInventory().setInventorySlotContents(this.outputSlot, itemstack.copy());
+			} else if (getInventory().getStackInSlot(this.outputSlot).getItem() == itemstack.getItem()) {
+				getInventory().decrStackSize(this.outputSlot, -itemstack.stackSize);
+			}
 
-            for (IBaseRecipeType recipeType : RecipeHandler.getRecipeClassFromName(Reference.alloySmelteRecipe)) {
-                boolean hasAllRecipes = true;
-                if (!hasAllInputs(recipeType)) {
-                    hasAllRecipes = false;
-                }
+			for (IBaseRecipeType recipeType : RecipeHandler.getRecipeClassFromName(Reference.alloySmelteRecipe)) {
+				boolean hasAllRecipes = true;
+				if (!hasAllInputs(recipeType)) {
+					hasAllRecipes = false;
+				}
 
-                if (hasAllRecipes) {
-                    for (ItemStack input : recipeType.getInputs()) {
-                        for (int inputSlot = 0; inputSlot < 2; inputSlot++) {
-                            if (ItemUtils.isItemEqual(input, getInventory().getStackInSlot(inputSlot), true, true, recipeType.useOreDic())) {
-                                getInventory().decrStackSize(inputSlot, input.stackSize);
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
+				if (hasAllRecipes) {
+					for (ItemStack input : recipeType.getInputs()) {
+						for (int inputSlot = 0; inputSlot < 2; inputSlot++) {
+							if (ItemUtils.isItemEqual(input, getInventory().getStackInSlot(inputSlot), true, true, recipeType.useOreDic())) {
+								getInventory().decrStackSize(inputSlot, input.stackSize);
+								break;
+							}
+						}
+					}
+				}
+			}
 
-        }
-    }
+		}
+	}
 
-    @Override
-    boolean canSmelt() {
-        if (getInventory().getStackInSlot(this.inputSlot1) == null || getInventory().getStackInSlot(this.inputSlot2) == null) {
-            return false;
-        } else {
-            ItemStack itemstack = null;
-            for (IBaseRecipeType recipeType : RecipeHandler.getRecipeClassFromName(Reference.alloySmelteRecipe)) {
-                if (hasAllInputs(recipeType)) {
-                    itemstack = recipeType.getOutput(0);
-                    break;
-                }
-            }
+	@Override
+	boolean canSmelt() {
+		if (getInventory().getStackInSlot(this.inputSlot1) == null || getInventory().getStackInSlot(this.inputSlot2) == null) {
+			return false;
+		} else {
+			ItemStack itemstack = null;
+			for (IBaseRecipeType recipeType : RecipeHandler.getRecipeClassFromName(Reference.alloySmelteRecipe)) {
+				if (hasAllInputs(recipeType)) {
+					itemstack = recipeType.getOutput(0);
+					break;
+				}
+			}
 
-            if (itemstack == null)
-                return false;
+			if (itemstack == null)
+				return false;
 
-            if (getInventory().getStackInSlot(this.outputSlot) == null)
-                return true;
+			if (getInventory().getStackInSlot(this.outputSlot) == null)
+				return true;
 
-            if (!getInventory().getStackInSlot(this.outputSlot).isItemEqual(itemstack))
-                return false;
+			if (!getInventory().getStackInSlot(this.outputSlot).isItemEqual(itemstack))
+				return false;
 
-            int result = getInventory().getStackInSlot(this.outputSlot).stackSize + itemstack.stackSize;
-            return result <= getInventory().getInventoryStackLimit() && result <= getInventory().getStackInSlot(this.outputSlot).getMaxStackSize();
-        }
-    }
+			int result = getInventory().getStackInSlot(this.outputSlot).stackSize + itemstack.stackSize;
+			return result <= getInventory().getInventoryStackLimit() && result <= getInventory().getStackInSlot(this.outputSlot).getMaxStackSize();
+		}
+	}
 
-    @Override
-    public RebornContainer getContainer() {
-        return RebornContainer.getContainerFromClass(ContainerIronAlloyFurnace.class, this);
-    }
+	@Override
+	public RebornContainer getContainer() {
+		return RebornContainer.getContainerFromClass(ContainerIronAlloyFurnace.class, this);
+	}
 }

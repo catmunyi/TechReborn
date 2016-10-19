@@ -10,17 +10,17 @@ import techreborn.init.ModBlocks;
  * Created by Mark on 19/10/2016.
  */
 public class TilePlasmaGenerator extends TileMachineBase {
-    public TilePlasmaGenerator() {
-        super(EnumPowerTier.HIGH, 10000, 0, 0);
-    }
+	public TilePlasmaGenerator() {
+		super(EnumPowerTier.HIGH, 10000, 0, 0);
+	}
 
-    @Override
-    public void machineFinish() {
+	@Override
+	public void machineFinish() {
 
-    }
+	}
 
-    @Override
-    public ItemStack getWrenchDrop(EntityPlayer p0) {
-        return new ItemStack(ModBlocks.plasmaGenerator);
-    }
+	@Override
+	public ItemStack getWrenchDrop(EntityPlayer p0) {
+		return new ItemStack(ModBlocks.plasmaGenerator);
+	}
 }

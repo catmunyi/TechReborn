@@ -11,28 +11,28 @@ import techreborn.compat.ICompatModule;
  */
 public class CompatModuleTinkers implements ICompatModule {
 
-    public CompatModuleTinkers() {
-        super();
-    }
+	public CompatModuleTinkers() {
+		super();
+	}
 
-    @Override
-    public void preInit(FMLPreInitializationEvent event) {
-        TinkersFluids.init();
-    }
+	@Override
+	public void preInit(FMLPreInitializationEvent event) {
+		TinkersFluids.init();
+	}
 
-    @Override
-    public void init(FMLInitializationEvent event) {
+	@Override
+	public void init(FMLInitializationEvent event) {
 
-    }
+	}
 
-    @Override
-    public void postInit(FMLPostInitializationEvent event) {
+	@Override
+	public void postInit(FMLPostInitializationEvent event) {
 
-    }
+	}
 
-    @Override
-    public void serverStarting(FMLServerStartingEvent event) {
+	@Override
+	public void serverStarting(FMLServerStartingEvent event) {
 
-    }
+	}
 
 }

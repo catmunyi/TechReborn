@@ -6,8 +6,8 @@ import techreborn.tiles.energy.tier3.TileChunkLoader;
 
 public class ContainerChunkLoader extends ContainerBase {
 
-    public ContainerChunkLoader(TileChunkLoader tileEntity, EntityPlayer player) {
-        super(tileEntity, player);
-    }
+	public ContainerChunkLoader(TileChunkLoader tileEntity, EntityPlayer player) {
+		super(tileEntity, player);
+	}
 
 }

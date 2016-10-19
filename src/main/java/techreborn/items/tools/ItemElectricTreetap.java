@@ -18,81 +18,81 @@ import java.util.List;
 
 public class ItemElectricTreetap extends Item implements IEnergyItemInfo, ITexturedItem {
 
-    public static final int maxCharge = 5120;
-    public static final int tier = 1;
-    public int cost = 20;
+	public static final int maxCharge = 5120;
+	public static final int tier = 1;
+	public int cost = 20;
 
-    public ItemElectricTreetap() {
-        super();
-        setUnlocalizedName("techreborn.electric_treetap");
-        setCreativeTab(TechRebornCreativeTab.instance);
-        setMaxStackSize(1);
-        RebornCore.jsonDestroyer.registerObject(this);
-    }
+	public ItemElectricTreetap() {
+		super();
+		setUnlocalizedName("techreborn.electric_treetap");
+		setCreativeTab(TechRebornCreativeTab.instance);
+		setMaxStackSize(1);
+		RebornCore.jsonDestroyer.registerObject(this);
+	}
 
-    @Override
-    public double getMaxPower(ItemStack stack) {
-        return maxCharge;
-    }
+	@Override
+	public double getMaxPower(ItemStack stack) {
+		return maxCharge;
+	}
 
-    @Override
-    public boolean canAcceptEnergy(ItemStack stack) {
-        return true;
-    }
+	@Override
+	public boolean canAcceptEnergy(ItemStack stack) {
+		return true;
+	}
 
-    @Override
-    public boolean canProvideEnergy(ItemStack stack) {
-        return false;
-    }
+	@Override
+	public boolean canProvideEnergy(ItemStack stack) {
+		return false;
+	}
 
-    @Override
-    public double getMaxTransfer(ItemStack stack) {
-        return 200;
-    }
+	@Override
+	public double getMaxTransfer(ItemStack stack) {
+		return 200;
+	}
 
-    @Override
-    public int getStackTier(ItemStack stack) {
-        return tier;
-    }
+	@Override
+	public int getStackTier(ItemStack stack) {
+		return tier;
+	}
 
-    @Override
-    public double getDurabilityForDisplay(ItemStack stack) {
-        double charge = (PoweredItem.getEnergy(stack) / getMaxPower(stack));
-        return 1 - charge;
+	@Override
+	public double getDurabilityForDisplay(ItemStack stack) {
+		double charge = (PoweredItem.getEnergy(stack) / getMaxPower(stack));
+		return 1 - charge;
 
-    }
+	}
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    @SideOnly(Side.CLIENT)
-    public void getSubItems(Item item, CreativeTabs par2CreativeTabs, List itemList) {
-        ItemStack itemStack = new ItemStack(this, 1);
-        itemList.add(itemStack);
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(Item item, CreativeTabs par2CreativeTabs, List itemList) {
+		ItemStack itemStack = new ItemStack(this, 1);
+		itemList.add(itemStack);
 
-        ItemStack charged = new ItemStack(this, 1);
-        PoweredItem.setEnergy(getMaxPower(charged), charged);
-        itemList.add(charged);
-    }
+		ItemStack charged = new ItemStack(this, 1);
+		PoweredItem.setEnergy(getMaxPower(charged), charged);
+		itemList.add(charged);
+	}
 
-    @Override
-    public boolean showDurabilityBar(ItemStack stack) {
-        return true;
-    }
+	@Override
+	public boolean showDurabilityBar(ItemStack stack) {
+		return true;
+	}
 
-    @Override
-    public String getTextureName(int damage) {
-        return "techreborn:items/tool/electricTreetap";
-    }
+	@Override
+	public String getTextureName(int damage) {
+		return "techreborn:items/tool/electricTreetap";
+	}
 
-    @Override
-    public int getMaxMeta() {
-        return 1;
-    }
+	@Override
+	public int getMaxMeta() {
+		return 1;
+	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public ModelResourceLocation getModel(ItemStack stack, EntityPlayer player,
-                                          int useRemaining) {
-        return new ModelResourceLocation(ModInfo.MOD_ID + ":" + getUnlocalizedName(stack).substring(5), "inventory");
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public ModelResourceLocation getModel(ItemStack stack, EntityPlayer player,
+	                                      int useRemaining) {
+		return new ModelResourceLocation(ModInfo.MOD_ID + ":" + getUnlocalizedName(stack).substring(5), "inventory");
+	}
 
 }

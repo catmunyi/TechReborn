@@ -8,10 +8,10 @@ import techreborn.tiles.energy.tier1.TileGrinder;
 
 public class ContainerGrinder extends ContainerCrafting {
 
-    public ContainerGrinder(TileGrinder tileEntity, EntityPlayer player) {
-        super(tileEntity, player);
+	public ContainerGrinder(TileGrinder tileEntity, EntityPlayer player) {
+		super(tileEntity, player);
 
-        this.addSlotToContainer(new SlotInput(tileEntity.getInventory(), getNextSlotIndex(), 56, 34));
-        this.addSlotToContainer(new SlotOutput(tileEntity.getInventory(), getNextSlotIndex(), 116, 34));
-    }
+		this.addSlotToContainer(new SlotInput(tileEntity.getInventory(), getNextSlotIndex(), 56, 34));
+		this.addSlotToContainer(new SlotOutput(tileEntity.getInventory(), getNextSlotIndex(), 116, 34));
+	}
 }

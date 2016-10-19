@@ -8,11 +8,11 @@ import techreborn.tiles.energy.tier1.TileElectricFurnace;
 
 public class ContainerElectricFurnace extends ContainerBase {
 
-    public ContainerElectricFurnace(TileElectricFurnace tileEntity, EntityPlayer player) {
-        super(tileEntity, player);
+	public ContainerElectricFurnace(TileElectricFurnace tileEntity, EntityPlayer player) {
+		super(tileEntity, player);
 
-        this.addSlotToContainer(new SlotInput(tileEntity.getInventory(), getNextSlotIndex(), 56, 34));
-        this.addSlotToContainer(new SlotOutput(tileEntity.getInventory(), getNextSlotIndex(), 116, 34));
-    }
+		this.addSlotToContainer(new SlotInput(tileEntity.getInventory(), getNextSlotIndex(), 56, 34));
+		this.addSlotToContainer(new SlotOutput(tileEntity.getInventory(), getNextSlotIndex(), 116, 34));
+	}
 
 }

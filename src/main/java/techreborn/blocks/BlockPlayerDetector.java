@@ -34,123 +34,123 @@ import java.util.Random;
 
 public class BlockPlayerDetector extends BlockMachineBase implements ITexturedBlock {
 
-    public static final String[] types = new String[]{"all", "others", "you"};
-    public PropertyString TYPE;
-    static List<String> typeNamesList = Lists.newArrayList(ArrayUtils.arrayToLowercase(types));
+	public static final String[] types = new String[] { "all", "others", "you" };
+	public PropertyString TYPE;
+	static List<String> typeNamesList = Lists.newArrayList(ArrayUtils.arrayToLowercase(types));
 
-    public BlockPlayerDetector() {
-        super(true);
-        setUnlocalizedName("techreborn.playerDetector");
-        setCreativeTab(TechRebornCreativeTab.instance);
-        setHardness(2f);
-        this.setDefaultState(this.getDefaultState().withProperty(TYPE, "all"));
-    }
+	public BlockPlayerDetector() {
+		super(true);
+		setUnlocalizedName("techreborn.playerDetector");
+		setCreativeTab(TechRebornCreativeTab.instance);
+		setHardness(2f);
+		this.setDefaultState(this.getDefaultState().withProperty(TYPE, "all"));
+	}
 
-    @Override
-    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        return Item.getItemFromBlock(this);
-    }
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return Item.getItemFromBlock(this);
+	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list) {
-        for (int meta = 0; meta < types.length; meta++) {
-            list.add(new ItemStack(item, 1, meta));
-        }
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list) {
+		for (int meta = 0; meta < types.length; meta++) {
+			list.add(new ItemStack(item, 1, meta));
+		}
+	}
 
-    @Override
-    public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
-        return new TilePlayerDectector();
-    }
+	@Override
+	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
+		return new TilePlayerDectector();
+	}
 
-    @Override
-    public boolean canConnectRedstone(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
-        return true;
-    }
+	@Override
+	public boolean canConnectRedstone(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
+		return true;
+	}
 
-    @Override
-    public boolean canProvidePower(IBlockState state) {
-        return true;
-    }
+	@Override
+	public boolean canProvidePower(IBlockState state) {
+		return true;
+	}
 
-    @Override
-    public int getWeakPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
-        TileEntity entity = blockAccess.getTileEntity(pos);
-        if (entity instanceof TilePlayerDectector) {
-            return ((TilePlayerDectector) entity).isProvidingPower() ? 15 : 0;
-        }
-        return 0;
-    }
+	@Override
+	public int getWeakPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+		TileEntity entity = blockAccess.getTileEntity(pos);
+		if (entity instanceof TilePlayerDectector) {
+			return ((TilePlayerDectector) entity).isProvidingPower() ? 15 : 0;
+		}
+		return 0;
+	}
 
-    @Override
-    public int getStrongPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
-        TileEntity entity = blockAccess.getTileEntity(pos);
-        if (entity instanceof TilePlayerDectector) {
-            return ((TilePlayerDectector) entity).isProvidingPower() ? 15 : 0;
-        }
-        return 0;
-    }
+	@Override
+	public int getStrongPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+		TileEntity entity = blockAccess.getTileEntity(pos);
+		if (entity instanceof TilePlayerDectector) {
+			return ((TilePlayerDectector) entity).isProvidingPower() ? 15 : 0;
+		}
+		return 0;
+	}
 
-    @Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer,
-                                ItemStack stack) {
-        super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
-        TileEntity tile = worldIn.getTileEntity(pos);
-        if (tile instanceof TilePlayerDectector) {
-            ((TilePlayerDectector) tile).ownerUDID = placer.getUniqueID().toString();
-        }
-    }
+	@Override
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer,
+	                            ItemStack stack) {
+		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+		TileEntity tile = worldIn.getTileEntity(pos);
+		if (tile instanceof TilePlayerDectector) {
+			((TilePlayerDectector) tile).ownerUDID = placer.getUniqueID().toString();
+		}
+	}
 
-    @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer entityPlayer,
-                                    EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-        String type = state.getValue(TYPE);
-        String newType = type;
-        TextFormatting color = TextFormatting.GREEN;
-        if (type.equals("all")) {
-            newType = "others";
-            color = TextFormatting.RED;
-        } else if (type.equals("others")) {
-            newType = "you";
-            color = TextFormatting.BLUE;
-        } else if (type.equals("you")) {
-            newType = "all";
-        }
-        world.setBlockState(pos, state.withProperty(TYPE, newType));
-        if (!world.isRemote) {
-            ChatUtils.sendNoSpamMessages(MessageIDs.playerDetectorID, new TextComponentString(
-                    TextFormatting.GRAY + I18n.translateToLocal("techreborn.message.detects") + " " + color
-                            + StringUtils.toFirstCapital(newType)));
-        }
-        return true;
-    }
+	@Override
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer entityPlayer,
+	                                EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+		String type = state.getValue(TYPE);
+		String newType = type;
+		TextFormatting color = TextFormatting.GREEN;
+		if (type.equals("all")) {
+			newType = "others";
+			color = TextFormatting.RED;
+		} else if (type.equals("others")) {
+			newType = "you";
+			color = TextFormatting.BLUE;
+		} else if (type.equals("you")) {
+			newType = "all";
+		}
+		world.setBlockState(pos, state.withProperty(TYPE, newType));
+		if (!world.isRemote) {
+			ChatUtils.sendNoSpamMessages(MessageIDs.playerDetectorID, new TextComponentString(
+				TextFormatting.GRAY + I18n.translateToLocal("techreborn.message.detects") + " " + color
+					+ StringUtils.toFirstCapital(newType)));
+		}
+		return true;
+	}
 
-    @Override
-    public String getTextureNameFromState(IBlockState blockState, EnumFacing facing) {
-        return "techreborn:blocks/machines/tier1_machines/player_detector_" + types[getMetaFromState(blockState)];
-    }
+	@Override
+	public String getTextureNameFromState(IBlockState blockState, EnumFacing facing) {
+		return "techreborn:blocks/machines/tier1_machines/player_detector_" + types[getMetaFromState(blockState)];
+	}
 
-    @Override
-    public int amountOfStates() {
-        return types.length;
-    }
+	@Override
+	public int amountOfStates() {
+		return types.length;
+	}
 
-    protected BlockStateContainer createBlockState() {
-        TYPE = new PropertyString("type", types);
-        return new BlockStateContainer(this, TYPE);
-    }
+	protected BlockStateContainer createBlockState() {
+		TYPE = new PropertyString("type", types);
+		return new BlockStateContainer(this, TYPE);
+	}
 
-    @Override
-    public IBlockState getStateFromMeta(int meta) {
-        if (meta > types.length) {
-            meta = 0;
-        }
-        return getBlockState().getBaseState().withProperty(TYPE, typeNamesList.get(meta));
-    }
+	@Override
+	public IBlockState getStateFromMeta(int meta) {
+		if (meta > types.length) {
+			meta = 0;
+		}
+		return getBlockState().getBaseState().withProperty(TYPE, typeNamesList.get(meta));
+	}
 
-    @Override
-    public int getMetaFromState(IBlockState state) {
-        return typeNamesList.indexOf(state.getValue(TYPE));
-    }
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		return typeNamesList.indexOf(state.getValue(TYPE));
+	}
 }

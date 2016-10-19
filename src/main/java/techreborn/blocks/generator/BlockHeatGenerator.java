@@ -7,39 +7,38 @@ import reborncore.common.blocks.BlockMachineBase;
 import reborncore.common.blocks.IAdvancedRotationTexture;
 import techreborn.tiles.energy.generator.TileHeatGenerator;
 
-
 public class BlockHeatGenerator extends BlockMachineBase implements IAdvancedRotationTexture {
 
-    private final String prefix = "techreborn:blocks/machine/generators/";
+	private final String prefix = "techreborn:blocks/machine/generators/";
 
-    public BlockHeatGenerator(Material material) {
-        super();
-        setUnlocalizedName("techreborn.heatgenerator");
-    }
+	public BlockHeatGenerator(Material material) {
+		super();
+		setUnlocalizedName("techreborn.heatgenerator");
+	}
 
-    @Override
-    public TileEntity createNewTileEntity(World world, int p_149915_2_) {
-        return new TileHeatGenerator();
-    }
+	@Override
+	public TileEntity createNewTileEntity(World world, int p_149915_2_) {
+		return new TileHeatGenerator();
+	}
 
-    @Override
-    public String getFront(boolean isActive) {
-        return prefix + "heat_generator_side";
-    }
+	@Override
+	public String getFront(boolean isActive) {
+		return prefix + "heat_generator_side";
+	}
 
-    @Override
-    public String getSide(boolean isActive) {
-        return prefix + "heat_generator_side";
-    }
+	@Override
+	public String getSide(boolean isActive) {
+		return prefix + "heat_generator_side";
+	}
 
-    @Override
-    public String getTop(boolean isActive) {
-        return prefix + "heat_generator_top";
-    }
+	@Override
+	public String getTop(boolean isActive) {
+		return prefix + "heat_generator_top";
+	}
 
-    @Override
-    public String getBottom(boolean isActive) {
-        return prefix + "heat_generator_bottom";
-    }
+	@Override
+	public String getBottom(boolean isActive) {
+		return prefix + "heat_generator_bottom";
+	}
 
 }

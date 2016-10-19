@@ -7,24 +7,23 @@ import reborncore.common.BaseTileBlock;
 import techreborn.client.TechRebornCreativeTab;
 import techreborn.tiles.energy.generator.TileWaterMill;
 
-
 /**
  * Created by modmuss50 on 25/02/2016.
  */
 public class BlockWaterMill extends BaseTileBlock {
 
-    private final String prefix = "techreborn:blocks/machines/generators/";
+	private final String prefix = "techreborn:blocks/machines/generators/";
 
-    public BlockWaterMill() {
-        super(Material.IRON);
-        setUnlocalizedName("techreborn.watermill");
-        setCreativeTab(TechRebornCreativeTab.instance);
-        setHardness(2.0F);
-    }
+	public BlockWaterMill() {
+		super(Material.IRON);
+		setUnlocalizedName("techreborn.watermill");
+		setCreativeTab(TechRebornCreativeTab.instance);
+		setHardness(2.0F);
+	}
 
-    @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileWaterMill();
-    }
+	@Override
+	public TileEntity createNewTileEntity(World worldIn, int meta) {
+		return new TileWaterMill();
+	}
 
 }

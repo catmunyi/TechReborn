@@ -7,15 +7,15 @@ import techreborn.init.ModItems;
 
 public class SlotScrapbox extends BaseSlot {
 
-    public SlotScrapbox(IInventory inventory, int index, int x, int y) {
-        super(inventory, index, x, y);
-    }
+	public SlotScrapbox(IInventory inventory, int index, int x, int y) {
+		super(inventory, index, x, y);
+	}
 
-    public boolean isItemValid(ItemStack par1ItemStack) {
-        return par1ItemStack.getItem() == ModItems.scrapBox;
-    }
+	public boolean isItemValid(ItemStack par1ItemStack) {
+		return par1ItemStack.getItem() == ModItems.scrapBox;
+	}
 
-    public int getSlotStackLimit() {
-        return 64;
-    }
+	public int getSlotStackLimit() {
+		return 64;
+	}
 }

@@ -9,24 +9,24 @@ import techreborn.client.TechRebornCreativeTab;
 
 public class BlockFusionCoil extends BlockMachineBase {
 
-    public BlockFusionCoil(Material material) {
-        super(true);
-        setUnlocalizedName("techreborn.fusioncoil");
-        setCreativeTab(TechRebornCreativeTab.instance);
-    }
+	public BlockFusionCoil(Material material) {
+		super(true);
+		setUnlocalizedName("techreborn.fusioncoil");
+		setCreativeTab(TechRebornCreativeTab.instance);
+	}
 
-    @Override
-    protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[0]);
-    }
+	@Override
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, new IProperty[0]);
+	}
 
-    @Override
-    public int getMetaFromState(IBlockState state) {
-        return 0;
-    }
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		return 0;
+	}
 
-    @Override
-    public IBlockState getStateFromMeta(int meta) {
-        return this.getDefaultState();
-    }
+	@Override
+	public IBlockState getStateFromMeta(int meta) {
+		return this.getDefaultState();
+	}
 }

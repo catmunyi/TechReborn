@@ -10,38 +10,38 @@ import reborncore.common.powerSystem.TileEnergyBase;
  */
 public abstract class ContainerBase extends RebornContainer {
 
-    protected TileEntity tileEntity;
-    protected EntityPlayer player;
+	protected TileEntity tileEntity;
+	protected EntityPlayer player;
 
-    private int lastSlotIndex;
+	private int lastSlotIndex;
 
-    public ContainerBase(TileEntity tileEntity, EntityPlayer player) {
-        super();
+	public ContainerBase(TileEntity tileEntity, EntityPlayer player) {
+		super();
 
-        this.tileEntity = tileEntity;
-        this.player = player;
+		this.tileEntity = tileEntity;
+		this.player = player;
 
         /* Add the player inventory */
-        addPlayersHotbar(player);
-        addPlayersInventory(player);
-    }
+		addPlayersHotbar(player);
+		addPlayersInventory(player);
+	}
 
-    protected int getNextSlotIndex() {
-        this.lastSlotIndex += 1;
-        return this.lastSlotIndex - 1;
-    }
+	protected int getNextSlotIndex() {
+		this.lastSlotIndex += 1;
+		return this.lastSlotIndex - 1;
+	}
 
-    public int getEnergy() {
-        if (tileEntity instanceof TileEnergyBase) {
-            return (int) ((TileEnergyBase) tileEntity).getEnergy();
-        }
+	public int getEnergy() {
+		if (tileEntity instanceof TileEnergyBase) {
+			return (int) ((TileEnergyBase) tileEntity).getEnergy();
+		}
 
-        return 0;
-    }
+		return 0;
+	}
 
-    @Override
-    public boolean canInteractWith(EntityPlayer playerIn) {
-        return true;
-    }
+	@Override
+	public boolean canInteractWith(EntityPlayer playerIn) {
+		return true;
+	}
 
 }

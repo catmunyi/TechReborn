@@ -7,5 +7,5 @@ import java.util.List;
  */
 public interface IPartWaliaProvider {
 
-    void addInfo(List<String> info);
+	void addInfo(List<String> info);
 }

@@ -17,20 +17,20 @@ import java.util.List;
  * Created by modmuss50 on 14/03/2016.
  */
 public class BlockMFSU extends BlockEnergyStorage {
-    public BlockMFSU() {
-        super("MFSU", GuiHandler.mfsuID);
-        setHardness(2f);
-    }
+	public BlockMFSU() {
+		super("MFSU", GuiHandler.mfsuID);
+		setHardness(2f);
+	}
 
-    @Override
-    public TileEntity createNewTileEntity(World world, int p_149915_2_) {
-        return new TileMFSU();
-    }
+	@Override
+	public TileEntity createNewTileEntity(World world, int p_149915_2_) {
+		return new TileMFSU();
+	}
 
-    @Override
-    public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-        ArrayList<ItemStack> list = new ArrayList<>();
-        list.add(new ItemStack(ModBlocks.machineframe, 1, 1));
-        return list;
-    }
+	@Override
+	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+		ArrayList<ItemStack> list = new ArrayList<>();
+		list.add(new ItemStack(ModBlocks.machineframe, 1, 1));
+		return list;
+	}
 }

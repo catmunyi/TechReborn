@@ -7,13 +7,13 @@ import techreborn.Core;
 
 public class BlockFluidTechReborn extends BlockFluidBase implements ITexturedFluid {
 
-    String name;
+	String name;
 
-    public BlockFluidTechReborn(Fluid fluid, Material material, String name) {
-        super(fluid, material);
-        setUnlocalizedName(name);
-        this.name = name;
-        Core.proxy.registerFluidBlockRendering(this, name);
-    }
+	public BlockFluidTechReborn(Fluid fluid, Material material, String name) {
+		super(fluid, material);
+		setUnlocalizedName(name);
+		this.name = name;
+		Core.proxy.registerFluidBlockRendering(this, name);
+	}
 
 }

@@ -8,33 +8,33 @@ import java.io.IOException;
 
 public class PacketAesu extends SimplePacket {
 
-    int buttonID;
-    TileAESU aesu;
+	int buttonID;
+	TileAESU aesu;
 
-    public PacketAesu() {
-    }
+	public PacketAesu() {
+	}
 
-    public PacketAesu(int buttonID, TileAESU aesu) {
-        this.aesu = aesu;
-        this.buttonID = buttonID;
-    }
+	public PacketAesu(int buttonID, TileAESU aesu) {
+		this.aesu = aesu;
+		this.buttonID = buttonID;
+	}
 
-    @Override
-    public void writeData(ByteBuf out) throws IOException {
-        SimplePacket.writeTileEntity(aesu, out);
-        out.writeInt(buttonID);
-    }
+	@Override
+	public void writeData(ByteBuf out) throws IOException {
+		SimplePacket.writeTileEntity(aesu, out);
+		out.writeInt(buttonID);
+	}
 
-    @Override
-    public void readData(ByteBuf in) throws IOException {
-        this.aesu = (TileAESU) SimplePacket.readTileEntity(in);
-        buttonID = in.readInt();
-    }
+	@Override
+	public void readData(ByteBuf in) throws IOException {
+		this.aesu = (TileAESU) SimplePacket.readTileEntity(in);
+		buttonID = in.readInt();
+	}
 
-    @Override
-    public void execute() {
-        if (!aesu.getWorld().isRemote) {
-            aesu.handleGuiInputFromClient(buttonID);
-        }
-    }
+	@Override
+	public void execute() {
+		if (!aesu.getWorld().isRemote) {
+			aesu.handleGuiInputFromClient(buttonID);
+		}
+	}
 }

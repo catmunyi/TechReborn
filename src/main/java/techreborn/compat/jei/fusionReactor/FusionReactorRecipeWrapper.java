@@ -13,45 +13,45 @@ import java.util.Collections;
 import java.util.List;
 
 public class FusionReactorRecipeWrapper extends BlankRecipeWrapper {
-    private final FusionReactorRecipe baseRecipe;
+	private final FusionReactorRecipe baseRecipe;
 
-    public FusionReactorRecipeWrapper(FusionReactorRecipe baseRecipe) {
-        this.baseRecipe = baseRecipe;
-    }
+	public FusionReactorRecipeWrapper(FusionReactorRecipe baseRecipe) {
+		this.baseRecipe = baseRecipe;
+	}
 
-    @Override
-    public void getIngredients(
-            @Nonnull
-                    IIngredients ingredients) {
-        ingredients.setOutputs(ItemStack.class, Arrays.asList(baseRecipe.getTopInput(), baseRecipe.getBottomInput()));
-        ingredients.setInput(ItemStack.class, baseRecipe.getOutput());
-    }
+	@Override
+	public void getIngredients(
+		@Nonnull
+			IIngredients ingredients) {
+		ingredients.setOutputs(ItemStack.class, Arrays.asList(baseRecipe.getTopInput(), baseRecipe.getBottomInput()));
+		ingredients.setInput(ItemStack.class, baseRecipe.getOutput());
+	}
 
-    @Override
-    @Nonnull
-    public List<ItemStack> getInputs() {
-        return Arrays.asList(baseRecipe.getTopInput(), baseRecipe.getBottomInput());
-    }
+	@Override
+	@Nonnull
+	public List<ItemStack> getInputs() {
+		return Arrays.asList(baseRecipe.getTopInput(), baseRecipe.getBottomInput());
+	}
 
-    @Override
-    @Nonnull
-    public List<ItemStack> getOutputs() {
-        return Collections.singletonList(baseRecipe.getOutput());
-    }
+	@Override
+	@Nonnull
+	public List<ItemStack> getOutputs() {
+		return Collections.singletonList(baseRecipe.getOutput());
+	}
 
-    public ItemStack getTopInput() {
-        return baseRecipe.getTopInput();
-    }
+	public ItemStack getTopInput() {
+		return baseRecipe.getTopInput();
+	}
 
-    public ItemStack getBottomInput() {
-        return baseRecipe.getBottomInput();
-    }
+	public ItemStack getBottomInput() {
+		return baseRecipe.getBottomInput();
+	}
 
-    @Override
-    public void drawInfo(
-            @Nonnull
-                    Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
-        RecipeUtil.drawInfo(minecraft, 0, 67, baseRecipe.getStartEU(), baseRecipe.getEuTick(),
-                baseRecipe.getTickTime());
-    }
+	@Override
+	public void drawInfo(
+		@Nonnull
+			Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
+		RecipeUtil.drawInfo(minecraft, 0, 67, baseRecipe.getStartEU(), baseRecipe.getEuTick(),
+			baseRecipe.getTickTime());
+	}
 }

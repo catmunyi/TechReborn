@@ -12,23 +12,23 @@ import techreborn.compat.ICompatModule;
  */
 public class ClientPartLoader implements ICompatModule {
 
-    @Override
-    public void preInit(FMLPreInitializationEvent event) {
-        MinecraftForge.EVENT_BUS.register(new ClientPartModelBakery());
-    }
+	@Override
+	public void preInit(FMLPreInitializationEvent event) {
+		MinecraftForge.EVENT_BUS.register(new ClientPartModelBakery());
+	}
 
-    @Override
-    public void init(FMLInitializationEvent event) {
+	@Override
+	public void init(FMLInitializationEvent event) {
 
-    }
+	}
 
-    @Override
-    public void postInit(FMLPostInitializationEvent event) {
+	@Override
+	public void postInit(FMLPostInitializationEvent event) {
 
-    }
+	}
 
-    @Override
-    public void serverStarting(FMLServerStartingEvent event) {
+	@Override
+	public void serverStarting(FMLServerStartingEvent event) {
 
-    }
+	}
 }

@@ -6,7 +6,7 @@ import techreborn.tiles.energy.storage.TileMFE;
 
 public class ContainerMFE extends ContainerEnergyEquipment {
 
-    public ContainerMFE(TileMFE tileEntity, EntityPlayer player) {
-        super(tileEntity, player);
-    }
+	public ContainerMFE(TileMFE tileEntity, EntityPlayer player) {
+		super(tileEntity, player);
+	}
 }

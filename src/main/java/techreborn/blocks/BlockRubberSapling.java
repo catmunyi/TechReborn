@@ -19,27 +19,27 @@ import java.util.Random;
  */
 public class BlockRubberSapling extends BlockSapling {
 
-    public BlockRubberSapling() {
-        setUnlocalizedName("techreborn.rubbersapling");
-        setCreativeTab(TechRebornCreativeTabMisc.instance);
-        this.setDefaultState(this.getDefaultState().withProperty(STAGE, 0));
-        setSoundType(SoundType.PLANT);
-    }
+	public BlockRubberSapling() {
+		setUnlocalizedName("techreborn.rubbersapling");
+		setCreativeTab(TechRebornCreativeTabMisc.instance);
+		this.setDefaultState(this.getDefaultState().withProperty(STAGE, 0));
+		setSoundType(SoundType.PLANT);
+	}
 
-    @Override
-    public void generateTree(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-        if (!net.minecraftforge.event.terraingen.TerrainGen.saplingGrowTree(worldIn, rand, pos)) {
-            return;
-        }
-        worldIn.setBlockToAir(pos);
-        if (!new RubberTreeGenerator(false).growTree(worldIn, rand, pos.getX(), pos.getY(), pos.getZ())) {
-            worldIn.setBlockState(pos, state); // Re-add the sapling if the tree
-            // failed to grow
-        }
-    }
+	@Override
+	public void generateTree(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+		if (!net.minecraftforge.event.terraingen.TerrainGen.saplingGrowTree(worldIn, rand, pos)) {
+			return;
+		}
+		worldIn.setBlockToAir(pos);
+		if (!new RubberTreeGenerator(false).growTree(worldIn, rand, pos.getX(), pos.getY(), pos.getZ())) {
+			worldIn.setBlockState(pos, state); // Re-add the sapling if the tree
+			// failed to grow
+		}
+	}
 
-    @Override
-    public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> list) {
-        list.add(new ItemStack(itemIn, 1, 0));
-    }
+	@Override
+	public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> list) {
+		list.add(new ItemStack(itemIn, 1, 0));
+	}
 }
