@@ -16,14 +16,14 @@ import techreborn.client.TechRebornCreativeTab;
  */
 public class ItemFluidPipe extends ItemMultiPart {
 
-	public ItemFluidPipe() {
-		setCreativeTab(TechRebornCreativeTab.instance);
-		setUnlocalizedName("techreborn.fluidpipe");
-		RebornCore.jsonDestroyer.registerObject(this);
-	}
+    public ItemFluidPipe() {
+        setCreativeTab(TechRebornCreativeTab.instance);
+        setUnlocalizedName("techreborn.fluidpipe");
+        RebornCore.jsonDestroyer.registerObject(this);
+    }
 
-	@Override
-	public IMultipart createPart(World world, BlockPos pos, EnumFacing side, Vec3d hit, ItemStack stack, EntityPlayer player) {
-		return new EmptyFluidPipe();
-	}
+    @Override
+    public IMultipart createPart(World world, BlockPos pos, EnumFacing side, Vec3d hit, ItemStack stack, EntityPlayer player) {
+        return new EmptyFluidPipe();
+    }
 }

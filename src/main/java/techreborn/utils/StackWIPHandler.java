@@ -16,38 +16,38 @@ import java.util.ArrayList;
  * Created by Mark on 23/03/2016.
  */
 public class StackWIPHandler {
-	ArrayList<Block> wipBlocks = new ArrayList<>();
-	public static ArrayList<ItemStack> devHeads = new ArrayList<>();
+    ArrayList<Block> wipBlocks = new ArrayList<>();
+    public static ArrayList<ItemStack> devHeads = new ArrayList<>();
 
-	public StackWIPHandler() {
-		wipBlocks.add(ModBlocks.magicalAbsorber);
-		wipBlocks.add(ModBlocks.chunkLoader);
-		wipBlocks.add(ModBlocks.electricCraftingTable);
-		wipBlocks.add(ModBlocks.chargeBench);
-		wipBlocks.add(ModBlocks.magicEnergeyConverter);
+    public StackWIPHandler() {
+        wipBlocks.add(ModBlocks.magicalAbsorber);
+        wipBlocks.add(ModBlocks.chunkLoader);
+        wipBlocks.add(ModBlocks.electricCraftingTable);
+        wipBlocks.add(ModBlocks.chargeBench);
+        wipBlocks.add(ModBlocks.magicEnergeyConverter);
 
-		addHead("modmuss50");
-		addHead("Gigabit101");
-		addHead("ProfProspector");
-		addHead("Rushmead");
-	}
+        addHead("modmuss50");
+        addHead("Gigabit101");
+        addHead("ProfProspector");
+        addHead("Rushmead");
+    }
 
-	private void addHead(String name) {
-		ItemStack head = new ItemStack(Items.SKULL, 1, 3);
-		head.setTagCompound(new NBTTagCompound());
-		head.getTagCompound().setTag("SkullOwner", new NBTTagString(name));
-		devHeads.add(head);
-	}
+    private void addHead(String name) {
+        ItemStack head = new ItemStack(Items.SKULL, 1, 3);
+        head.setTagCompound(new NBTTagCompound());
+        head.getTagCompound().setTag("SkullOwner", new NBTTagString(name));
+        devHeads.add(head);
+    }
 
-	@SubscribeEvent
-	public void toolTip(ItemTooltipEvent event) {
-		Block block = Block.getBlockFromItem(event.getItemStack().getItem());
-		if (block != null && wipBlocks.contains(block)) {
-			event.getToolTip().add(TextFormatting.RED + "WIP Coming Soon");
-		}
+    @SubscribeEvent
+    public void toolTip(ItemTooltipEvent event) {
+        Block block = Block.getBlockFromItem(event.getItemStack().getItem());
+        if (block != null && wipBlocks.contains(block)) {
+            event.getToolTip().add(TextFormatting.RED + "WIP Coming Soon");
+        }
 
-		if (devHeads.contains(event.getItemStack())) {
-			event.getToolTip().add(TextFormatting.GOLD + "TechReborn Developer");
-		}
-	}
+        if (devHeads.contains(event.getItemStack())) {
+            event.getToolTip().add(TextFormatting.GOLD + "TechReborn Developer");
+        }
+    }
 }

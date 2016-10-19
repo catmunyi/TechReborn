@@ -1,23 +1,24 @@
 package techreborn.client.gui;
 
 import net.minecraft.entity.player.EntityPlayer;
-import techreborn.client.container.ContainerAlloyFurnace;
-import techreborn.tiles.TileAlloyFurnace;
+import techreborn.client.container.energy.tier0.ContainerIronAlloyFurnace;
+import techreborn.tiles.energy.tier0.TileIronAlloyFurnace;
+
 
 public class GuiAlloyFurnace extends GuiTechReborn {
-	TileAlloyFurnace alloyfurnace;
-	ContainerAlloyFurnace containerAlloyFurnace;
+    TileIronAlloyFurnace alloyfurnace;
+    ContainerIronAlloyFurnace containerAlloyFurnace;
 
-	public GuiAlloyFurnace(EntityPlayer player, TileAlloyFurnace tileAlloyFurnace) {
-		super(new ContainerAlloyFurnace(tileAlloyFurnace, player));
-		this.xSize = 176;
-		this.ySize = 167;
-		this.alloyfurnace = tileAlloyFurnace;
-		this.containerAlloyFurnace = (ContainerAlloyFurnace) this.inventorySlots;
-	}
+    public GuiAlloyFurnace(EntityPlayer player, TileIronAlloyFurnace tileAlloyFurnace) {
+        super(new ContainerIronAlloyFurnace(tileAlloyFurnace, player));
+        this.xSize = 176;
+        this.ySize = 167;
+        this.alloyfurnace = tileAlloyFurnace;
+        this.containerAlloyFurnace = (ContainerAlloyFurnace) this.inventorySlots;
+    }
 
-	@Override
-	public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+    @Override
+    public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
         drawBasicMachine(partialTicks, mouseX, mouseY);
         builder.drawSlot(this, guiLeft + 46, guiTop + 16);
         builder.drawSlot(this, guiLeft + 64, guiTop + 16);

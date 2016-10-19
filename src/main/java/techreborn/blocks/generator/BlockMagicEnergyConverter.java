@@ -7,32 +7,32 @@ import techreborn.client.TechRebornCreativeTab;
 
 public class BlockMagicEnergyConverter extends BlockMachineBase implements IAdvancedRotationTexture {
 
-	private final String prefix = "techreborn:blocks/machine/generators/";
+    private final String prefix = "techreborn:blocks/machine/generators/";
 
-	public BlockMagicEnergyConverter(Material material) {
-		super();
-		setUnlocalizedName("techreborn.magicenergyconverter");
-		setCreativeTab(TechRebornCreativeTab.instance);
-	}
+    public BlockMagicEnergyConverter(Material material) {
+        super();
+        setUnlocalizedName("techreborn.magicenergyconverter");
+        setCreativeTab(TechRebornCreativeTab.instance);
+    }
 
-	@Override
-	public String getFront(boolean isActive) {
-		return prefix + "magic_energy_converter_front_off";
-	}
+    @Override
+    public String getFront(boolean isActive) {
+        return prefix + "magic_energy_converter_front_off";
+    }
 
-	@Override
-	public String getSide(boolean isActive) {
-		return prefix + "magic_energy_converter_side";
-	}
+    @Override
+    public String getSide(boolean isActive) {
+        return prefix + "magic_energy_converter_side";
+    }
 
-	@Override
-	public String getTop(boolean isActive) {
-		return prefix + "magic_energy_converter_top";
-	}
+    @Override
+    public String getTop(boolean isActive) {
+        return prefix + "magic_energy_converter_top";
+    }
 
-	@Override
-	public String getBottom(boolean isActive) {
-		return prefix + "magic_energy_converter_bottom";
-	}
+    @Override
+    public String getBottom(boolean isActive) {
+        return prefix + "magic_energy_converter_bottom";
+    }
 
 }

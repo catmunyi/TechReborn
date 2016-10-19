@@ -7,25 +7,25 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import techreborn.client.GuiHandler;
-import techreborn.tiles.lesu.TileLesu;
+import techreborn.tiles.lesu.TileLESU;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BlockLESU extends BlockEnergyStorage {
-	public BlockLESU() {
-		super("LESU", GuiHandler.lesuID);
-	}
+    public BlockLESU() {
+        super("LESU", GuiHandler.lesuID);
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World world, int p_149915_2_) {
-		return new TileLesu();
-	}
+    @Override
+    public TileEntity createNewTileEntity(World world, int p_149915_2_) {
+        return new TileLESU();
+    }
 
-	@Override
-	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-		ArrayList<ItemStack> list = new ArrayList<>();
-		list.add(new ItemStack(this, 1, 2));
-		return list;
-	}
+    @Override
+    public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+        ArrayList<ItemStack> list = new ArrayList<>();
+        list.add(new ItemStack(this, 1, 2));
+        return list;
+    }
 }

@@ -6,24 +6,24 @@ import techreborn.config.ConfigTechReborn;
 
 public class ItemDiamondDrill extends ItemDrill {
 
-	public ItemDiamondDrill() {
-		super(ToolMaterial.DIAMOND, "techreborn.diamondDrill", ConfigTechReborn.DiamondDrillCharge,
-			ConfigTechReborn.DiamondDrillTier, 0.5F, 15F);
-		this.cost = 250;
-	}
+    public ItemDiamondDrill() {
+        super(ToolMaterial.DIAMOND, "techreborn.diamondDrill", ConfigTechReborn.DiamondDrillCharge,
+                ConfigTechReborn.DiamondDrillTier, 0.5F, 15F);
+        this.cost = 250;
+    }
 
-	@Override
-	public boolean canHarvestBlock(IBlockState state) {
-		return Items.DIAMOND_PICKAXE.canHarvestBlock(state) || Items.DIAMOND_SHOVEL.canHarvestBlock(state);
-	}
+    @Override
+    public boolean canHarvestBlock(IBlockState state) {
+        return Items.DIAMOND_PICKAXE.canHarvestBlock(state) || Items.DIAMOND_SHOVEL.canHarvestBlock(state);
+    }
 
-	@Override
-	public String getTextureName(int damage) {
-		return "techreborn:items/tool/diamondDrill";
-	}
+    @Override
+    public String getTextureName(int damage) {
+        return "techreborn:items/tool/diamondDrill";
+    }
 
-	@Override
-	public int getMaxMeta() {
-		return 1;
-	}
+    @Override
+    public int getMaxMeta() {
+        return 1;
+    }
 }

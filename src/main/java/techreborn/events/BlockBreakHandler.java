@@ -5,7 +5,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import techreborn.items.ItemGems;
-import techreborn.items.ItemParts;
 import techreborn.utils.OreDictUtils;
 
 /**

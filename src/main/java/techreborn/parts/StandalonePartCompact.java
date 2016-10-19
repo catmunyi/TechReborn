@@ -13,26 +13,26 @@ import techreborn.parts.powerCables.ItemStandaloneCables;
  */
 public class StandalonePartCompact implements ICompatModule {
 
-	public static ItemStandaloneCables itemStandaloneCable;
+    public static ItemStandaloneCables itemStandaloneCable;
 
-	@Override
-	public void preInit(FMLPreInitializationEvent event) {
+    @Override
+    public void preInit(FMLPreInitializationEvent event) {
 
-	}
+    }
 
-	@Override
-	public void init(FMLInitializationEvent event) {
-		itemStandaloneCable = new ItemStandaloneCables();
-		GameRegistry.registerItem(itemStandaloneCable, "cables");
-	}
+    @Override
+    public void init(FMLInitializationEvent event) {
+        itemStandaloneCable = new ItemStandaloneCables();
+        GameRegistry.registerItem(itemStandaloneCable, "cables");
+    }
 
-	@Override
-	public void postInit(FMLPostInitializationEvent event) {
+    @Override
+    public void postInit(FMLPostInitializationEvent event) {
 
-	}
+    }
 
-	@Override
-	public void serverStarting(FMLServerStartingEvent event) {
+    @Override
+    public void serverStarting(FMLServerStartingEvent event) {
 
-	}
+    }
 }

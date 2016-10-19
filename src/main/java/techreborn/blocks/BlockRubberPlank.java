@@ -15,23 +15,23 @@ import techreborn.client.TechRebornCreativeTabMisc;
  */
 public class BlockRubberPlank extends Block implements ITexturedBlock {
 
-	public BlockRubberPlank() {
-		super(Material.WOOD);
-		RebornCore.jsonDestroyer.registerObject(this);
-		setUnlocalizedName("techreborn.rubberplank");
-		setCreativeTab(TechRebornCreativeTabMisc.instance);
-		this.setHardness(2.0F);
-		this.setSoundType(SoundType.WOOD);
-		Blocks.FIRE.setFireInfo(this, 5, 20);
-	}
+    public BlockRubberPlank() {
+        super(Material.WOOD);
+        RebornCore.jsonDestroyer.registerObject(this);
+        setUnlocalizedName("techreborn.rubberplank");
+        setCreativeTab(TechRebornCreativeTabMisc.instance);
+        this.setHardness(2.0F);
+        this.setSoundType(SoundType.WOOD);
+        Blocks.FIRE.setFireInfo(this, 5, 20);
+    }
 
-	@Override
-	public String getTextureNameFromState(IBlockState state, EnumFacing side) {
-		return "techreborn:blocks/rubber_planks";
-	}
+    @Override
+    public String getTextureNameFromState(IBlockState state, EnumFacing side) {
+        return "techreborn:blocks/rubber_planks";
+    }
 
-	@Override
-	public int amountOfStates() {
-		return 1;
-	}
+    @Override
+    public int amountOfStates() {
+        return 1;
+    }
 }

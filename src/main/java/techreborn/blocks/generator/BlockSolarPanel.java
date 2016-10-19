@@ -1,6 +1,5 @@
 package techreborn.blocks.generator;
 
-import me.modmuss50.jsonDestroyer.api.ITexturedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
@@ -13,70 +12,71 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import reborncore.common.BaseTileBlock;
 import techreborn.client.TechRebornCreativeTab;
-import techreborn.tiles.generator.TileSolarPanel;
+import techreborn.tiles.energy.generator.TileSolarPanel;
+
 
 /**
  * Created by modmuss50 on 25/02/2016.
  */
 public class BlockSolarPanel extends BaseTileBlock {
 
-	public static PropertyBool ACTIVE = PropertyBool.create("active");
-	private final String prefix = "techreborn:blocks/machines/generators/";
+    public static PropertyBool ACTIVE = PropertyBool.create("active");
+    private final String prefix = "techreborn:blocks/machines/generators/";
 
-	public BlockSolarPanel() {
-		super(Material.IRON);
-		setUnlocalizedName("techreborn.solarpanel");
-		setCreativeTab(TechRebornCreativeTab.instance);
-		this.setDefaultState(this.getDefaultState().withProperty(ACTIVE, false));
-		setHardness(2.0F);
-	}
+    public BlockSolarPanel() {
+        super(Material.IRON);
+        setUnlocalizedName("techreborn.solarpanel");
+        setCreativeTab(TechRebornCreativeTab.instance);
+        this.setDefaultState(this.getDefaultState().withProperty(ACTIVE, false));
+        setHardness(2.0F);
+    }
 
-	protected BlockStateContainer createBlockState() {
-		ACTIVE = PropertyBool.create("active");
-		return new BlockStateContainer(this, ACTIVE);
-	}
+    protected BlockStateContainer createBlockState() {
+        ACTIVE = PropertyBool.create("active");
+        return new BlockStateContainer(this, ACTIVE);
+    }
 
-	@Override
-	public IBlockState getStateFromMeta(int meta) {
-		return getDefaultState().withProperty(ACTIVE, meta != 0);
-	}
+    @Override
+    public IBlockState getStateFromMeta(int meta) {
+        return getDefaultState().withProperty(ACTIVE, meta != 0);
+    }
 
-	@Override
-	public int getMetaFromState(IBlockState state) {
-		return state.getValue(ACTIVE) ? 1 : 0;
-	}
+    @Override
+    public int getMetaFromState(IBlockState state) {
+        return state.getValue(ACTIVE) ? 1 : 0;
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileSolarPanel();
-	}
+    @Override
+    public TileEntity createNewTileEntity(World worldIn, int meta) {
+        return new TileSolarPanel();
+    }
 
-	@Override
-	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block neighborBlock) {
-		if (worldIn.canBlockSeeSky(pos.up()) && !worldIn.isRaining() && !worldIn.isThundering()
-			&& worldIn.isDaytime()) {
-			worldIn.setBlockState(pos,
-				worldIn.getBlockState(pos).withProperty(BlockSolarPanel.ACTIVE, true));
-		} else {
+    @Override
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block neighborBlock) {
+        if (worldIn.canBlockSeeSky(pos.up()) && !worldIn.isRaining() && !worldIn.isThundering()
+                && worldIn.isDaytime()) {
+            worldIn.setBlockState(pos,
+                    worldIn.getBlockState(pos).withProperty(BlockSolarPanel.ACTIVE, true));
+        } else {
 
-			worldIn.setBlockState(pos,
-				worldIn.getBlockState(pos).withProperty(BlockSolarPanel.ACTIVE, false));
-		}
-	}
+            worldIn.setBlockState(pos,
+                    worldIn.getBlockState(pos).withProperty(BlockSolarPanel.ACTIVE, false));
+        }
+    }
 
-	@Override
-	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY,
-	                                 float hitZ, int meta, EntityLivingBase placer) {
-		if (!worldIn.isRemote) {
-			if (worldIn.canBlockSeeSky(pos.up()) && !worldIn.isRaining() && !worldIn.isThundering() && worldIn.isDaytime()) {
-				return this.getDefaultState().withProperty(ACTIVE, true);
+    @Override
+    public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY,
+                                     float hitZ, int meta, EntityLivingBase placer) {
+        if (!worldIn.isRemote) {
+            if (worldIn.canBlockSeeSky(pos.up()) && !worldIn.isRaining() && !worldIn.isThundering() && worldIn.isDaytime()) {
+                return this.getDefaultState().withProperty(ACTIVE, true);
 
-			} else {
-				return this.getDefaultState().withProperty(ACTIVE, false);
-			}
-		} else {
-			return this.getDefaultState().withProperty(ACTIVE, false);
-		}
-	}
+            } else {
+                return this.getDefaultState().withProperty(ACTIVE, false);
+            }
+        } else {
+            return this.getDefaultState().withProperty(ACTIVE, false);
+        }
+    }
 
 }

@@ -5,6 +5,6 @@ package techreborn.parts.powerCables;
  */
 public interface ICableType {
 
-	EnumCableType getCableType();
+    EnumCableType getCableType();
 
 }

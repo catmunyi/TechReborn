@@ -9,47 +9,47 @@ import techreborn.compat.jei.RecipeCategoryUids;
 import javax.annotation.Nonnull;
 
 public class VacuumFreezerRecipeHandler implements IRecipeHandler<VacuumFreezerRecipe> {
-	@Nonnull
-	private final IJeiHelpers jeiHelpers;
+    @Nonnull
+    private final IJeiHelpers jeiHelpers;
 
-	public VacuumFreezerRecipeHandler(
-		@Nonnull
-			IJeiHelpers jeiHelpers) {
-		this.jeiHelpers = jeiHelpers;
-	}
+    public VacuumFreezerRecipeHandler(
+            @Nonnull
+                    IJeiHelpers jeiHelpers) {
+        this.jeiHelpers = jeiHelpers;
+    }
 
-	@Nonnull
-	@Override
-	public Class<VacuumFreezerRecipe> getRecipeClass() {
-		return VacuumFreezerRecipe.class;
-	}
+    @Nonnull
+    @Override
+    public Class<VacuumFreezerRecipe> getRecipeClass() {
+        return VacuumFreezerRecipe.class;
+    }
 
-	@Nonnull
-	@Override
-	public String getRecipeCategoryUid() {
-		return RecipeCategoryUids.VACUUM_FREEZER;
-	}
+    @Nonnull
+    @Override
+    public String getRecipeCategoryUid() {
+        return RecipeCategoryUids.VACUUM_FREEZER;
+    }
 
-	@Nonnull
-	@Override
-	public String getRecipeCategoryUid(
-		@Nonnull
-			VacuumFreezerRecipe recipe) {
-		return RecipeCategoryUids.VACUUM_FREEZER;
-	}
+    @Nonnull
+    @Override
+    public String getRecipeCategoryUid(
+            @Nonnull
+                    VacuumFreezerRecipe recipe) {
+        return RecipeCategoryUids.VACUUM_FREEZER;
+    }
 
-	@Nonnull
-	@Override
-	public IRecipeWrapper getRecipeWrapper(
-		@Nonnull
-			VacuumFreezerRecipe recipe) {
-		return new VacuumFreezerRecipeWrapper(jeiHelpers, recipe);
-	}
+    @Nonnull
+    @Override
+    public IRecipeWrapper getRecipeWrapper(
+            @Nonnull
+                    VacuumFreezerRecipe recipe) {
+        return new VacuumFreezerRecipeWrapper(jeiHelpers, recipe);
+    }
 
-	@Override
-	public boolean isRecipeValid(
-		@Nonnull
-			VacuumFreezerRecipe recipe) {
-		return true;
-	}
+    @Override
+    public boolean isRecipeValid(
+            @Nonnull
+                    VacuumFreezerRecipe recipe) {
+        return true;
+    }
 }

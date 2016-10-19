@@ -9,47 +9,47 @@ import techreborn.compat.jei.RecipeCategoryUids;
 import javax.annotation.Nonnull;
 
 public class ScrapboxRecipeHandler implements IRecipeHandler<ScrapboxRecipe> {
-	@Nonnull
-	private final IJeiHelpers jeiHelpers;
+    @Nonnull
+    private final IJeiHelpers jeiHelpers;
 
-	public ScrapboxRecipeHandler(
-		@Nonnull
-			IJeiHelpers jeiHelpers) {
-		this.jeiHelpers = jeiHelpers;
-	}
+    public ScrapboxRecipeHandler(
+            @Nonnull
+                    IJeiHelpers jeiHelpers) {
+        this.jeiHelpers = jeiHelpers;
+    }
 
-	@Nonnull
-	@Override
-	public Class<ScrapboxRecipe> getRecipeClass() {
-		return ScrapboxRecipe.class;
-	}
+    @Nonnull
+    @Override
+    public Class<ScrapboxRecipe> getRecipeClass() {
+        return ScrapboxRecipe.class;
+    }
 
-	@Nonnull
-	@Override
-	public String getRecipeCategoryUid() {
-		return RecipeCategoryUids.SCRAPBOX;
-	}
+    @Nonnull
+    @Override
+    public String getRecipeCategoryUid() {
+        return RecipeCategoryUids.SCRAPBOX;
+    }
 
-	@Nonnull
-	@Override
-	public String getRecipeCategoryUid(
-		@Nonnull
-			ScrapboxRecipe recipe) {
-		return RecipeCategoryUids.SCRAPBOX;
-	}
+    @Nonnull
+    @Override
+    public String getRecipeCategoryUid(
+            @Nonnull
+                    ScrapboxRecipe recipe) {
+        return RecipeCategoryUids.SCRAPBOX;
+    }
 
-	@Nonnull
-	@Override
-	public IRecipeWrapper getRecipeWrapper(
-		@Nonnull
-			ScrapboxRecipe recipe) {
-		return new ScrapboxRecipeWrapper(jeiHelpers, recipe);
-	}
+    @Nonnull
+    @Override
+    public IRecipeWrapper getRecipeWrapper(
+            @Nonnull
+                    ScrapboxRecipe recipe) {
+        return new ScrapboxRecipeWrapper(jeiHelpers, recipe);
+    }
 
-	@Override
-	public boolean isRecipeValid(
-		@Nonnull
-			ScrapboxRecipe recipe) {
-		return true;
-	}
+    @Override
+    public boolean isRecipeValid(
+            @Nonnull
+                    ScrapboxRecipe recipe) {
+        return true;
+    }
 }

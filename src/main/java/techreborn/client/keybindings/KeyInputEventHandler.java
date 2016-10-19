@@ -6,17 +6,17 @@ import techreborn.Core;
 import techreborn.lib.Key;
 
 public class KeyInputEventHandler {
-	private static Key getPressedKeybinding() {
-		if (KeyBindings.config.isPressed()) {
-			return Key.CONFIG;
-		}
+    private static Key getPressedKeybinding() {
+        if (KeyBindings.config.isPressed()) {
+            return Key.CONFIG;
+        }
 
-		return Key.UNKNOWN;
-	}
+        return Key.UNKNOWN;
+    }
 
-	@SubscribeEvent
-	public void handleKeyInputEvent(InputEvent.KeyInputEvent event) {
-		Core.logHelper.info(getPressedKeybinding());
-	}
+    @SubscribeEvent
+    public void handleKeyInputEvent(InputEvent.KeyInputEvent event) {
+        Core.logHelper.info(getPressedKeybinding());
+    }
 
 }

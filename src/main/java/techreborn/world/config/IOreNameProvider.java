@@ -7,6 +7,6 @@ import net.minecraft.block.state.IBlockState;
  */
 public interface IOreNameProvider {
 
-	public String getUserLoclisedName(IBlockState state);
+    public String getUserLoclisedName(IBlockState state);
 
 }

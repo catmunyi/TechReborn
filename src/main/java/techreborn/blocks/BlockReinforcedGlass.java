@@ -12,37 +12,37 @@ import techreborn.client.TechRebornCreativeTabMisc;
 
 public class BlockReinforcedGlass extends BaseBlock implements ITexturedBlock {
 
-	private final String prefix = "techreborn:blocks/";
+    private final String prefix = "techreborn:blocks/";
 
-	public BlockReinforcedGlass(Material materialIn) {
-		super(materialIn);
-		setUnlocalizedName("techreborn.reinforcedglass");
-		setCreativeTab(TechRebornCreativeTabMisc.instance);
-		setHardness(4.0F);
-	}
+    public BlockReinforcedGlass(Material materialIn) {
+        super(materialIn);
+        setUnlocalizedName("techreborn.reinforcedglass");
+        setCreativeTab(TechRebornCreativeTabMisc.instance);
+        setHardness(4.0F);
+    }
 
-	@Override
-	public boolean isOpaqueCube(IBlockState state) {
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube(IBlockState state) {
+        return false;
+    }
 
-	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getBlockLayer() {
-		return BlockRenderLayer.CUTOUT;
-	}
+    @SideOnly(Side.CLIENT)
+    public BlockRenderLayer getBlockLayer() {
+        return BlockRenderLayer.CUTOUT;
+    }
 
-	public boolean isFullCube() {
-		return false;
-	}
+    public boolean isFullCube() {
+        return false;
+    }
 
-	@Override
-	public int amountOfStates() {
-		return 1;
-	}
+    @Override
+    public int amountOfStates() {
+        return 1;
+    }
 
-	@Override
-	public String getTextureNameFromState(IBlockState arg0, EnumFacing arg1) {
-		return prefix + "reinforcedglass";
-	}
+    @Override
+    public String getTextureNameFromState(IBlockState arg0, EnumFacing arg1) {
+        return prefix + "reinforcedglass";
+    }
 
 }

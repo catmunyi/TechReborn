@@ -15,29 +15,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BlockIDSU extends BlockEnergyStorage {
-	public BlockIDSU() {
-		super("IDSU", GuiHandler.idsuID);
-	}
+    public BlockIDSU() {
+        super("IDSU", GuiHandler.idsuID);
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World world, int p_149915_2_) {
-		return new TileIDSU();
-	}
+    @Override
+    public TileEntity createNewTileEntity(World world, int p_149915_2_) {
+        return new TileIDSU();
+    }
 
-	@Override
-	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
-	                                 float hitZ, int meta, EntityLivingBase placer) {
-		TileEntity tile = world.getTileEntity(pos);
-		if (tile instanceof TileIDSU) {
-			((TileIDSU) tile).ownerUdid = placer.getUniqueID().toString();
-		}
-		return this.getDefaultState();
-	}
+    @Override
+    public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
+                                     float hitZ, int meta, EntityLivingBase placer) {
+        TileEntity tile = world.getTileEntity(pos);
+        if (tile instanceof TileIDSU) {
+            ((TileIDSU) tile).ownerUdid = placer.getUniqueID().toString();
+        }
+        return this.getDefaultState();
+    }
 
-	@Override
-	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-		ArrayList<ItemStack> list = new ArrayList<>();
-		list.add(new ItemStack(this, 1, 2));
-		return list;
-	}
+    @Override
+    public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+        ArrayList<ItemStack> list = new ArrayList<>();
+        list.add(new ItemStack(this, 1, 2));
+        return list;
+    }
 }

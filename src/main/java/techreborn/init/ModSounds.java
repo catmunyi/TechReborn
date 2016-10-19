@@ -9,19 +9,19 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  */
 public class ModSounds {
 
-	public static SoundEvent shock;
-	public static SoundEvent dismantle;
-	public static SoundEvent extract;
+    public static SoundEvent shock;
+    public static SoundEvent dismantle;
+    public static SoundEvent extract;
 
-	public static void init() {
-		shock = getSound("cable_shock");
-		dismantle = getSound("block_dismantle");
-		extract = getSound("sap_extract");
-	}
+    public static void init() {
+        shock = getSound("cable_shock");
+        dismantle = getSound("block_dismantle");
+        extract = getSound("sap_extract");
+    }
 
-	private static SoundEvent getSound(String str) {
-		ResourceLocation resourceLocation = new ResourceLocation("techreborn", str);
-		return GameRegistry.register(new SoundEvent(resourceLocation).setRegistryName(resourceLocation));
-	}
+    private static SoundEvent getSound(String str) {
+        ResourceLocation resourceLocation = new ResourceLocation("techreborn", str);
+        return GameRegistry.register(new SoundEvent(resourceLocation).setRegistryName(resourceLocation));
+    }
 
 }

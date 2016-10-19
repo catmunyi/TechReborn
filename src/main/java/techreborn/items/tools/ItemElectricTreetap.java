@@ -1,31 +1,20 @@
 package techreborn.items.tools;
 
 import me.modmuss50.jsonDestroyer.api.ITexturedItem;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Enchantments;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import reborncore.RebornCore;
 import reborncore.api.power.IEnergyItemInfo;
 import reborncore.common.powerSystem.PoweredItem;
 import techreborn.client.TechRebornCreativeTab;
-import techreborn.config.ConfigTechReborn;
 import techreborn.lib.ModInfo;
 
 import java.util.List;
-import java.util.Random;
 
 public class ItemElectricTreetap extends Item implements IEnergyItemInfo, ITexturedItem {
 
