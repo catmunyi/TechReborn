@@ -22,8 +22,10 @@ public abstract class ContainerBase extends RebornContainer {
 		this.player = player;
 
         /* Add the player inventory */
-		addPlayersHotbar(player);
-		addPlayersInventory(player);
+        if(player != null){
+	        addPlayersHotbar(player);
+	        addPlayersInventory(player);
+        }
 	}
 
 	protected int getNextSlotIndex() {
