@@ -7,7 +7,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import reborncore.common.blocks.BlockMachineBase;
 import techreborn.client.TechRebornCreativeTab;
-import techreborn.tiles.generator.TileSolarPanel;
+import techreborn.tiles.energy.generator.TileSolarPanel;
 
 /**
  * Created by modmuss50 on 25/02/2016.

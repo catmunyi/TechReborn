@@ -4,7 +4,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import reborncore.common.blocks.BlockMachineBase;
 import techreborn.client.TechRebornCreativeTab;
-import techreborn.tiles.generator.TileWindMill;
+import techreborn.tiles.energy.generator.TileWindMill;
 
 /**
  * Created by modmuss50 on 25/02/2016.
