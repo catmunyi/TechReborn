@@ -227,10 +227,6 @@ public class TileEntityFusionController extends TileMachineInventory {
 		}
 	}
 
-	@Override
-	public void machineFinish() {
-
-	}
 
 	@Override
 	public ItemStack getWrenchDrop(EntityPlayer entityPlayer) {

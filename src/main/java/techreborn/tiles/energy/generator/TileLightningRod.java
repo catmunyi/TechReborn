@@ -15,11 +15,6 @@ public class TileLightningRod extends TileMachineBase {
 	}
 
 	@Override
-	public void machineFinish() {
-
-	}
-
-	@Override
 	public ItemStack getWrenchDrop(EntityPlayer p0) {
 		return new ItemStack(ModBlocks.plasmaGenerator);
 	}

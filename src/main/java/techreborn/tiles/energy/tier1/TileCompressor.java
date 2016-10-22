@@ -25,19 +25,6 @@ public class TileCompressor extends TileMachineInventory implements IRecipeCraft
 	}
 
 	@Override
-	public void machineTick() {
-		if (!this.crafter.machineTick())
-			return;
-
-		super.machineTick();
-	}
-
-	@Override
-	public void machineFinish() {
-		this.crafter.machineFinish();
-	}
-
-	@Override
 	public ItemStack getWrenchDrop(EntityPlayer entityPlayer) {
 		return new ItemStack(ModBlocks.compressor, 1);
 	}
@@ -68,11 +55,6 @@ public class TileCompressor extends TileMachineInventory implements IRecipeCraft
 			return crafter.currentTickTime * scale / crafter.currentNeededTicks;
 		}
 		return 0;
-	}
-
-	@Override
-	public void updateInventory() {
-		this.crafter.updateInventory();
 	}
 
 	@Override

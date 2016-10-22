@@ -57,24 +57,6 @@ public class TileCentrifuge extends TileMachineInventory implements IRecipeCraft
 	//	}
 
 	@Override
-	public void machineTick() {
-		if (!this.crafter.machineTick())
-			return;
-
-		super.machineTick();
-	}
-
-	@Override
-	public void machineFinish() {
-		this.crafter.machineFinish();
-	}
-
-	@Override
-	public void updateInventory() {
-		this.crafter.updateInventory();
-	}
-
-	@Override
 	public ItemStack getWrenchDrop(EntityPlayer entityPlayer) {
 		return new ItemStack(ModBlocks.centrifuge, 1);
 	}

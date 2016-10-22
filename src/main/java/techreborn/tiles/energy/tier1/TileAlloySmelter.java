@@ -26,25 +26,6 @@ public class TileAlloySmelter extends TileMachineInventory implements IRecipeCra
 	}
 
 	@Override
-	public void updateEntity() {
-		//super.updateEntity();
-		crafter.updateEntity();
-	}
-
-	@Override
-	public void machineTick() {
-		if (!this.crafter.machineTick())
-			return;
-
-		super.machineTick();
-	}
-
-	@Override
-	public void machineFinish() {
-		this.crafter.machineFinish();
-	}
-
-	@Override
 	public ItemStack getWrenchDrop(EntityPlayer entityPlayer) {
 		return new ItemStack(ModBlocks.alloySmelter, 1);
 	}
@@ -98,11 +79,6 @@ public class TileAlloySmelter extends TileMachineInventory implements IRecipeCra
 			return crafter.currentTickTime * scale / crafter.currentNeededTicks;
 		}
 		return 0;
-	}
-
-	@Override
-	public void updateInventory() {
-		this.crafter.updateInventory();
 	}
 
 	@Override

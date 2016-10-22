@@ -28,28 +28,9 @@ public class TileAssemblingMachine extends TileMachineInventory implements IReci
 	}
 
 	@Override
-	public void machineResetProgress() {
-		super.machineResetProgress();
-	}
-
-	@Override
-	public void machineTick() {
-		if (!this.crafter.machineTick())
-			return;
-
-		super.machineTick();
-	}
-
-	@Override
-	public void machineFinish() {
-		this.crafter.machineFinish();
-	}
-
-	@Override
 	public void updateEntity() {
 		//super.updateEntity();
 		//charge(3);
-		//this.crafter.updateEntity();
 	}
 
 	@Override
@@ -93,11 +74,6 @@ public class TileAssemblingMachine extends TileMachineInventory implements IReci
 			return crafter.currentTickTime * scale / crafter.currentNeededTicks;
 		}
 		return 0;
-	}
-
-	@Override
-	public void updateInventory() {
-		this.crafter.updateInventory();
 	}
 
 	@Override

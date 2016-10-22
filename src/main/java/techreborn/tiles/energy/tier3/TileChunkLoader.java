@@ -15,11 +15,6 @@ public class TileChunkLoader extends TileMachineBase {
 	}
 
 	@Override
-	public void machineFinish() {
-		// ?!
-	}
-
-	@Override
 	public ItemStack getWrenchDrop(EntityPlayer entityPlayer) {
 		return new ItemStack(ModBlocks.chunkLoader, 1);
 	}

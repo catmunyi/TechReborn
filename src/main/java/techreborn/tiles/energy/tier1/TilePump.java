@@ -36,11 +36,18 @@ public class TilePump extends TileMachineBase implements IFluidHandler {
 		return super.canWork() && tank.getCapacity() - tank.getFluidAmount() >= 1000 && drainBlock(getWorld(), getPos().down(), false) != null;
 	}
 
+
 	@Override
-	public void machineFinish() {
-		FluidStack fluidStack = drainBlock(getWorld(), getPos().down(), false);
-		if (fluidStack != null) {
-			this.tank.fill(drainBlock(getWorld(), getPos().down(), true), true);
+	public void updateEntity() {
+		super.updateEntity();
+		if (!worldObj.isRemote && worldObj.getTotalWorldTime() % 10 == 0 && tank.getFluidAmount() != tank.getCapacity() && tank.getCapacity() - tank.getFluidAmount() >= 1000 && canUseEnergy(ConfigTechReborn.pumpExtractEU)) {
+			FluidStack fluidStack = drainBlock(worldObj, pos.down(), false);
+			if (fluidStack != null) {
+				tank.fill(drainBlock(worldObj, pos.down(), true), true);
+				useEnergy(ConfigTechReborn.pumpExtractEU);
+			}
+			//Help?
+			//tank.compareAndUpdate();
 		}
 	}
 

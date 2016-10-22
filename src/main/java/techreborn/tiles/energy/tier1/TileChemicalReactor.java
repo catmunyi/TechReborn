@@ -27,18 +27,6 @@ public class TileChemicalReactor extends TileMachineInventory implements IRecipe
 		crafter = new RecipeCrafter(Reference.chemicalReactorRecipe, this, 2, 2, getInventory(), inputs, outputs);
 	}
 
-	@Override
-	public void machineTick() {
-		if (!this.crafter.machineTick())
-			return;
-
-		super.machineTick();
-	}
-
-	@Override
-	public void machineFinish() {
-		this.crafter.machineFinish();
-	}
 
 	@Override
 	public ItemStack getWrenchDrop(EntityPlayer entityPlayer) {
@@ -81,11 +69,6 @@ public class TileChemicalReactor extends TileMachineInventory implements IRecipe
 			return crafter.currentTickTime * scale / crafter.currentNeededTicks;
 		}
 		return 0;
-	}
-
-	@Override
-	public void updateInventory() {
-		this.crafter.updateInventory();
 	}
 
 	@Override

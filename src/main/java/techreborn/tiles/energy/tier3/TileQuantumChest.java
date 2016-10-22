@@ -68,10 +68,6 @@ public class TileQuantumChest extends TileMachineInventory implements IDeepStora
 		}
 	}
 
-	@Override
-	public void machineFinish() {
-
-	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound tagCompound) {

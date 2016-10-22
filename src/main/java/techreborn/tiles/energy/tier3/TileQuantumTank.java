@@ -42,10 +42,6 @@ public class TileQuantumTank extends TileMachineInventory implements IFluidHandl
 		}
 	}
 
-	@Override
-	public void machineFinish() {
-
-	}
 
 	// IFluidHandler
 	@Override

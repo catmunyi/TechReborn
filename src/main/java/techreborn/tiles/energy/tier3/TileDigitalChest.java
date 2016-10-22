@@ -118,10 +118,7 @@ public class TileDigitalChest extends TileMachineInventory {
 		return tagCompound;
 	}
 
-	@Override
-	public void machineFinish() {
 
-	}
 
 	@Override
 	public ItemStack getWrenchDrop(EntityPlayer entityPlayer) {

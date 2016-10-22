@@ -1,10 +1,12 @@
 package techreborn.tiles.energy.tier3;
 
+import ic2.api.recipe.RecipeOutput;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import reborncore.api.power.EnumPowerTier;
 import reborncore.common.container.RebornContainer;
 import reborncore.common.tile.TileMachineInventory;
+import reborncore.common.util.ItemUtils;
 import techreborn.client.container.energy.tier3.ContainerMatterFabricator;
 import techreborn.init.ModBlocks;
 import techreborn.init.ModItems;
@@ -20,10 +22,7 @@ public class TileMatterFabricator extends TileMachineInventory {
 		super(EnumPowerTier.HIGH, 100000000, 0, 1, "TileMatterFabricator", 7, 64);
 	}
 
-	@Override
-	public void machineFinish() {
 
-	}
 
 	@Override
 	public ItemStack getWrenchDrop(EntityPlayer entityPlayer) {
@@ -55,92 +54,92 @@ public class TileMatterFabricator extends TileMachineInventory {
 		return fabricationRate;
 	}
 
-	//	@Override
-	//	public void updateEntity()
-	//	{
-	//		super.updateEntity();
-	//
-	//		if (!super.worldObj.isRemote)
-	//		{
-	//			for (int i = 0; i < 6; i++)
-	//			{
-	//				ItemStack stack = inventory.getStackInSlot(i);
-	//				if (this.amplifier < 10000 && stack != null)
-	//				{
-	//					int amp = (int) ((long) (getValue(stack) / 32));
-	//					if (ItemUtils.isItemEqual(stack, inventory.getStackInSlot(i), true, true))
-	//					{
-	//						if (canUseEnergy(1))
-	//						{
-	//							useEnergy(1);
-	//							this.amplifier += amp;
-	//							inventory.decrStackSize(i, 1);
-	//						}
-	//					}
-	//				}
-	//			}
-	//
-	//			if (this.amplifier > 0)
-	//			{
-	//				if (this.amplifier > this.getEnergy())
-	//				{
-	//					this.progresstime += this.getEnergy();
-	//					this.amplifier -= this.getEnergy();
-	//					this.decreaseStoredEnergy(this.getEnergy(), true);
-	//				} else
-	//				{
-	//					this.progresstime += this.amplifier;
-	//					this.decreaseStoredEnergy(this.amplifier, true);
-	//					this.amplifier = 0;
-	//				}
-	//			}
-	//			if (this.progresstime > this.maxProgresstime() && this.spaceForOutput())
-	//			{
-	//				this.progresstime -= this.maxProgresstime();
-	//				this.addOutputProducts();
-	//			}
-	//
-	//		}
-	//
-	//	}
-	//
-	//	private boolean spaceForOutput()
-	//	{
-	//		return inventory.getStackInSlot(6) == null
-	//				|| ItemUtils.isItemEqual(inventory.getStackInSlot(6), new ItemStack(ModItems.uuMatter), true, true)
-	//						&& inventory.getStackInSlot(6).stackSize < 64;
-	//	}
-	//
-	//	private void addOutputProducts()
-	//	{
-	//
-	//		if (inventory.getStackInSlot(6) == null)
-	//		{
-	//			inventory.setInventorySlotContents(6, new ItemStack(ModItems.uuMatter));
-	//		} else if (ItemUtils.isItemEqual(inventory.getStackInSlot(6), new ItemStack(ModItems.uuMatter), true, true))
-	//		{
-	//			inventory.getStackInSlot(6).stackSize = Math.min(64, 1 + inventory.getStackInSlot(6).stackSize);
-	//		}
-	//	}
-	//
-	//	public boolean decreaseStoredEnergy(double aEnergy, boolean aIgnoreTooLessEnergy)
-	//	{
-	//		if (this.getEnergy() - aEnergy < 0 && !aIgnoreTooLessEnergy)
-	//		{
-	//			return false;
-	//		} else
-	//		{
-	//			setEnergy(this.getEnergy() - aEnergy);
-	//			if (this.getEnergy() < 0)
-	//			{
-	//				setEnergy(0);
-	//				return false;
-	//			} else
-	//			{
-	//				return true;
-	//			}
-	//		}
-	//	}
+		@Override
+		public void updateEntity()
+		{
+			super.updateEntity();
+
+			if (!super.worldObj.isRemote)
+			{
+				for (int i = 0; i < 6; i++)
+				{
+					ItemStack stack = getInventory().getStackInSlot(i);
+					if (this.amplifier < 10000 && stack != null)
+					{
+						int amp = (int) ((long) (getValue(stack) / 32));
+						if (ItemUtils.isItemEqual(stack, getInventory().getStackInSlot(i), true, true))
+						{
+							if (canUseEnergy(1))
+							{
+								useEnergy(1);
+								this.amplifier += amp;
+								getInventory().decrStackSize(i, 1);
+							}
+						}
+					}
+				}
+
+				if (this.amplifier > 0)
+				{
+					if (this.amplifier > this.getEnergy())
+					{
+						this.progresstime += this.getEnergy();
+						this.amplifier -= this.getEnergy();
+						this.decreaseStoredEnergy(this.getEnergy(), true);
+					} else
+					{
+						this.progresstime += this.amplifier;
+						this.decreaseStoredEnergy(this.amplifier, true);
+						this.amplifier = 0;
+					}
+				}
+				if (this.progresstime > this.maxProgresstime() && this.spaceForOutput())
+				{
+					this.progresstime -= this.maxProgresstime();
+					this.addOutputProducts();
+				}
+
+			}
+
+		}
+
+		private boolean spaceForOutput()
+		{
+			return getInventory().getStackInSlot(6) == null
+					|| ItemUtils.isItemEqual(getInventory().getStackInSlot(6), new ItemStack(ModItems.uuMatter), true, true)
+							&& getInventory().getStackInSlot(6).stackSize < 64;
+		}
+
+		private void addOutputProducts()
+		{
+
+			if (getInventory().getStackInSlot(6) == null)
+			{
+				getInventory().setInventorySlotContents(6, new ItemStack(ModItems.uuMatter));
+			} else if (ItemUtils.isItemEqual(getInventory().getStackInSlot(6), new ItemStack(ModItems.uuMatter), true, true))
+			{
+				getInventory().getStackInSlot(6).stackSize = Math.min(64, 1 + getInventory().getStackInSlot(6).stackSize);
+			}
+		}
+
+		public boolean decreaseStoredEnergy(double aEnergy, boolean aIgnoreTooLessEnergy)
+		{
+			if (this.getEnergy() - aEnergy < 0 && !aIgnoreTooLessEnergy)
+			{
+				return false;
+			} else
+			{
+				setEnergy(this.getEnergy() - aEnergy);
+				if (this.getEnergy() < 0)
+				{
+					setEnergy(0);
+					return false;
+				} else
+				{
+					return true;
+				}
+			}
+		}
 
 	// TODO ic2
 	public int getValue(ItemStack itemStack) {
@@ -154,12 +153,12 @@ public class TileMatterFabricator extends TileMachineInventory {
 		return 0;
 	}
 
-	// private static Integer getValue(RecipeOutput output) {
-	// if (output != null && output.metadata != null) {
-	// return output.metadata.getInteger("amplification");
-	// }
-	// return 0;
-	// }
+	 private static Integer getValue(RecipeOutput output) {
+	 if (output != null && output.metadata != null) {
+	 return output.metadata.getInteger("amplification");
+	 }
+	 return 0;
+	 }
 
 	@Override
 	public RebornContainer getContainer() {

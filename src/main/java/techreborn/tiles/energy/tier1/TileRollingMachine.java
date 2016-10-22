@@ -89,11 +89,6 @@ public class TileRollingMachine extends TileMachineInventory {
 		return super.canWork() && this.currentRecipe != null && canMake();
 	}
 
-	@Override
-	public void machineFinish() {
-
-	}
-
 	private boolean canMake() {
 		return RollingMachineRecipe.instance.findMatchingRecipe(this.craftMatrix, getWorld()) != null;
 	}

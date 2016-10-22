@@ -24,24 +24,11 @@ public class TileExtractor extends TileMachineInventory implements IRecipeCrafte
 		crafter = new RecipeCrafter(Reference.extractorRecipe, this, 2, 1, getInventory(), inputs, outputs);
 	}
 
-	@Override
-	public void machineTick() {
-		if (!this.crafter.machineTick())
-			return;
-
-		super.machineTick();
-	}
-
 	public int getProgressScaled(int scale) {
 		if (crafter.currentTickTime != 0) {
 			return crafter.currentTickTime * scale / crafter.currentNeededTicks;
 		}
 		return 0;
-	}
-
-	@Override
-	public void machineFinish() {
-		this.crafter.machineFinish();
 	}
 
 	@Override
@@ -64,11 +51,6 @@ public class TileExtractor extends TileMachineInventory implements IRecipeCrafte
 	//	public boolean canExtractItem(int slotIndex, ItemStack itemStack, EnumFacing side) {
 	//		return slotIndex == 2;
 	//	}
-
-	@Override
-	public void updateInventory() {
-		this.crafter.updateInventory();
-	}
 
 	@Override
 	public RebornContainer getContainer() {

@@ -35,24 +35,6 @@ public class TileVacuumFreezer extends TileMachineInventory implements ITileReci
 	}
 
 	@Override
-	public void machineTick() {
-		if (!this.crafter.machineTick())
-			return;
-
-		super.machineTick();
-	}
-
-	@Override
-	public void machineFinish() {
-		this.crafter.machineFinish();
-	}
-
-	@Override
-	public void updateInventory() {
-		this.crafter.updateInventory();
-	}
-
-	@Override
 	public void updateEntity() {
 		super.updateEntity();
 

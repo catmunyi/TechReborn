@@ -46,24 +46,6 @@ public class TileIndustrialGrinder extends TileMachineInventory implements IFlui
 	}
 
 	@Override
-	public void machineTick() {
-		if (!this.crafter.machineTick())
-			return;
-
-		super.machineTick();
-	}
-
-	@Override
-	public void machineFinish() {
-		this.crafter.machineFinish();
-	}
-
-	@Override
-	public void updateInventory() {
-		this.crafter.updateInventory();
-	}
-
-	@Override
 	public ItemStack getWrenchDrop(EntityPlayer entityPlayer) {
 		return new ItemStack(ModBlocks.industrialGrinder, 1);
 	}

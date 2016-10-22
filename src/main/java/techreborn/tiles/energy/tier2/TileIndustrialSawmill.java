@@ -46,24 +46,6 @@ public class TileIndustrialSawmill extends TileMachineInventory implements IFlui
 		return super.canWork() && getMultiBlock();
 	}
 
-	@Override
-	public void machineTick() {
-		if (!this.crafter.machineTick())
-			return;
-
-		super.machineTick();
-	}
-
-	@Override
-	public void machineFinish() {
-		this.crafter.machineFinish();
-	}
-
-	@Override
-	public void updateInventory() {
-		this.crafter.updateInventory();
-	}
-
 	public boolean getMultiBlock() {
 		for (EnumFacing direction : EnumFacing.values()) {
 			TileEntity tileEntity = worldObj.getTileEntity(new BlockPos(getPos().getX() + direction.getFrontOffsetX(),
