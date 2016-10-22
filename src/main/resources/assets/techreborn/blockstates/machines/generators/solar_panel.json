@@ -12,12 +12,14 @@
   "variants": {
     "inventory": {
       "transform": "forge:default-block",
+      "model": "cube_bottom_top",
       "textures": {
         "side": "techreborn:blocks/machines/generators/solar_panel_side_off"
       }
     },
     "facing": {
       "north": {
+        "y": 0
       },
       "east": {
         "y": 90
@@ -39,12 +41,6 @@
         "textures": {
           "side": "techreborn:blocks/machines/generators/solar_panel_side_off"
         }
-      }
-    },
-    "inventory": {
-      "model": "cube_bottom_top",
-      "textures": {
-        "side": "techreborn:blocks/machines/generators/solar_panel_side_off"
       }
     }
   }

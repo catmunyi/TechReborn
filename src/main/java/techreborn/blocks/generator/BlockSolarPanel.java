@@ -1,48 +1,24 @@
 package techreborn.blocks.generator;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import reborncore.common.BaseTileBlock;
+import reborncore.common.blocks.BlockMachineBase;
 import techreborn.client.TechRebornCreativeTab;
-import techreborn.tiles.energy.generator.TileSolarPanel;
+import techreborn.tiles.generator.TileSolarPanel;
 
 /**
  * Created by modmuss50 on 25/02/2016.
  */
-public class BlockSolarPanel extends BaseTileBlock {
-
-	public static PropertyBool ACTIVE = PropertyBool.create("active");
-	private final String prefix = "techreborn:blocks/machines/generators/";
+public class BlockSolarPanel extends BlockMachineBase {
 
 	public BlockSolarPanel() {
-		super(Material.IRON);
+		super();
 		setUnlocalizedName("techreborn.solarpanel");
 		setCreativeTab(TechRebornCreativeTab.instance);
-		this.setDefaultState(this.getDefaultState().withProperty(ACTIVE, false));
 		setHardness(2.0F);
-	}
-
-	protected BlockStateContainer createBlockState() {
-		ACTIVE = PropertyBool.create("active");
-		return new BlockStateContainer(this, ACTIVE);
-	}
-
-	@Override
-	public IBlockState getStateFromMeta(int meta) {
-		return getDefaultState().withProperty(ACTIVE, meta != 0);
-	}
-
-	@Override
-	public int getMetaFromState(IBlockState state) {
-		return state.getValue(ACTIVE) ? 1 : 0;
 	}
 
 	@Override
@@ -52,29 +28,30 @@ public class BlockSolarPanel extends BaseTileBlock {
 
 	@Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block neighborBlock) {
-		if (worldIn.canBlockSeeSky(pos.up()) && !worldIn.isRaining() && !worldIn.isThundering()
-			&& worldIn.isDaytime()) {
-			worldIn.setBlockState(pos,
-				worldIn.getBlockState(pos).withProperty(BlockSolarPanel.ACTIVE, true));
-		} else {
+		super.neighborChanged(state, worldIn, pos, neighborBlock);
 
-			worldIn.setBlockState(pos,
-				worldIn.getBlockState(pos).withProperty(BlockSolarPanel.ACTIVE, false));
+		if(!worldIn.isRemote) {
+			if (worldIn.canBlockSeeSky(pos.up()) && !worldIn.isRaining() && !worldIn.isThundering() && worldIn.isDaytime()) {
+				setActive(true, worldIn, pos);
+
+			} else {
+				setActive(false, worldIn, pos);
+			}
 		}
 	}
 
+
 	@Override
-	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY,
-	                                 float hitZ, int meta, EntityLivingBase placer) {
-		if (!worldIn.isRemote) {
+	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
+		super.onBlockAdded(worldIn, pos, state);
+
+		if(!worldIn.isRemote) {
 			if (worldIn.canBlockSeeSky(pos.up()) && !worldIn.isRaining() && !worldIn.isThundering() && worldIn.isDaytime()) {
-				return this.getDefaultState().withProperty(ACTIVE, true);
+				setActive(true, worldIn, pos);
 
 			} else {
-				return this.getDefaultState().withProperty(ACTIVE, false);
+				setActive(false, worldIn, pos);
 			}
-		} else {
-			return this.getDefaultState().withProperty(ACTIVE, false);
 		}
 	}
 

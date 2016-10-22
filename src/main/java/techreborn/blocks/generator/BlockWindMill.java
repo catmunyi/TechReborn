@@ -1,21 +1,18 @@
 package techreborn.blocks.generator;
 
-import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import reborncore.common.BaseTileBlock;
+import reborncore.common.blocks.BlockMachineBase;
 import techreborn.client.TechRebornCreativeTab;
-import techreborn.tiles.energy.generator.TileWindMill;
+import techreborn.tiles.generator.TileWindMill;
 
 /**
  * Created by modmuss50 on 25/02/2016.
  */
-public class BlockWindMill extends BaseTileBlock {
-
-	private final String prefix = "techreborn:blocks/machines/generators/";
+public class BlockWindMill extends BlockMachineBase {
 
 	public BlockWindMill() {
-		super(Material.IRON);
+		super();
 		setUnlocalizedName("techreborn.windmill");
 		setCreativeTab(TechRebornCreativeTab.instance);
 		setHardness(2.0F);
