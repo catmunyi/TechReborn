@@ -6,7 +6,7 @@ import mezz.jei.api.gui.IDrawableAnimated;
 import mezz.jei.api.gui.IDrawableStatic;
 import net.minecraft.client.Minecraft;
 import techreborn.api.recipe.machines.ImplosionCompressorRecipe;
-import techreborn.client.gui.GuiImplosionCompressor;
+import techreborn.client.gui.old.GuiImplosionCompressor;
 import techreborn.compat.jei.BaseRecipeWrapper;
 
 import javax.annotation.Nonnull;

@@ -7,7 +7,7 @@ import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.BlankRecipeCategory;
 import net.minecraft.util.text.translation.I18n;
-import techreborn.client.gui.GuiCentrifuge;
+import techreborn.client.gui.old.GuiCentrifuge;
 import techreborn.compat.jei.RecipeCategoryUids;
 import techreborn.compat.jei.RecipeUtil;
 

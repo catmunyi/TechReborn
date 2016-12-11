@@ -14,7 +14,7 @@ import reborncore.common.powerSystem.TilePowerAcceptor;
 import reborncore.common.recipes.RecipeCrafter;
 import reborncore.common.util.Inventory;
 import techreborn.api.Reference;
-import techreborn.client.container.ContainerExtractor;
+import techreborn.client.container.old.ContainerExtractor;
 import techreborn.init.ModBlocks;
 import techreborn.utils.upgrade.UpgradeHandler;
 

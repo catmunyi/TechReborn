@@ -6,7 +6,7 @@ import mezz.jei.api.gui.IDrawableAnimated;
 import mezz.jei.api.gui.IDrawableStatic;
 import net.minecraft.client.Minecraft;
 import techreborn.api.recipe.machines.BlastFurnaceRecipe;
-import techreborn.client.gui.GuiBlastFurnace;
+import techreborn.client.gui.old.GuiBlastFurnace;
 import techreborn.compat.jei.BaseRecipeWrapper;
 
 import javax.annotation.Nonnull;

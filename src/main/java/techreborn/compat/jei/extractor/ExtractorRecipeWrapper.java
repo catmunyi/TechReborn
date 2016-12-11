@@ -6,7 +6,7 @@ import mezz.jei.api.gui.IDrawableAnimated;
 import mezz.jei.api.gui.IDrawableStatic;
 import net.minecraft.client.Minecraft;
 import techreborn.api.recipe.machines.ExtractorRecipe;
-import techreborn.client.gui.GuiExtractor;
+import techreborn.client.gui.old.GuiExtractor;
 import techreborn.compat.jei.BaseRecipeWrapper;
 
 import javax.annotation.Nonnull;

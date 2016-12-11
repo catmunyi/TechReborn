@@ -6,7 +6,7 @@ import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.BlankRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.text.translation.I18n;
-import techreborn.client.gui.GuiAssemblingMachine;
+import techreborn.client.gui.old.GuiAssemblingMachine;
 import techreborn.compat.jei.RecipeCategoryUids;
 import techreborn.compat.jei.RecipeUtil;
 

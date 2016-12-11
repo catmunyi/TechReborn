@@ -8,7 +8,7 @@ import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.BlankRecipeCategory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.translation.I18n;
-import techreborn.client.gui.GuiFusionReactor;
+import techreborn.client.gui.old.GuiFusionReactor;
 import techreborn.compat.jei.RecipeCategoryUids;
 
 import javax.annotation.Nonnull;

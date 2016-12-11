@@ -7,7 +7,7 @@ import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.BlankRecipeCategory;
 import net.minecraft.util.text.translation.I18n;
-import techreborn.client.gui.GuiIndustrialElectrolyzer;
+import techreborn.client.gui.old.GuiIndustrialElectrolyzer;
 import techreborn.compat.jei.RecipeCategoryUids;
 import techreborn.compat.jei.RecipeUtil;
 

@@ -6,15 +6,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import reborncore.api.power.EnumPowerTier;
 import reborncore.api.recipe.IRecipeCrafterProvider;
-import reborncore.api.tile.IContainerProvider;
 import reborncore.api.tile.IInventoryProvider;
 import reborncore.common.IWrenchable;
-import reborncore.common.container.RebornContainer;
 import reborncore.common.powerSystem.TilePowerAcceptor;
 import reborncore.common.recipes.RecipeCrafter;
 import reborncore.common.util.Inventory;
 import techreborn.api.Reference;
-import techreborn.client.container.ContainerAssemblingMachine;
 import techreborn.init.ModBlocks;
 
 public class TileAssemblingMachine extends TilePowerAcceptor implements IWrenchable, ISidedInventory, IInventoryProvider, IRecipeCrafterProvider {

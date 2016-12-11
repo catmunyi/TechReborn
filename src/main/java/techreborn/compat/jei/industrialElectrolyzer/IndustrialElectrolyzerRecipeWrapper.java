@@ -6,7 +6,7 @@ import mezz.jei.api.gui.IDrawableAnimated;
 import mezz.jei.api.gui.IDrawableStatic;
 import net.minecraft.client.Minecraft;
 import techreborn.api.recipe.machines.IndustrialElectrolyzerRecipe;
-import techreborn.client.gui.GuiIndustrialElectrolyzer;
+import techreborn.client.gui.old.GuiIndustrialElectrolyzer;
 import techreborn.compat.jei.BaseRecipeWrapper;
 
 import javax.annotation.Nonnull;

@@ -104,7 +104,7 @@ public class TileGenerator extends TilePowerAcceptor implements IWrenchable, IIn
 
 	@Override
 	public double getMaxPower() {
-		return 100;
+		return 10000;
 	}
 
 	@Override

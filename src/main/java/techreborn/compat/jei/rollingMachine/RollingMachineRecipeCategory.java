@@ -7,7 +7,7 @@ import mezz.jei.api.recipe.BlankRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.translation.I18n;
-import techreborn.client.gui.GuiRollingMachine;
+import techreborn.client.gui.old.GuiRollingMachine;
 import techreborn.compat.jei.RecipeCategoryUids;
 
 import javax.annotation.Nonnull;

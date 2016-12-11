@@ -7,7 +7,7 @@ import mezz.jei.api.gui.IDrawableStatic;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fluids.FluidStack;
 import techreborn.api.recipe.machines.IndustrialGrinderRecipe;
-import techreborn.client.gui.GuiIndustrialGrinder;
+import techreborn.client.gui.old.GuiIndustrialGrinder;
 import techreborn.compat.jei.BaseRecipeWrapper;
 
 import javax.annotation.Nonnull;

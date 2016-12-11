@@ -9,7 +9,7 @@ import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.BlankRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.text.translation.I18n;
-import techreborn.client.gui.GuiIndustrialGrinder;
+import techreborn.client.gui.old.GuiIndustrialGrinder;
 import techreborn.compat.jei.RecipeCategoryUids;
 import techreborn.compat.jei.RecipeUtil;
 import techreborn.tiles.multiblock.TileIndustrialGrinder;
