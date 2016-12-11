@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.client.config.GuiUtils;
 import reborncore.client.guibuilder.GuiBuilder;
 import reborncore.common.powerSystem.PowerSystem;
 import techreborn.lib.ModInfo;
@@ -30,12 +31,17 @@ public class TRBuilder extends GuiBuilder {
 		gui.drawTexturedModalRect(x + 1, y + 49 - draw, PowerSystem.getDisplayPower().xBar, 48 + PowerSystem.getDisplayPower().yBar - draw, 12, draw);
 
 		if (isInRect(x + 1, y + 1, 11, 48, mouseX, mouseY)) {
+			GlStateManager.disableLighting();
+			GlStateManager.disableDepth();
+			GlStateManager.colorMask(true, true, true, false);
+			GuiUtils.drawGradientRect(0, x + 1, y + 1, x + 13, y + 49, 0x80FFFFFF, 0x80FFFFFF);
+			GlStateManager.colorMask(true, true, true, true);
+			GlStateManager.enableDepth();
+
 			List<String> list = new ArrayList<>();
 			list.add(PowerSystem.getLocaliszedPowerFormattedNoSuffix(energyStored) + "/" + PowerSystem.getLocaliszedPowerFormattedNoSuffix(maxEnergyStored) + " " + PowerSystem.getDisplayPower().abbreviation);
 			net.minecraftforge.fml.client.config.GuiUtils.drawHoveringText(list, mouseX, mouseY, gui.width, gui.height, -1, gui.mc.fontRendererObj);
 			GlStateManager.disableLighting();
-			drawRect(x, y, x + width - xPadding * 2, y + height - yPadding * 2, color.getRGB());
-			GlStateManager.color(1f, 1f, 1f, 1f);
 		}
 	}
 
