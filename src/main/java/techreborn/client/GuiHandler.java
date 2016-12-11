@@ -6,6 +6,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import reborncore.api.tile.IContainerLayout;
 import reborncore.common.container.RebornContainer;
+import techreborn.client.container.ContainerGenerator;
 import techreborn.client.container.old.*;
 import techreborn.client.gui.GuiGenerator;
 import techreborn.client.gui.old.*;

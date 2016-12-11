@@ -2,7 +2,7 @@ package techreborn.client.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
-import techreborn.client.container.old.ContainerGenerator;
+import techreborn.client.container.ContainerGenerator;
 import techreborn.tiles.generator.TileGenerator;
 
 /**
