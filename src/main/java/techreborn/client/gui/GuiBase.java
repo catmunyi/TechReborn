@@ -20,7 +20,7 @@ public class GuiBase extends GuiContainer {
 		this.name = "techreborn.generator";
 		this.tile = tile;
 		this.xSize = 176;
-		this.ySize = 168;
+		this.ySize = 162;
 	}
 
 	@Override
@@ -31,11 +31,11 @@ public class GuiBase extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int mouseX, int mouseY) {
 		builder.drawDefaultBackground(this, guiLeft, guiTop, xSize, ySize);
-		builder.drawPlayerSlots(this, guiLeft + xSize / 2, guiTop + 84, true);
-		builder.drawChargeSlot(this, guiLeft + 7, guiTop + 57);
+		builder.drawPlayerSlots(this, guiLeft + xSize / 2, guiTop + 79, true);
+		builder.drawChargeSlot(this, guiLeft + 7, guiTop + 59, TRBuilder.Arrow.UP_TOP_RIGHT);
 	}
 
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		builder.drawMultiEnergyBar(this, 9, 5, (int) container.energy, (int) tile.getMaxPower(), mouseX - guiLeft, mouseY - guiTop);
+		builder.drawMultiEnergyBar(this, 9, 7, (int) container.energy, (int) tile.getMaxPower(), mouseX - guiLeft, mouseY - guiTop);
 	}
 }
