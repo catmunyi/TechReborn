@@ -82,7 +82,7 @@ public class OreDict {
 		for (String type : ItemGems.types) {
 			if (type.equals(ModItems.META_PLACEHOLDER))
 				continue; //Aware of placeholders!
-			OreDictionary.registerOre("gem" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, type), ItemGems.getGemByName(type));
+			OreDictionary.registerOre("gem" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, "gem_" + type), ItemGems.getGemByName(type));
 			boolean ignoreIt = false;
 			for (String ignore : plateGenIgnores)
 				if (type.startsWith(ignore))
@@ -95,7 +95,7 @@ public class OreDict {
 		for (String type : ItemIngots.types) {
 			if (type.equals(ModItems.META_PLACEHOLDER))
 				continue; //Aware of placeholders!
-			OreDictionary.registerOre("ingot" + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, type), ItemIngots.getIngotByName(type));
+			OreDictionary.registerOre(CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, "ingot_" + type), ItemIngots.getIngotByName(type));
 			boolean ignoreIt = false;
 			for (String ignore : plateGenIgnores)
 				if (type.startsWith(ignore))
@@ -109,10 +109,10 @@ public class OreDict {
 		for (String type : ItemPlates.types) {
 			if (type.equals(ModItems.META_PLACEHOLDER))
 				continue; //Aware of placeholders!
-			String oreDictName = "plate" + OreDictUtils.toFirstUpper(type);
-			OreDictionary.registerOre(oreDictName, ItemPlates.getPlateByName(type));
+			OreDictionary.registerOre(CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, "plate_" + type), ItemPlates.getPlateByName(type));
 		}
 
+		//still need to switch these to snake_case and json
 		for (String type : ItemDusts.types) {
 			if (type.equals(ModItems.META_PLACEHOLDER))
 				continue; //Aware of placeholders!
