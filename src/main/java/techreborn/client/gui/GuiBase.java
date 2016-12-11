@@ -32,7 +32,7 @@ public class GuiBase extends GuiContainer {
 	protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int mouseX, int mouseY) {
 		builder.drawDefaultBackground(this, guiLeft, guiTop, xSize, ySize);
 		builder.drawPlayerSlots(this, guiLeft + xSize / 2, guiTop + 79, true);
-		builder.drawChargeSlot(this, guiLeft + 7, guiTop + 59, TRBuilder.Arrow.UP_TOP_RIGHT);
+		builder.drawUpgradeSlots(this, guiLeft, guiTop);
 	}
 
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {

@@ -5,7 +5,6 @@ import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import reborncore.client.gui.slots.SlotCharge;
 import techreborn.tiles.generator.TileGenerator;
 
 public class ContainerGenerator extends ContainerBase {
@@ -18,18 +17,12 @@ public class ContainerGenerator extends ContainerBase {
 	TileGenerator tile;
 
 	public ContainerGenerator(TileGenerator tile, EntityPlayer player) {
-		super();
+		super(tile, player);
 		this.tile = tile;
 		this.player = player;
 
 		// fuel
-		this.addSlotToContainer(new SlotFurnaceFuel(tile.inventory, 0, 80, 53));
-		// charge
-		this.addSlotToContainer(new SlotCharge(tile.inventory, 1, 80, 17));
-
-		int i;
-
-		drawPlayersInvAndHotbar(player);
+		this.addSlotToContainer(new SlotFurnaceFuel(tile.inventory, 0, 80, 43));
 	}
 
 	@Override

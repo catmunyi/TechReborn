@@ -16,6 +16,12 @@ import techreborn.Core;
 
 public class StackToolTipEvent {
 
+	public static int percentage(int MaxValue, int CurrentValue) {
+		if (CurrentValue == 0)
+			return 0;
+		return (int) ((CurrentValue * 100.0f) / MaxValue);
+	}
+
 	@SubscribeEvent
 	public void handleItemTooltipEvent(ItemTooltipEvent event) {
 		if (event.getItemStack().getItem() instanceof IListInfoProvider) {
@@ -55,12 +61,6 @@ public class StackToolTipEvent {
 				Core.logHelper.debug("Failed to load info for " + event.getItemStack().getDisplayName());
 			}
 		}
-	}
-
-	public int percentage(int MaxValue, int CurrentValue) {
-		if (CurrentValue == 0)
-			return 0;
-		return (int) ((CurrentValue * 100.0f) / MaxValue);
 	}
 
 }
