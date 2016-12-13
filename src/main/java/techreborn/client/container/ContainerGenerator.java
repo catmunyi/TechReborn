@@ -7,7 +7,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import techreborn.tiles.generator.TileGenerator;
 
-public class ContainerGenerator extends ContainerBase {
+public class ContainerGenerator extends ContainerMachineBase {
 
 	public int burnTime = 0;
 	public int totalBurnTime = 0;
@@ -22,7 +22,7 @@ public class ContainerGenerator extends ContainerBase {
 		this.player = player;
 
 		// fuel
-		this.addSlotToContainer(new SlotFurnaceFuel(tile.inventory, 0, 80, 43));
+		this.addSlotToContainer(new SlotFurnaceFuel(tile.inventory, 5, 80, 43));
 	}
 
 	@Override

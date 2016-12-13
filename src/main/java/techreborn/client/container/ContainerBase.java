@@ -1,16 +1,14 @@
 package techreborn.client.container;
 
 import net.minecraft.entity.player.EntityPlayer;
-import reborncore.client.gui.slots.SlotCharge;
+import net.minecraft.tileentity.TileEntity;
 import reborncore.common.container.RebornContainer;
-import techreborn.tiles.generator.TileGenerator;
 
 /**
  * Created by Prospector
  */
 public class ContainerBase extends RebornContainer {
-	public ContainerBase(TileGenerator tile, EntityPlayer player) {
-		addSlotToContainer(new SlotCharge(tile.inventory, 1, 8, 60));
+	public ContainerBase(TileEntity tile, EntityPlayer player) {
 		drawPlayersInvAndHotbar(player);
 	}
 

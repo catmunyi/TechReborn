@@ -147,6 +147,10 @@ public class ConfigTechReborn {
 
 	public static boolean veinOres;
 
+	// Machine Power Configs
+	public static int GENERATOR_MAX_POWER;
+	public static int GENERATOR_OUTPUT;
+
 	public static Configuration config;
 	private static ConfigTechReborn instance = null;
 
@@ -203,6 +207,13 @@ public class ConfigTechReborn {
 			"FortuneSecondaryOreMultiplierPerLevel").getDouble();
 
 		// Power
+		GENERATOR_MAX_POWER = config
+			.get(CATEGORY_POWER, "Generator Max Power Storage", 4000, "Set how much EU a generator can store")
+			.getInt();
+		GENERATOR_OUTPUT = config
+			.get(CATEGORY_POWER, "Generator Output", 10, "Set how much EU a generator generates per tick")
+			.getInt();
+
 		LightningRodChance = config
 			.get(CATEGORY_POWER, "Lightning Rod light struck chance", 24, "Set the chance of light strike (0-70)", 0, 70)
 			.getInt();
