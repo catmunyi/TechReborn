@@ -11,6 +11,7 @@ import techreborn.Core;
 import techreborn.blocks.BlockMachineFrame;
 import techreborn.items.*;
 import techreborn.parts.powerCables.ItemStandaloneCables;
+import techreborn.utils.OreDictUtils;
 
 public class OreDict {
 
@@ -118,6 +119,13 @@ public class OreDict {
 				continue; //Aware of placeholders!
 			OreDictionary.registerOre(CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, "dust_tiny_" + type), ItemDustsSmall.getSmallDustByName(type));
 			OreDictionary.registerOre(CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, "dust_small_" + type), ItemDustsSmall.getSmallDustByName(type));
+		}
+
+		for (String type : ItemDustsSmall.types) {
+			if (type.equals(ModItems.META_PLACEHOLDER))
+				continue; //Aware of placeholders!
+			String oreDictName = "dustSmall" + OreDictUtils.toFirstUpper(type);
+			OreDictionary.registerOre(oreDictName, ItemDusts.getDustByName(type));
 		}
 
 		for (String type : ItemNuggets.types) {
