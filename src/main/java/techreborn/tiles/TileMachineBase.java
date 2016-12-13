@@ -39,7 +39,7 @@ public abstract class TileMachineBase extends TilePowerAcceptor implements IWren
 
 	@Override
 	public boolean wrenchCanSetFacing(EntityPlayer player, EnumFacing side) {
-		return !player.isSneaking();
+		return false;
 	}
 
 	@Override

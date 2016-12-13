@@ -150,6 +150,9 @@ public class ConfigTechReborn {
 	// Machine Power Configs
 	public static int GENERATOR_MAX_POWER;
 	public static int GENERATOR_OUTPUT;
+	public static int BATBOX_MAX_POWER;
+	public static int MFE_MAX_POWER;
+	public static int MFSU_MAX_POWER;
 
 	public static Configuration config;
 	private static ConfigTechReborn instance = null;
@@ -212,6 +215,15 @@ public class ConfigTechReborn {
 			.getInt();
 		GENERATOR_OUTPUT = config
 			.get(CATEGORY_POWER, "Generator Output", 10, "Set how much EU a generator generates per tick")
+			.getInt();
+		BATBOX_MAX_POWER = config
+			.get(CATEGORY_POWER, "BatBox Max Power Storage", 40000, "Set how much EU a batbox can store")
+			.getInt();
+		MFE_MAX_POWER = config
+			.get(CATEGORY_POWER, "MFE Max Power Storage", 600000, "Set how much EU a MFE can store")
+			.getInt();
+		MFSU_MAX_POWER = config
+			.get(CATEGORY_POWER, "MFSU Max Power Storage", 1000000, "Set how much EU a MFSU can store")
 			.getInt();
 
 		LightningRodChance = config

@@ -2,22 +2,22 @@ package techreborn.client.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
-import techreborn.client.container.ContainerGenerator;
-import techreborn.tiles.generator.TileGenerator;
+import net.minecraft.tileentity.TileEntity;
+import techreborn.client.container.ContainerBase;
 
 /**
  * Created by Prospector
  */
 public class GuiBase extends GuiContainer {
 	public String name;
-	public TileGenerator tile;
-	public ContainerGenerator container;
+	public TileEntity tile;
+	public ContainerBase container;
 	public TRBuilder builder = new TRBuilder();
 
-	public GuiBase(EntityPlayer player, TileGenerator tile, ContainerGenerator container) {
+	public GuiBase(EntityPlayer player, TileEntity tile, ContainerBase container, String name) {
 		super(container);
 		this.container = container;
-		this.name = "techreborn.generator";
+		this.name = name;
 		this.tile = tile;
 		this.xSize = 176;
 		this.ySize = 162;
@@ -32,10 +32,5 @@ public class GuiBase extends GuiContainer {
 	protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int mouseX, int mouseY) {
 		builder.drawDefaultBackground(this, guiLeft, guiTop, xSize, ySize);
 		builder.drawPlayerSlots(this, guiLeft + xSize / 2, guiTop + 79, true);
-		builder.drawUpgradeSlots(this, guiLeft, guiTop);
-	}
-
-	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		builder.drawMultiEnergyBar(this, 9, 7, (int) container.energy, (int) tile.getMaxPower(), mouseX - guiLeft, mouseY - guiTop);
 	}
 }

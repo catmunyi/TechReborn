@@ -7,9 +7,12 @@ import techreborn.tiles.generator.TileGenerator;
 /**
  * Created by Prospector
  */
-public class GuiGenerator extends GuiBase {
-	public GuiGenerator(EntityPlayer player, TileGenerator tile) {
-		super(player, tile, new ContainerGenerator(tile, player));
+public class GuiGenerator extends GuiMachineBase {
+	public ContainerGenerator container;
+
+	public GuiGenerator(EntityPlayer player, TileGenerator tile, ContainerGenerator container) {
+		super(player, tile, container, "techreborn.generator");
+		this.container = container;
 	}
 
 	@Override

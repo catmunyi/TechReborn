@@ -30,6 +30,9 @@ public class TRBuilder extends GuiBuilder {
 		gui.drawTexturedModalRect(x, y, PowerSystem.getDisplayPower().xBar - 15, PowerSystem.getDisplayPower().yBar - 1, 14, 50);
 
 		int draw = (int) ((double) energyStored / (double) maxEnergyStored * (48));
+		if (energyStored > maxEnergyStored) {
+			draw = (int) ((double) maxEnergyStored / (double) maxEnergyStored * (48));
+		}
 		gui.drawTexturedModalRect(x + 1, y + 49 - draw, PowerSystem.getDisplayPower().xBar, 48 + PowerSystem.getDisplayPower().yBar - draw, 12, draw);
 
 		if (isInRect(x + 1, y + 1, 11, 48, mouseX, mouseY)) {

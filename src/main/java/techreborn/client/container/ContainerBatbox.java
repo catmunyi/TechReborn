@@ -1,42 +1,25 @@
-package techreborn.client.container.old;
+package techreborn.client.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import reborncore.client.gui.slots.BaseSlot;
 import reborncore.client.gui.slots.SlotCharge;
-import reborncore.common.container.RebornContainer;
 import techreborn.tiles.storage.TileBatBox;
 
-public class ContainerBatbox extends RebornContainer {
+public class ContainerBatbox extends ContainerMachineBase {
 
-	public int burnTime = 0;
-	public int totalBurnTime = 0;
-	public int energy;
 	public int tickTime;
 	EntityPlayer player;
 	TileBatBox tile;
 
 	public ContainerBatbox(TileBatBox tile, EntityPlayer player) {
-		super();
+		super(tile, player);
 		this.tile = tile;
 		this.player = player;
 
-		int i;
-
-		for (i = 0; i < 3; ++i) {
-			for (int j = 0; j < 9; ++j) {
-				this.addSlotToContainer(new BaseSlot(player.inventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
-			}
-		}
-
-		for (i = 0; i < 9; ++i) {
-			this.addSlotToContainer(new BaseSlot(player.inventory, i, 8 + i * 18, 142));
-		}
-
-		this.addSlotToContainer(new SlotCharge(tile.inventory, 0, 80, 17));
-		this.addSlotToContainer(new SlotCharge(tile.inventory, 1, 80, 53));
+		this.addSlotToContainer(new SlotCharge(tile.inventory, 0, 62, 33));
+		this.addSlotToContainer(new SlotCharge(tile.inventory, 1, 98, 33));
 	}
 
 	@Override
@@ -64,17 +47,9 @@ public class ContainerBatbox extends RebornContainer {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void updateProgressBar(int id, int value) {
-		if (id == 0) {
-			this.burnTime = value;
-		} else if (id == 1) {
-			this.totalBurnTime = value;
-		} else if (id == 2) {
+		if (id == 2) {
 			this.energy = value;
 		}
 		this.tile.setEnergy(energy);
-	}
-
-	public int getScaledBurnTime(int i) {
-		return (int) (((float) burnTime / (float) totalBurnTime) * i);
 	}
 }

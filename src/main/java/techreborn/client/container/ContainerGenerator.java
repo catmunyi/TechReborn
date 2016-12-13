@@ -11,7 +11,6 @@ public class ContainerGenerator extends ContainerMachineBase {
 
 	public int burnTime = 0;
 	public int totalBurnTime = 0;
-	public int energy;
 	public int tickTime;
 	EntityPlayer player;
 	TileGenerator tile;

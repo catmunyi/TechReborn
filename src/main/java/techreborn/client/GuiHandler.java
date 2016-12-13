@@ -6,8 +6,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import reborncore.api.tile.IContainerLayout;
 import reborncore.common.container.RebornContainer;
+import techreborn.client.container.ContainerBatbox;
 import techreborn.client.container.ContainerGenerator;
 import techreborn.client.container.old.*;
+import techreborn.client.gui.GuiBatbox;
 import techreborn.client.gui.GuiGenerator;
 import techreborn.client.gui.old.*;
 import techreborn.manual.GuiManual;
@@ -235,7 +237,7 @@ public class GuiHandler implements IGuiHandler {
 		} else if (ID == grinderID) {
 			return new GuiGrinder(player, (TileGrinder) world.getTileEntity(new BlockPos(x, y, z)));
 		} else if (ID == generatorID) {
-			return new GuiGenerator(player, (TileGenerator) world.getTileEntity(new BlockPos(x, y, z)));
+			return new GuiGenerator(player, (TileGenerator) world.getTileEntity(new BlockPos(x, y, z)), new ContainerGenerator((TileGenerator) world.getTileEntity(new BlockPos(x, y, z)), player));
 		} else if (ID == extractorID) {
 			return new GuiExtractor(player, (TileExtractor) world.getTileEntity(new BlockPos(x, y, z)));
 		} else if (ID == compressorID) {

@@ -1,14 +1,17 @@
 package techreborn.tiles.storage;
 
+import net.minecraft.item.ItemStack;
 import reborncore.api.power.EnumPowerTier;
+import techreborn.config.ConfigTechReborn;
 import techreborn.init.ModBlocks;
+import techreborn.tiles.TileStorageUnitBase;
 
 /**
  * Created by modmuss50 on 14/03/2016.
  */
-public class TileMFSU extends TileEnergyStorage {
+public class TileMFSU extends TileStorageUnitBase {
 
 	public TileMFSU() {
-		super("MFSU", 2, ModBlocks.MFSU, EnumPowerTier.HIGH, 2048, 2048, 1000000);
+		super(2, "TileMFSU", 64, ConfigTechReborn.MFSU_MAX_POWER, EnumPowerTier.HIGH, new ItemStack(ModBlocks.MFSU));
 	}
 }

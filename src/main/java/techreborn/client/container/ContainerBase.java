@@ -12,6 +12,10 @@ public class ContainerBase extends RebornContainer {
 		drawPlayersInvAndHotbar(player);
 	}
 
+	public ContainerBase() {
+
+	}
+
 	@Override
 	public boolean canInteractWith(EntityPlayer playerIn) {
 		return false;
