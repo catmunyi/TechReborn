@@ -12,6 +12,7 @@ import reborncore.client.multiblock.MultiblockSet;
 import reborncore.common.misc.Location;
 import reborncore.common.multiblock.CoordTriplet;
 import reborncore.common.powerSystem.PowerSystem;
+import techreborn.client.ClientMultiBlocks;
 import techreborn.client.container.old.ContainerFusionReactor;
 import techreborn.proxies.ClientProxy;
 import techreborn.tiles.fusionReactor.TileEntityFusionController;
