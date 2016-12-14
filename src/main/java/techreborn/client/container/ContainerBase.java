@@ -8,12 +8,15 @@ import reborncore.common.container.RebornContainer;
  * Created by Prospector
  */
 public class ContainerBase extends RebornContainer {
-	public ContainerBase(TileEntity tile, EntityPlayer player) {
+	public String name;
+
+	public ContainerBase(TileEntity tile, EntityPlayer player, String name) {
 		drawPlayersInvAndHotbar(player);
+		this.name = name;
 	}
 
-	public ContainerBase() {
-
+	public ContainerBase(String name) {
+		this.name = name;
 	}
 
 	@Override

@@ -20,6 +20,7 @@ public class GuiStorageUnitBase extends GuiMachineBase {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+		drawTitle();
 		builder.drawMultiEnergyBar(this, 81, 16, container.energy, (int) tile.getMaxPower(), mouseX - guiLeft, mouseY - guiTop);
 	}
 }

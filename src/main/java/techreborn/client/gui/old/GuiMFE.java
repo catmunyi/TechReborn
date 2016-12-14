@@ -5,7 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
 import reborncore.common.powerSystem.PowerSystem;
-import techreborn.client.container.old.ContainerMFE;
+import techreborn.client.container.ContainerMFE;
 import techreborn.tiles.storage.TileMFE;
 
 /**

@@ -1,8 +1,12 @@
 package techreborn.client.gui;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.text.translation.I18n;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import techreborn.client.container.ContainerBase;
 
 /**
@@ -32,5 +36,15 @@ public class GuiBase extends GuiContainer {
 	protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int mouseX, int mouseY) {
 		builder.drawDefaultBackground(this, guiLeft, guiTop, xSize, ySize);
 		builder.drawPlayerSlots(this, guiLeft + xSize / 2, guiTop + 79, true);
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+		drawTitle();
+	}
+
+	protected void drawTitle() {
+		drawCenteredString(Minecraft.getMinecraft().fontRendererObj, I18n.translateToLocal("tile." + name + ".name"), xSize / 2, -9, 0xFFFFFFFF);
 	}
 }

@@ -8,6 +8,7 @@ import reborncore.api.tile.IContainerLayout;
 import reborncore.common.container.RebornContainer;
 import techreborn.client.container.ContainerBatbox;
 import techreborn.client.container.ContainerGenerator;
+import techreborn.client.container.ContainerMFE;
 import techreborn.client.container.old.*;
 import techreborn.client.gui.GuiBatbox;
 import techreborn.client.gui.GuiGenerator;

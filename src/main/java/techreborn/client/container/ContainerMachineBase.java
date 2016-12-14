@@ -14,6 +14,7 @@ public class ContainerMachineBase extends ContainerBase {
 	public TileMachineBase tile;
 
 	public ContainerMachineBase(TileMachineBase tile, EntityPlayer player) {
+		super(tile.getName());
 		addSlotToContainer(new SlotCharge(tile.inventory, 0, 8, 60));
 		addSlotToContainer(new SlotUpgrade(tile.inventory, 1, 152, 6));
 		addSlotToContainer(new SlotUpgrade(tile.inventory, 2, 152, 24));
@@ -24,6 +25,7 @@ public class ContainerMachineBase extends ContainerBase {
 	}
 
 	public ContainerMachineBase(TileMachineBase tile, EntityPlayer player, boolean noCharge, boolean noUpgrade) {
+		super(tile.getName());
 		if (!noCharge)
 			addSlotToContainer(new SlotCharge(tile.inventory, 0, 8, 60));
 		if (!noUpgrade) {

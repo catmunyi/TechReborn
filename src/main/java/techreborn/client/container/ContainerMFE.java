@@ -1,4 +1,4 @@
-package techreborn.client.container.old;
+package techreborn.client.container;
 
 /**
  * Created by Rushmead
