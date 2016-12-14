@@ -76,6 +76,12 @@ public class TRBuilder extends GuiBuilder {
 		gui.drawTexturedModalRect(posX + arrow.guiX, posY + arrow.guiY, arrow.x, arrow.y, arrow.width, arrow.height);
 	}
 
+	public void drawArmourSlot(GuiScreen gui, int posX, int posY, ArmourSlot slot) {
+		drawSlot(gui, posX, posY);
+		Minecraft.getMinecraft().getTextureManager().bindTexture(resourceLocation);
+		gui.drawTexturedModalRect(posX + 1, posY + 1, slot.x, slot.y, 16, 16);
+	}
+
 	public void drawUpgradeSlots(GuiScreen gui, int guiX, int guiY) {
 		Minecraft.getMinecraft().getTextureManager().bindTexture(resourceLocation);
 		drawSlot(gui, guiX + 151, guiY + 5);
@@ -88,7 +94,7 @@ public class TRBuilder extends GuiBuilder {
 		gui.drawTexturedModalRect(guiX + 152, guiY + 60, 228, 18, 16, 16);
 	}
 
-	public void drawBurnBar(GuiScreen gui, double progress, int x, int y, int mouseX, int mouseY) {
+	public void drawBurnBar(GuiScreen gui, double progress, double progress100, int x, int y, int mouseX, int mouseY) {
 		gui.mc.getTextureManager().bindTexture(resourceLocation);
 		gui.drawTexturedModalRect(x, y, 187, 84, 13, 13);
 		int j = 13 - (int) (progress);
@@ -116,6 +122,17 @@ public class TRBuilder extends GuiBuilder {
 
 	public int getScaledBurnTime(int scale, int burnTime, int totalBurnTime) {
 		return (int) (((float) burnTime / (float) totalBurnTime) * scale);
+	}
+
+	public enum ArmourSlot {
+		HEAD(190, 118), CHESTPLATE(190, 134), LEGGINGS(206, 118), BOOTS(206, 134);
+		public int x;
+		public int y;
+
+		ArmourSlot(int x, int y) {
+			this.x = x;
+			this.y = y;
+		}
 	}
 
 	public enum Arrow {

@@ -12,6 +12,7 @@ import techreborn.client.container.ContainerMFE;
 import techreborn.client.container.old.*;
 import techreborn.client.gui.GuiBatbox;
 import techreborn.client.gui.GuiGenerator;
+import techreborn.client.gui.GuiMFE;
 import techreborn.client.gui.old.*;
 import techreborn.manual.GuiManual;
 import techreborn.tiles.*;
