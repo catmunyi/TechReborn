@@ -1,7 +1,7 @@
 package techreborn.client.gui;
 
 import net.minecraft.entity.player.EntityPlayer;
-import techreborn.client.container.ContainerMachineBase;
+import techreborn.client.container.ContainerBatbox;
 import techreborn.tiles.storage.TileBatBox;
 
 public class GuiBatbox extends GuiStorageUnitBase {
@@ -9,8 +9,7 @@ public class GuiBatbox extends GuiStorageUnitBase {
 	public TileBatBox tile;
 
 	public GuiBatbox(EntityPlayer player, TileBatBox tile) {
-
-		super(player, tile, new ContainerMachineBase(tile, player), "techreborn.batbox");
+		super(player, tile, new ContainerBatbox(tile, player), "techreborn.batbox");
 		this.tile = tile;
 	}
 

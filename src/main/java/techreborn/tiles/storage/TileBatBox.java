@@ -15,7 +15,7 @@ import java.util.List;
 public class TileBatBox extends TileStorageUnitBase implements IListInfoProvider {
 
 	public TileBatBox() {
-		super(2, "TileBatBox", 64, ConfigTechReborn.BATBOX_MAX_POWER, EnumPowerTier.LOW, new ItemStack(ModBlocks.batBox));
+		super(3, "TileBatBox", 64, ConfigTechReborn.BATBOX_MAX_POWER, EnumPowerTier.LOW, new ItemStack(ModBlocks.batBox));
 	}
 
 	@Override

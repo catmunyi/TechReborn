@@ -147,6 +147,8 @@ public class ConfigTechReborn {
 
 	public static boolean veinOres;
 
+	public static boolean INSOMNIA_COLOUR;
+
 	// Machine Power Configs
 	public static int GENERATOR_MAX_POWER;
 	public static int GENERATOR_OUTPUT;
@@ -210,6 +212,9 @@ public class ConfigTechReborn {
 			"FortuneSecondaryOreMultiplierPerLevel").getDouble();
 
 		// Power
+		INSOMNIA_COLOUR = config
+			.get(CATEGORY_POWER, "Insomnia Colour in GUIs", false, "Cause screw you insomnia. you and your dang white in the guis")
+			.getBoolean();
 		GENERATOR_MAX_POWER = config
 			.get(CATEGORY_POWER, "Generator Max Power Storage", 4000, "Set how much EU a generator can store")
 			.getInt();

@@ -14,12 +14,12 @@ public class ContainerBatbox extends ContainerMachineBase {
 	TileBatBox tile;
 
 	public ContainerBatbox(TileBatBox tile, EntityPlayer player) {
-		super(tile, player);
+		super(tile, player, true, false);
 		this.tile = tile;
 		this.player = player;
 
-		this.addSlotToContainer(new SlotCharge(tile.inventory, 0, 62, 33));
-		this.addSlotToContainer(new SlotCharge(tile.inventory, 1, 98, 33));
+		this.addSlotToContainer(new SlotCharge(tile.inventory, 5, 62, 33));
+		this.addSlotToContainer(new SlotCharge(tile.inventory, 6, 98, 33));
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class ContainerBatbox extends ContainerMachineBase {
 		for (int i = 0; i < this.listeners.size(); i++) {
 			IContainerListener IContainerListener = this.listeners.get(i);
 			if (this.energy != (int) tile.getEnergy()) {
-				IContainerListener.sendProgressBarUpdate(this, 2, (int) tile.getEnergy());
+				IContainerListener.sendProgressBarUpdate(this, 0, (int) tile.getEnergy());
 			}
 		}
 	}
@@ -41,13 +41,13 @@ public class ContainerBatbox extends ContainerMachineBase {
 	@Override
 	public void addListener(IContainerListener crafting) {
 		super.addListener(crafting);
-		crafting.sendProgressBarUpdate(this, 2, (int) tile.getEnergy());
+		crafting.sendProgressBarUpdate(this, 0, (int) tile.getEnergy());
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void updateProgressBar(int id, int value) {
-		if (id == 2) {
+		if (id == 0) {
 			this.energy = value;
 		}
 		this.tile.setEnergy(energy);

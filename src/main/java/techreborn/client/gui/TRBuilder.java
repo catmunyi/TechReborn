@@ -9,6 +9,7 @@ import net.minecraftforge.fml.client.config.GuiUtils;
 import reborncore.client.guibuilder.GuiBuilder;
 import reborncore.common.powerSystem.PowerSystem;
 import techreborn.client.StackToolTipEvent;
+import techreborn.config.ConfigTechReborn;
 import techreborn.lib.ModInfo;
 
 import java.util.ArrayList;
@@ -44,7 +45,12 @@ public class TRBuilder extends GuiBuilder {
 			GlStateManager.enableDepth();
 
 			List<String> list = new ArrayList<>();
-			list.add(TextFormatting.GOLD + PowerSystem.getLocaliszedPowerFormattedNoSuffix(energyStored) + "/" + PowerSystem.getLocaliszedPowerFormattedNoSuffix(maxEnergyStored) + " " + PowerSystem.getDisplayPower().abbreviation);
+			//cause screw you insomnia
+			TextFormatting powerColour = TextFormatting.GOLD;
+			if (ConfigTechReborn.INSOMNIA_COLOUR) {
+				powerColour = TextFormatting.WHITE;
+			}
+			list.add(powerColour + PowerSystem.getLocaliszedPowerFormattedNoSuffix(energyStored) + "/" + PowerSystem.getLocaliszedPowerFormattedNoSuffix(maxEnergyStored) + " " + PowerSystem.getDisplayPower().abbreviation);
 			if (gui.isShiftKeyDown()) {
 				int percentage = StackToolTipEvent.percentage(
 					maxEnergyStored,
