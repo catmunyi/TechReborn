@@ -43,7 +43,7 @@ public abstract class TileStorageUnitBase extends TileMachineBase implements IWr
 			}
 			IEnergyItemInfo item = (IEnergyItemInfo) stack.getItem();
 			if (item.canProvideEnergy(stack)) {
-				if (getEnergy() != getMaxPower()) {
+				if (getEnergy() != getMaxPower() && PoweredItem.getEnergy(stack) > 0) {
 					addEnergy(item.getMaxTransfer(stack));
 					PoweredItem.setEnergy(PoweredItem.getEnergy(stack) - item.getMaxTransfer(stack), stack);
 				}
