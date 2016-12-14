@@ -104,8 +104,8 @@ public class TRBuilder extends GuiBuilder {
 		}
 		if (isInRect(x, y, 12, 12, mouseX, mouseY)) {
 			int percentage = StackToolTipEvent.percentage(
-				13,
-				(int) progress);
+				100,
+				(int) progress100);
 			TextFormatting color;
 			if (percentage <= 10) {
 				color = TextFormatting.RED;
