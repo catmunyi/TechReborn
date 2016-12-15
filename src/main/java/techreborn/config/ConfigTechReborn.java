@@ -152,6 +152,8 @@ public class ConfigTechReborn {
 	// Machine Power Configs
 	public static int GENERATOR_MAX_POWER;
 	public static int GENERATOR_OUTPUT;
+	public static int ELECTRIC_FURNACE_MAX_POWER;
+	public static int ELECTRIC_FURNACE_COST;
 	public static int BATBOX_MAX_POWER;
 	public static int MFE_MAX_POWER;
 	public static int MFSU_MAX_POWER;
@@ -220,6 +222,12 @@ public class ConfigTechReborn {
 			.getInt();
 		GENERATOR_OUTPUT = config
 			.get(CATEGORY_POWER, "Generator Output", 10, "Set how much EU a generator generates per tick")
+			.getInt();
+		ELECTRIC_FURNACE_MAX_POWER = config
+			.get(CATEGORY_POWER, "Electric Furnace Max Power Storage", 1000, "Set how much EU an electric furnace can store")
+			.getInt();
+		ELECTRIC_FURNACE_COST = config
+			.get(CATEGORY_POWER, "Electric Furnace Cost", 20, "Set how much EU an electric furnace uses per tick")
 			.getInt();
 		BATBOX_MAX_POWER = config
 			.get(CATEGORY_POWER, "BatBox Max Power Storage", 40000, "Set how much EU a batbox can store")

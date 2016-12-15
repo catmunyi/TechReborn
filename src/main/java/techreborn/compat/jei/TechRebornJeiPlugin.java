@@ -15,6 +15,7 @@ import techreborn.api.reactor.FusionReactorRecipeHelper;
 import techreborn.api.recipe.machines.AssemblingMachineRecipe;
 import techreborn.api.recipe.machines.ImplosionCompressorRecipe;
 import techreborn.client.container.old.*;
+import techreborn.client.gui.GuiElectricFurnace;
 import techreborn.client.gui.old.*;
 import techreborn.compat.CompatManager;
 import techreborn.compat.jei.alloySmelter.AlloySmelterRecipeCategory;

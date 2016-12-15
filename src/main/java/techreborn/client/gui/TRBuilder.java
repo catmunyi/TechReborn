@@ -3,6 +3,8 @@ package techreborn.client.gui;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.client.config.GuiUtils;
@@ -35,7 +37,9 @@ public class TRBuilder extends GuiBuilder {
 			draw = (int) ((double) maxEnergyStored / (double) maxEnergyStored * (48));
 		}
 		gui.drawTexturedModalRect(x + 1, y + 49 - draw, PowerSystem.getDisplayPower().xBar, 48 + PowerSystem.getDisplayPower().yBar - draw, 12, draw);
-
+		int percentage = StackToolTipEvent.percentage(
+			maxEnergyStored,
+			energyStored);
 		if (isInRect(x + 1, y + 1, 11, 48, mouseX, mouseY)) {
 			GlStateManager.disableLighting();
 			GlStateManager.disableDepth();
@@ -52,9 +56,6 @@ public class TRBuilder extends GuiBuilder {
 			}
 			list.add(powerColour + PowerSystem.getLocaliszedPowerFormattedNoSuffix(energyStored) + "/" + PowerSystem.getLocaliszedPowerFormattedNoSuffix(maxEnergyStored) + " " + PowerSystem.getDisplayPower().abbreviation);
 			if (gui.isShiftKeyDown()) {
-				int percentage = StackToolTipEvent.percentage(
-					maxEnergyStored,
-					energyStored);
 				TextFormatting color;
 				if (percentage <= 10) {
 					color = TextFormatting.RED;
@@ -76,22 +77,37 @@ public class TRBuilder extends GuiBuilder {
 		gui.drawTexturedModalRect(posX + arrow.guiX, posY + arrow.guiY, arrow.x, arrow.y, arrow.width, arrow.height);
 	}
 
-	public void drawArmourSlot(GuiScreen gui, int posX, int posY, ArmourSlot slot) {
+	public void drawArmourSlot(GuiScreen gui, int posX, int posY, ArmourSlot slot, EntityPlayer player) {
+		boolean overlay = false;
+		List<ItemStack> stacks = new ArrayList<>();
+		for (ItemStack stack : player.getArmorInventoryList()) {
+			stacks.add(stack);
+		}
+		if (slot.equals(ArmourSlot.HEAD) && stacks.get(3).isEmpty())
+			overlay = true;
+		if (slot == ArmourSlot.CHESTPLATE && stacks.get(2).isEmpty())
+			overlay = true;
+		if (slot == ArmourSlot.LEGGINGS && stacks.get(1).isEmpty())
+			overlay = true;
+		if (slot == ArmourSlot.BOOTS && stacks.get(0).isEmpty())
+			overlay = true;
 		drawSlot(gui, posX, posY);
-		Minecraft.getMinecraft().getTextureManager().bindTexture(resourceLocation);
-		gui.drawTexturedModalRect(posX + 1, posY + 1, slot.x, slot.y, 16, 16);
+		if (overlay) {
+			Minecraft.getMinecraft().getTextureManager().bindTexture(resourceLocation);
+			gui.drawTexturedModalRect(posX + 1, posY + 1, slot.x, slot.y, 16, 16);
+		}
 	}
 
 	public void drawUpgradeSlots(GuiScreen gui, int guiX, int guiY) {
 		Minecraft.getMinecraft().getTextureManager().bindTexture(resourceLocation);
-		drawSlot(gui, guiX + 151, guiY + 5);
-		drawSlot(gui, guiX + 151, guiY + 23);
-		drawSlot(gui, guiX + 151, guiY + 41);
-		drawSlot(gui, guiX + 151, guiY + 59);
-		gui.drawTexturedModalRect(guiX + 152, guiY + 6, 228, 18, 16, 16);
-		gui.drawTexturedModalRect(guiX + 152, guiY + 24, 228, 18, 16, 16);
-		gui.drawTexturedModalRect(guiX + 152, guiY + 42, 228, 18, 16, 16);
-		gui.drawTexturedModalRect(guiX + 152, guiY + 60, 228, 18, 16, 16);
+		drawSlot(gui, guiX + 151, guiY + 17);
+		drawSlot(gui, guiX + 151, guiY + 35);
+		drawSlot(gui, guiX + 151, guiY + 53);
+		drawSlot(gui, guiX + 151, guiY + 71);
+		gui.drawTexturedModalRect(guiX + 152, guiY + 18, 228, 18, 16, 16);
+		gui.drawTexturedModalRect(guiX + 152, guiY + 36, 228, 18, 16, 16);
+		gui.drawTexturedModalRect(guiX + 152, guiY + 54, 228, 18, 16, 16);
+		gui.drawTexturedModalRect(guiX + 152, guiY + 72, 228, 18, 16, 16);
 	}
 
 	public void drawBurnBar(GuiScreen gui, double progress, double progress100, int x, int y, int mouseX, int mouseY) {

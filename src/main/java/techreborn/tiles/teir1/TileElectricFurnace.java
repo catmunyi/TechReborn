@@ -1,34 +1,29 @@
 package techreborn.tiles.teir1;
 
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.util.EnumFacing;
 import reborncore.api.power.EnumPowerTier;
-import reborncore.api.tile.IInventoryProvider;
-import reborncore.common.IWrenchable;
 import reborncore.common.blocks.BlockMachineBase;
-import reborncore.common.powerSystem.TilePowerAcceptor;
-import reborncore.common.util.Inventory;
+import techreborn.client.container.ContainerMachineBase;
+import techreborn.config.ConfigTechReborn;
 import techreborn.init.ModBlocks;
+import techreborn.tiles.TileMachineBase;
 
-public class TileElectricFurnace extends TilePowerAcceptor implements IWrenchable, IInventoryProvider, ISidedInventory {
+public class TileElectricFurnace extends TileMachineBase implements ISidedInventory {
 
-	public Inventory inventory = new Inventory(6, "TileElectricFurnace", 64, this);
-	public int capacity = 1000;
-	public int progress;
-	public int fuelScale = 100;
-	public int cost = 8;
-	int input1 = 0;
-	int output = 1;
 	private static final int[] SLOTS_TOP = new int[] { 0 };
 	private static final int[] SLOTS_BOTTOM = new int[] { 1 };
 	private static final int[] SLOTS_SIDES = new int[] { 1 };
+	public int fuelScale = 100;
+	public int cost = ConfigTechReborn.ELECTRIC_FURNACE_COST;
+	int input1 = 0;
+	int output = 1;
 
 	public TileElectricFurnace() {
-		super(1);
+		super(ContainerMachineBase.lastSlotIndex, "TileElectricFurnace", 64, ConfigTechReborn.ELECTRIC_FURNACE_MAX_POWER, EnumPowerTier.LOW, new ItemStack(ModBlocks.electricFurnace));
 	}
 
 	public int gaugeProgressScaled(int scale) {
@@ -119,28 +114,13 @@ public class TileElectricFurnace extends TilePowerAcceptor implements IWrenchabl
 	}
 
 	@Override
-	public boolean wrenchCanSetFacing(EntityPlayer entityPlayer, EnumFacing side) {
+	public boolean canAcceptEnergy(EnumFacing direction) {
+		return true;
+	}
+
+	@Override
+	public boolean canProvideEnergy(EnumFacing direction) {
 		return false;
-	}
-
-	@Override
-	public EnumFacing getFacing() {
-		return getFacingEnum();
-	}
-
-	@Override
-	public boolean wrenchCanRemove(EntityPlayer entityPlayer) {
-		return entityPlayer.isSneaking();
-	}
-
-	@Override
-	public float getWrenchDropRate() {
-		return 1.0F;
-	}
-
-	@Override
-	public ItemStack getWrenchDrop(EntityPlayer entityPlayer) {
-		return new ItemStack(ModBlocks.electricFurnace, 1);
 	}
 
 	public boolean isComplete() {
@@ -163,40 +143,5 @@ public class TileElectricFurnace extends TilePowerAcceptor implements IWrenchabl
 	@Override
 	public boolean canExtractItem(int slotIndex, ItemStack itemStack, EnumFacing side) {
 		return slotIndex == 1;
-	}
-
-	@Override
-	public double getMaxPower() {
-		return capacity;
-	}
-
-	@Override
-	public boolean canAcceptEnergy(EnumFacing direction) {
-		return true;
-	}
-
-	@Override
-	public boolean canProvideEnergy(EnumFacing direction) {
-		return false;
-	}
-
-	@Override
-	public double getMaxOutput() {
-		return 0;
-	}
-
-	@Override
-	public double getMaxInput() {
-		return 32;
-	}
-
-	@Override
-	public EnumPowerTier getTier() {
-		return EnumPowerTier.LOW;
-	}
-
-	@Override
-	public Inventory getInventory() {
-		return inventory;
 	}
 }

@@ -21,7 +21,7 @@ public class ContainerGenerator extends ContainerMachineBase {
 		this.player = player;
 
 		// fuel
-		this.addSlotToContainer(new SlotFurnaceFuel(tile.inventory, 5, 80, 43));
+		this.addSlotToContainer(new SlotFurnaceFuel(tile.inventory, 5, 80, 58));
 	}
 
 	@Override

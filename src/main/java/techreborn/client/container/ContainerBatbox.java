@@ -18,8 +18,8 @@ public class ContainerBatbox extends ContainerMachineBase {
 		this.tile = tile;
 		this.player = player;
 
-		this.addSlotToContainer(new SlotCharge(tile.inventory, 5, 62, 33));
-		this.addSlotToContainer(new SlotCharge(tile.inventory, 6, 98, 33));
+		this.addSlotToContainer(new SlotCharge(tile.inventory, 5, 62, 47));
+		this.addSlotToContainer(new SlotCharge(tile.inventory, 6, 98, 47));
 	}
 
 	@Override

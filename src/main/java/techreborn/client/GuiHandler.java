@@ -7,10 +7,12 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 import reborncore.api.tile.IContainerLayout;
 import reborncore.common.container.RebornContainer;
 import techreborn.client.container.ContainerBatbox;
+import techreborn.client.container.ContainerElectricFurnace;
 import techreborn.client.container.ContainerGenerator;
 import techreborn.client.container.ContainerMFE;
 import techreborn.client.container.old.*;
 import techreborn.client.gui.GuiBatbox;
+import techreborn.client.gui.GuiElectricFurnace;
 import techreborn.client.gui.GuiGenerator;
 import techreborn.client.gui.GuiMFE;
 import techreborn.client.gui.old.*;
@@ -245,7 +247,7 @@ public class GuiHandler implements IGuiHandler {
 		} else if (ID == compressorID) {
 			return new GuiCompressor(player, (TileCompressor) world.getTileEntity(new BlockPos(x, y, z)));
 		} else if (ID == electricFurnaceID) {
-			return new GuiElectricFurnace(player, (TileElectricFurnace) world.getTileEntity(new BlockPos(x, y, z)));
+			return new GuiElectricFurnace(player, (TileElectricFurnace) world.getTileEntity(new BlockPos(x, y, z)), new ContainerElectricFurnace((TileElectricFurnace) world.getTileEntity(new BlockPos(x, y, z)), player));
 		} else if (ID == ironFurnace) {
 			return new GuiIronFurnace(player, (TileIronFurnace) world.getTileEntity(new BlockPos(x, y, z)));
 		} else if (ID == recyclerID) {

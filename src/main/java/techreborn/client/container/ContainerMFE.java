@@ -28,7 +28,7 @@ public class ContainerMFE extends ContainerMachineBase {
 
 		for (int k = 0; k < 4; k++) {
 			final EntityEquipmentSlot slot = equipmentSlots[k];
-			addSlotToContainer(new BaseSlot(player.inventory, player.inventory.getSizeInventory() - 2 - k, 8, 6 + k * 18) {
+			addSlotToContainer(new BaseSlot(player.inventory, player.inventory.getSizeInventory() - 2 - k, 8, 18 + k * 18) {
 				@Override
 				public int getSlotStackLimit() { return 1; }
 
@@ -39,8 +39,8 @@ public class ContainerMFE extends ContainerMachineBase {
 			});
 		}
 
-		this.addSlotToContainer(new SlotCharge(tile.inventory, 0, 62, 33));
-		this.addSlotToContainer(new SlotCharge(tile.inventory, 1, 98, 33));
+		this.addSlotToContainer(new SlotCharge(tile.inventory, 0, 62, 47));
+		this.addSlotToContainer(new SlotCharge(tile.inventory, 1, 98, 47));
 	}
 
 	@Override
