@@ -27,8 +27,8 @@ public class TileGenerator extends TileMachineBase {
 	}
 
 	@Override
-	public void updateEntity() {
-		super.updateEntity();
+	public void update() {
+		super.update();
 		if (world.isRemote) {
 			return;
 		}

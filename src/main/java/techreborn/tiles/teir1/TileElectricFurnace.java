@@ -7,32 +7,36 @@ import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.util.EnumFacing;
 import reborncore.api.power.EnumPowerTier;
 import reborncore.common.blocks.BlockMachineBase;
-import techreborn.client.container.ContainerMachineBase;
 import techreborn.config.ConfigTechReborn;
 import techreborn.init.ModBlocks;
 import techreborn.tiles.TileMachineBase;
 
+import static techreborn.client.container.ContainerMachineBase.lastSlotIndex;
+
 public class TileElectricFurnace extends TileMachineBase implements ISidedInventory {
 
-	private static final int[] SLOTS_TOP = new int[] { 0 };
-	private static final int[] SLOTS_BOTTOM = new int[] { 1 };
-	private static final int[] SLOTS_SIDES = new int[] { 1 };
-	public int fuelScale = 100;
+	private static final int[] SLOTS_TOP = new int[] { lastSlotIndex + 1 };
+	private static final int[] SLOTS_BOTTOM = new int[] { lastSlotIndex + 2 };
+	private static final int[] SLOTS_SIDES = new int[] { lastSlotIndex + 3 };
+	public int maxProgress = 100;
 	public int cost = ConfigTechReborn.ELECTRIC_FURNACE_COST;
-	int input1 = 0;
-	int output = 1;
+	int input1 = lastSlotIndex + 1;
+	int output = lastSlotIndex + 2;
 
 	public TileElectricFurnace() {
-		super(ContainerMachineBase.lastSlotIndex, "TileElectricFurnace", 64, ConfigTechReborn.ELECTRIC_FURNACE_MAX_POWER, EnumPowerTier.LOW, new ItemStack(ModBlocks.electricFurnace));
+		super(lastSlotIndex, "TileElectricFurnace", 64, ConfigTechReborn.ELECTRIC_FURNACE_MAX_POWER, EnumPowerTier.LOW, new ItemStack(ModBlocks.electricFurnace));
 	}
 
 	public int gaugeProgressScaled(int scale) {
-		return (progress * scale) / fuelScale;
+		return (progress * scale) / maxProgress;
 	}
 
 	@Override
 	public void update() {
 		super.update();
+		if (world.isRemote) {
+			return;
+		}
 		boolean burning = isBurning();
 		boolean updateInventory = false;
 		if (isBurning() && canSmelt()) {
@@ -42,9 +46,9 @@ public class TileElectricFurnace extends TileMachineBase implements ISidedInvent
 			if (progress % 10 == 0) {
 				useEnergy(cost);
 			}
-			if (progress >= fuelScale) {
-				progress = 0;
+			if (progress >= maxProgress) {
 				cookItems();
+				progress = 0;
 				updateInventory = true;
 			}
 		} else {
@@ -93,7 +97,7 @@ public class TileElectricFurnace extends TileMachineBase implements ISidedInvent
 	}
 
 	public boolean isBurning() {
-		return getEnergy() > cost;
+		return getEnergy() >= cost;
 	}
 
 	public ItemStack getResultFor(ItemStack stack) {

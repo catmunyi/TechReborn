@@ -90,9 +90,11 @@ public abstract class TileMachineBase extends TilePowerAcceptor implements IWren
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
-		if (tag.hasKey("burnTime") && tag.hasKey("totalBurnTime")) {
+		if (tag.hasKey("burnTime") && tag.hasKey("totalBurnTime") && tag.hasKey("progress") && tag.hasKey("maxProgress")) {
 			burnTime = tag.getInteger("burnTime");
 			totalBurnTime = tag.getInteger("totalBurnTime");
+			progress = tag.getInteger("progress");
+			maxProgress = tag.getInteger("maxProgress");
 		}
 	}
 
@@ -101,6 +103,8 @@ public abstract class TileMachineBase extends TilePowerAcceptor implements IWren
 		super.writeToNBT(tag);
 		tag.setInteger("burnTime", burnTime);
 		tag.setInteger("totalBurnTime", totalBurnTime);
+		tag.setInteger("progress", progress);
+		tag.setInteger("maxProgress", maxProgress);
 		return tag;
 	}
 }

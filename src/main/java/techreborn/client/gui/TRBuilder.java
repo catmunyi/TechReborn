@@ -56,25 +56,17 @@ public class TRBuilder extends GuiBuilder {
 			}
 			list.add(powerColour + PowerSystem.getLocaliszedPowerFormattedNoSuffix(energyStored) + "/" + PowerSystem.getLocaliszedPowerFormattedNoSuffix(maxEnergyStored) + " " + PowerSystem.getDisplayPower().abbreviation);
 			if (gui.isShiftKeyDown()) {
-				TextFormatting color;
-				if (percentage <= 10) {
-					color = TextFormatting.RED;
-				} else if (percentage >= 75) {
-					color = TextFormatting.GREEN;
-				} else {
-					color = TextFormatting.YELLOW;
-				}
-				list.add(color + "" + percentage + "%" + TextFormatting.GRAY + " Charged");
+				list.add(getPercentageColour(percentage) + "" + percentage + "%" + TextFormatting.GRAY + " Charged");
 			}
 			net.minecraftforge.fml.client.config.GuiUtils.drawHoveringText(list, mouseX, mouseY, gui.width, gui.height, -1, gui.mc.fontRendererObj);
 			GlStateManager.disableLighting();
+			GlStateManager.color(1, 1, 1, 1);
 		}
 	}
 
-	public void drawChargeSlot(GuiScreen gui, int posX, int posY, Arrow arrow) {
-		drawSlot(gui, posX, posY);
+	public void drawSprite(GuiScreen gui, int x, int y, int spriteX, int spriteY, int width, int height) {
 		Minecraft.getMinecraft().getTextureManager().bindTexture(resourceLocation);
-		gui.drawTexturedModalRect(posX + arrow.guiX, posY + arrow.guiY, arrow.x, arrow.y, arrow.width, arrow.height);
+		gui.drawTexturedModalRect(x, y, spriteX, spriteY, width, height);
 	}
 
 	public void drawArmourSlot(GuiScreen gui, int posX, int posY, ArmourSlot slot, EntityPlayer player) {
@@ -110,6 +102,43 @@ public class TRBuilder extends GuiBuilder {
 		gui.drawTexturedModalRect(guiX + 152, guiY + 72, 228, 18, 16, 16);
 	}
 
+	@Override
+	public void drawOutputSlot(GuiScreen gui, int x, int y) {
+		gui.mc.getTextureManager().bindTexture(resourceLocation);
+		gui.drawTexturedModalRect(x, y, 150, 18, 26, 26);
+	}
+
+	public TextFormatting getPercentageColour(int percentage) {
+		if (percentage <= 10) {
+			return TextFormatting.RED;
+		} else if (percentage >= 75) {
+			return TextFormatting.GREEN;
+		} else {
+			return TextFormatting.YELLOW;
+		}
+	}
+
+	public void drawProgressBar(GuiScreen gui, double progress, double progress100, int x, int y, int mouseX, int mouseY, ProgressDirection direction) {
+		gui.mc.getTextureManager().bindTexture(resourceLocation);
+		gui.drawTexturedModalRect(x, y, direction.x, direction.y, direction.width, direction.height);
+		if (direction.equals(ProgressDirection.RIGHT) || direction.equals(ProgressDirection.LEFT)) {
+			int j = 16 - (int) (progress);
+			if (j > 0) {
+				gui.drawTexturedModalRect(x, y, direction.x + 16, direction.y, direction.width - j, direction.height);
+			}
+		}
+		if (isInRect(x, y, direction.width, direction.height, mouseX, mouseY)) {
+			int percentage = StackToolTipEvent.percentage(
+				100,
+				(int) progress100);
+			List<String> list = new ArrayList<String>();
+			list.add(getPercentageColour(percentage) + "" + percentage + "%");
+			net.minecraftforge.fml.client.config.GuiUtils.drawHoveringText(list, mouseX, mouseY, gui.width, gui.height, -1, gui.mc.fontRendererObj);
+			GlStateManager.disableLighting();
+			GlStateManager.color(1, 1, 1, 1);
+		}
+	}
+
 	public void drawBurnBar(GuiScreen gui, double progress, double progress100, int x, int y, int mouseX, int mouseY) {
 		gui.mc.getTextureManager().bindTexture(resourceLocation);
 		gui.drawTexturedModalRect(x, y, 187, 84, 13, 13);
@@ -122,16 +151,8 @@ public class TRBuilder extends GuiBuilder {
 			int percentage = StackToolTipEvent.percentage(
 				100,
 				(int) progress100);
-			TextFormatting color;
-			if (percentage <= 10) {
-				color = TextFormatting.RED;
-			} else if (percentage >= 75) {
-				color = TextFormatting.GREEN;
-			} else {
-				color = TextFormatting.YELLOW;
-			}
 			List<String> list = new ArrayList<String>();
-			list.add(color + "" + percentage + "%");
+			list.add(getPercentageColour(percentage) + "" + percentage + "%");
 			net.minecraftforge.fml.client.config.GuiUtils.drawHoveringText(list, mouseX, mouseY, gui.width, gui.height, -1, gui.mc.fontRendererObj);
 		}
 	}
@@ -151,41 +172,22 @@ public class TRBuilder extends GuiBuilder {
 		}
 	}
 
-	public enum Arrow {
-		UP_TOP_RIGHT(240, 0, 6, 5, 10, 2),
-		UP_TOP_LEFT(240, 0, 6, 5, 2, 2),
-		UP_BOTTOM_RIGHT(240, 0, 6, 5, 10, 11),
-		UP_BOTTOM_LEFT(240, 0, 6, 5, 2, 11),
-
-		DOWN_TOP_RIGHT(247, 0, 6, 5, 10, 2),
-		DOWN_TOP_LEFT(247, 0, 6, 5, 2, 2),
-		DOWN_BOTTOM_RIGHT(247, 0, 6, 5, 10, 11),
-		DOWN_BOTTOM_LEFT(247, 0, 6, 5, 2, 11),
-
-		RIGHT_TOP_RIGHT(240, 6, 5, 6, 11, 2),
-		RIGHT_TOP_LEFT(240, 6, 5, 6, 2, 2),
-		RIGHT_BOTTOM_RIGHT(240, 6, 5, 6, 11, 10),
-		RIGHT_BOTTOM_LEFT(240, 6, 5, 6, 2, 10),
-
-		LEFT_TOP_RIGHT(247, 6, 5, 6, 11, 2),
-		LEFT_TOP_LEFT(247, 6, 5, 6, 2, 2),
-		LEFT_BOTTOM_RIGHT(247, 6, 5, 6, 11, 10),
-		LEFT_BOTTOM_LEFT(247, 6, 5, 6, 2, 10);
-
+	public enum ProgressDirection {
+		UP(84, 171, 94, 171, 10, 16), DOWN(104, 171, 114, 171, 10, 16), RIGHT(84, 151, 100, 151, 16, 10), LEFT(84, 161, 100, 161, 16, 10);
 		public int x;
 		public int y;
+		public int xActive;
+		public int yActive;
 		public int width;
 		public int height;
-		public int guiX;
-		public int guiY;
 
-		Arrow(int x, int y, int width, int height, int guiX, int guiY) {
+		ProgressDirection(int x, int y, int xActive, int yActive, int width, int height) {
 			this.x = x;
 			this.y = y;
+			this.xActive = xActive;
+			this.yActive = yActive;
 			this.width = width;
 			this.height = height;
-			this.guiX = guiX;
-			this.guiY = guiY;
 		}
 	}
 }

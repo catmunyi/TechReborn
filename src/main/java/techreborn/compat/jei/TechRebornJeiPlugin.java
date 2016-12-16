@@ -15,7 +15,6 @@ import techreborn.api.reactor.FusionReactorRecipeHelper;
 import techreborn.api.recipe.machines.AssemblingMachineRecipe;
 import techreborn.api.recipe.machines.ImplosionCompressorRecipe;
 import techreborn.client.container.old.*;
-import techreborn.client.gui.GuiElectricFurnace;
 import techreborn.client.gui.old.*;
 import techreborn.compat.CompatManager;
 import techreborn.compat.jei.alloySmelter.AlloySmelterRecipeCategory;
@@ -188,7 +187,7 @@ public class TechRebornJeiPlugin extends BlankModPlugin {
 		registry.addRecipeClickArea(GuiCompressor.class, 78, 36, 24, 16, RecipeCategoryUids.COMPRESSOR);
 		registry.addRecipeClickArea(GuiIronFurnace.class, 78, 36, 24, 16, VanillaRecipeCategoryUid.SMELTING,
 			VanillaRecipeCategoryUid.FUEL);
-		registry.addRecipeClickArea(GuiElectricFurnace.class, 78, 36, 24, 16, VanillaRecipeCategoryUid.SMELTING);
+		//registry.addRecipeClickArea(GuiElectricFurnace.class, 78, 36, 24, 16, VanillaRecipeCategoryUid.SMELTING);
 
 		registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.compressor), RecipeCategoryUids.COMPRESSOR);
 		registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.alloyFurnace), RecipeCategoryUids.ALLOY_SMELTER);

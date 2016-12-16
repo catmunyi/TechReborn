@@ -18,8 +18,8 @@ public class GuiGenerator extends GuiMachineBase {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int mouseX, int mouseY) {
 		super.drawGuiContainerBackgroundLayer(p_146976_1_, mouseX, mouseY);
-		builder.drawChargeSlot(this, guiLeft + 7, guiTop + 71, TRBuilder.Arrow.DOWN_TOP_RIGHT);
-		builder.drawSlot(this, guiLeft + 79, guiTop + 57);
+		drawSpriteSlotBackground(7, 71, SlotSprite.ARROW_DOWN_TOP_RIGHT);
+		drawSlotBackground(79, 57);
 		builder.drawBurnBar(this, container.getScaledBurnTime(13), container.getScaledBurnTime(100), guiLeft + 81, guiTop + 41, mouseX, mouseY);
 	}
 }

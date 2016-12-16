@@ -15,9 +15,16 @@ public class GuiElectricFurnace extends GuiMachineBase {
 	}
 
 	@Override
-	protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_) {
-		super.drawGuiContainerBackgroundLayer(p_146976_1_, p_146976_2_, p_146976_3_);
+	protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int mouseX, int mouseY) {
+		super.drawGuiContainerBackgroundLayer(p_146976_1_, mouseX, mouseY);
+		drawSpriteSlotBackground(7, 71, SlotSprite.ARROW_DOWN_TOP_RIGHT);
+		drawSlotBackground(54, 44);
+		drawOutputSlotBackground(96, 40);
+	}
 
-		//builder.drawProgressBar(this, tile.gaugeProgressScaled(), );
+	@Override
+	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+		super.drawGuiContainerForegroundLayer(mouseX, mouseY);
+		builder.drawProgressBar(this, container.getScaledProgress(16), container.getScaledProgress(100), 76, 48, mouseX - guiLeft, mouseY - guiTop, TRBuilder.ProgressDirection.RIGHT);
 	}
 }

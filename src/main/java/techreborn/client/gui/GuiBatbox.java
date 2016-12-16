@@ -16,7 +16,7 @@ public class GuiBatbox extends GuiStorageUnitBase {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int mouseX, int mouseY) {
 		super.drawGuiContainerBackgroundLayer(p_146976_1_, mouseX, mouseY);
-		builder.drawChargeSlot(this, guiLeft + 61, guiTop + 46, TRBuilder.Arrow.RIGHT_TOP_RIGHT);
-		builder.drawChargeSlot(this, guiLeft + 97, guiTop + 46, TRBuilder.Arrow.RIGHT_TOP_LEFT);
+		drawSpriteSlotBackground(61, 46, SlotSprite.ARROW_RIGHT_TOP_RIGHT);
+		drawSpriteSlotBackground(97, 46, SlotSprite.ARROW_RIGHT_TOP_LEFT);
 	}
 }
