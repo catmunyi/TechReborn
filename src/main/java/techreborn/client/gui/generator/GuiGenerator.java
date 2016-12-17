@@ -1,7 +1,8 @@
-package techreborn.client.gui;
+package techreborn.client.gui.generator;
 
 import net.minecraft.entity.player.EntityPlayer;
-import techreborn.client.container.ContainerGenerator;
+import techreborn.client.container.generator.ContainerGenerator;
+import techreborn.client.gui.GuiMachineBase;
 import techreborn.tiles.generator.TileGenerator;
 
 /**

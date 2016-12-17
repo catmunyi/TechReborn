@@ -9,7 +9,6 @@ import reborncore.api.tile.IInventoryProvider;
 import reborncore.common.IWrenchable;
 import reborncore.common.powerSystem.TilePowerAcceptor;
 import reborncore.common.util.Inventory;
-import techreborn.client.container.ContainerMachineBase;
 
 /**
  * Created by Prospector
@@ -31,7 +30,7 @@ public abstract class TileMachineBase extends TilePowerAcceptor implements IWren
 
 	public TileMachineBase(int invSize, String invName, int invStackLimit, int maxPower, EnumPowerTier tier, ItemStack wrenchDrop) {
 		super(tier);
-		this.inventory = new Inventory(invSize + ContainerMachineBase.lastSlotIndex, invName, invStackLimit, this);
+		this.inventory = new Inventory(invSize + 4, invName, invStackLimit, this);
 		this.maxPower = maxPower;
 		this.powerTier = tier;
 		this.wrenchDrop = wrenchDrop;

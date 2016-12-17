@@ -1,4 +1,4 @@
-package techreborn.client.container;
+package techreborn.client.container.storage;
 
 /**
  * Created by Rushmead
@@ -12,6 +12,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import reborncore.client.gui.slots.BaseSlot;
 import reborncore.client.gui.slots.SlotCharge;
+import techreborn.client.container.ContainerMachineBase;
 import techreborn.tiles.storage.TileMFE;
 
 public class ContainerMFE extends ContainerMachineBase {

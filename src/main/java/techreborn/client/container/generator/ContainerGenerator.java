@@ -1,17 +1,17 @@
-package techreborn.client.container;
+package techreborn.client.container.generator;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import techreborn.client.container.ContainerMachineBase;
 import techreborn.tiles.generator.TileGenerator;
 
 public class ContainerGenerator extends ContainerMachineBase {
 
 	public int burnTime = 0;
 	public int totalBurnTime = 0;
-	public int tickTime;
 	EntityPlayer player;
 	TileGenerator tile;
 

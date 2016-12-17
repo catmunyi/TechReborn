@@ -131,6 +131,7 @@ public class TRBuilder extends GuiBuilder {
 			int percentage = StackToolTipEvent.percentage(
 				100,
 				(int) progress100);
+
 			List<String> list = new ArrayList<String>();
 			list.add(getPercentageColour(percentage) + "" + percentage + "%");
 			net.minecraftforge.fml.client.config.GuiUtils.drawHoveringText(list, mouseX, mouseY, gui.width, gui.height, -1, gui.mc.fontRendererObj);

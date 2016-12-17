@@ -1,45 +1,32 @@
 package techreborn.client.container;
 
 import net.minecraft.entity.player.EntityPlayer;
-import reborncore.client.gui.slots.SlotCharge;
-import techreborn.api.gui.SlotUpgrade;
+import techreborn.client.container.slot.ChargeSlot;
 import techreborn.tiles.TileMachineBase;
 
 /**
  * Created by Prospector
  */
-public class ContainerMachineBase extends ContainerBase {
-	public static final int lastSlotIndex = 4;
-	public int energy;
-	public TileMachineBase tile;
+public class ContainerMachineBase extends TRContainer {
 
 	public ContainerMachineBase(TileMachineBase tile, EntityPlayer player) {
-		super(tile.getName());
-		addSlotToContainer(new SlotCharge(tile.inventory, 0, 8, 72));
-		addSlotToContainer(new SlotUpgrade(tile.inventory, 1, 152, 18));
-		addSlotToContainer(new SlotUpgrade(tile.inventory, 2, 152, 36));
-		addSlotToContainer(new SlotUpgrade(tile.inventory, 3, 152, 54));
-		addSlotToContainer(new SlotUpgrade(tile.inventory, 4, 152, 72));
-		drawPlayersInvAndHotbar(player, 8, 94);
-		this.tile = tile;
+		super(tile, player);
+		addChargeSlot(tile.inventory, 8, 72, ChargeSlot.IO.OUTPUT);
+		addUpgradeSlot(tile.inventory, 152, 18);
+		addUpgradeSlot(tile.inventory, 152, 36);
+		addUpgradeSlot(tile.inventory, 152, 54);
+		addUpgradeSlot(tile.inventory, 152, 72);
 	}
 
 	public ContainerMachineBase(TileMachineBase tile, EntityPlayer player, boolean noCharge, boolean noUpgrade) {
-		super(tile.getName());
+		super(tile, player);
 		if (!noCharge)
-			addSlotToContainer(new SlotCharge(tile.inventory, 0, 8, 72));
+			addChargeSlot(tile.inventory, 8, 72, ChargeSlot.IO.OUTPUT);
 		if (!noUpgrade) {
-			addSlotToContainer(new SlotUpgrade(tile.inventory, 1, 152, 18));
-			addSlotToContainer(new SlotUpgrade(tile.inventory, 2, 152, 36));
-			addSlotToContainer(new SlotUpgrade(tile.inventory, 3, 152, 54));
-			addSlotToContainer(new SlotUpgrade(tile.inventory, 4, 152, 72));
+			addUpgradeSlot(tile.inventory, 152, 18);
+			addUpgradeSlot(tile.inventory, 152, 36);
+			addUpgradeSlot(tile.inventory, 152, 54);
+			addUpgradeSlot(tile.inventory, 152, 72);
 		}
-		drawPlayersInvAndHotbar(player, 8, 94);
-		this.tile = tile;
-	}
-
-	@Override
-	public boolean canInteractWith(EntityPlayer playerIn) {
-		return false;
 	}
 }

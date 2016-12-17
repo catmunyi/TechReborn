@@ -8,18 +8,17 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.ForgeModContainer;
 import reborncore.api.power.EnumPowerTier;
 import reborncore.common.blocks.BlockMachineBase;
-import techreborn.client.container.ContainerMachineBase;
 import techreborn.config.ConfigTechReborn;
 import techreborn.init.ModBlocks;
 import techreborn.tiles.TileMachineBase;
 
 public class TileGenerator extends TileMachineBase {
 	public static int outputAmount = ConfigTechReborn.GENERATOR_OUTPUT;
-	public int fuelSlot = 1 + ContainerMachineBase.lastSlotIndex;
+	public int fuelSlot = 1 + 4;
 	ItemStack burnItem;
 
 	public TileGenerator() {
-		super(ContainerMachineBase.lastSlotIndex, "TileGenerator", 64, ConfigTechReborn.GENERATOR_MAX_POWER, EnumPowerTier.LOW, new ItemStack(ModBlocks.generator));
+		super(4, "TileGenerator", 64, ConfigTechReborn.GENERATOR_MAX_POWER, EnumPowerTier.LOW, new ItemStack(ModBlocks.generator));
 	}
 
 	public static int getItemBurnTime(ItemStack stack) {

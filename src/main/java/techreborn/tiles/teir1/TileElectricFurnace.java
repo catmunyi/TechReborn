@@ -11,20 +11,18 @@ import techreborn.config.ConfigTechReborn;
 import techreborn.init.ModBlocks;
 import techreborn.tiles.TileMachineBase;
 
-import static techreborn.client.container.ContainerMachineBase.lastSlotIndex;
-
 public class TileElectricFurnace extends TileMachineBase implements ISidedInventory {
 
-	private static final int[] SLOTS_TOP = new int[] { lastSlotIndex + 1 };
-	private static final int[] SLOTS_BOTTOM = new int[] { lastSlotIndex + 2 };
-	private static final int[] SLOTS_SIDES = new int[] { lastSlotIndex + 3 };
+	private static final int[] SLOTS_TOP = new int[] { 4 + 1 };
+	private static final int[] SLOTS_BOTTOM = new int[] { 4 + 2 };
+	private static final int[] SLOTS_SIDES = new int[] { 4 + 3 };
 	public int maxProgress = 100;
 	public int cost = ConfigTechReborn.ELECTRIC_FURNACE_COST;
-	int input1 = lastSlotIndex + 1;
-	int output = lastSlotIndex + 2;
+	public int input = 4 + 1;
+	public int output = 4 + 2;
 
 	public TileElectricFurnace() {
-		super(lastSlotIndex, "TileElectricFurnace", 64, ConfigTechReborn.ELECTRIC_FURNACE_MAX_POWER, EnumPowerTier.LOW, new ItemStack(ModBlocks.electricFurnace));
+		super(4, "TileElectricFurnace", 64, ConfigTechReborn.ELECTRIC_FURNACE_MAX_POWER, EnumPowerTier.LOW, new ItemStack(ModBlocks.electricFurnace));
 	}
 
 	public int gaugeProgressScaled(int scale) {
@@ -39,23 +37,29 @@ public class TileElectricFurnace extends TileMachineBase implements ISidedInvent
 		}
 		boolean burning = isBurning();
 		boolean updateInventory = false;
-		if (isBurning() && canSmelt()) {
+		if (isBurning() && canSmelt() && !getStackInSlot(input).isEmpty()) {
 			updateState();
 
 			progress++;
 			if (progress % 10 == 0) {
 				useEnergy(cost);
 			}
-			if (progress >= maxProgress) {
+			if (progress > maxProgress) {
 				cookItems();
 				progress = 0;
 				updateInventory = true;
 			}
+			if (getStackInSlot(input).isEmpty())
+				progress = 0;
 		} else {
 			progress = 0;
 			updateState();
 		}
 		if (burning != isBurning()) {
+			updateInventory = true;
+		}
+		if (getStackInSlot(input).isEmpty()) {
+			progress = 0;
 			updateInventory = true;
 		}
 		if (updateInventory) {
@@ -65,26 +69,26 @@ public class TileElectricFurnace extends TileMachineBase implements ISidedInvent
 
 	public void cookItems() {
 		if (this.canSmelt()) {
-			ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(getStackInSlot(input1));
+			ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(getStackInSlot(input));
 
 			if (getStackInSlot(output) == ItemStack.EMPTY) {
 				setInventorySlotContents(output, itemstack.copy());
 			} else if (getStackInSlot(output).isItemEqual(itemstack)) {
 				getStackInSlot(output).grow(itemstack.getCount());
 			}
-			if (getStackInSlot(input1).getCount() > 1) {
-				this.decrStackSize(input1, 1);
+			if (getStackInSlot(input).getCount() > 1) {
+				this.decrStackSize(input, 1);
 			} else {
-				setInventorySlotContents(input1, ItemStack.EMPTY);
+				setInventorySlotContents(input, ItemStack.EMPTY);
 			}
 		}
 	}
 
 	public boolean canSmelt() {
-		if (getStackInSlot(input1) == ItemStack.EMPTY) {
+		if (getStackInSlot(input) == ItemStack.EMPTY) {
 			return false;
 		} else {
-			ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(getStackInSlot(input1));
+			ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(getStackInSlot(input));
 			if (itemstack == ItemStack.EMPTY)
 				return false;
 			if (getStackInSlot(output) == ItemStack.EMPTY)

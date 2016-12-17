@@ -1,7 +1,9 @@
-package techreborn.client.gui;
+package techreborn.client.gui.tier1;
 
 import net.minecraft.entity.player.EntityPlayer;
-import techreborn.client.container.ContainerElectricFurnace;
+import techreborn.client.container.tier1.ContainerElectricFurnace;
+import techreborn.client.gui.GuiMachineBase;
+import techreborn.client.gui.TRBuilder;
 import techreborn.tiles.teir1.TileElectricFurnace;
 
 public class GuiElectricFurnace extends GuiMachineBase {

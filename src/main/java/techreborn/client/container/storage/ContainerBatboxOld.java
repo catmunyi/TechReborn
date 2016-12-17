@@ -1,19 +1,20 @@
-package techreborn.client.container;
+package techreborn.client.container.storage;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import reborncore.client.gui.slots.SlotCharge;
+import techreborn.client.container.ContainerMachineBase;
 import techreborn.tiles.storage.TileBatBox;
 
-public class ContainerBatbox extends ContainerMachineBase {
+public class ContainerBatboxOld extends ContainerMachineBase {
 
 	public int tickTime;
 	EntityPlayer player;
 	TileBatBox tile;
 
-	public ContainerBatbox(TileBatBox tile, EntityPlayer player) {
+	public ContainerBatboxOld(TileBatBox tile, EntityPlayer player) {
 		super(tile, player, true, false);
 		this.tile = tile;
 		this.player = player;

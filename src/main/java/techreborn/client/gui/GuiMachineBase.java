@@ -32,6 +32,6 @@ public class GuiMachineBase extends GuiBase {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 		super.drawGuiContainerForegroundLayer(mouseX, mouseY);
-		builder.drawMultiEnergyBar(this, 9, 19, container.energy, (int) tile.getMaxPower(), mouseX - guiLeft, mouseY - guiTop);
+		builder.drawMultiEnergyBar(this, 9, 19, container.getEnergy(), (int) tile.getMaxPower(), mouseX - guiLeft, mouseY - guiTop);
 	}
 }

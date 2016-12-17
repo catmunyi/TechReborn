@@ -1,7 +1,8 @@
-package techreborn.client.gui;
+package techreborn.client.gui.storage;
 
 import net.minecraft.entity.player.EntityPlayer;
 import techreborn.client.container.ContainerMachineBase;
+import techreborn.client.gui.GuiMachineBase;
 import techreborn.tiles.TileStorageUnitBase;
 
 /**
@@ -21,6 +22,6 @@ public class GuiStorageUnitBase extends GuiMachineBase {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 		drawTitle();
-		builder.drawMultiEnergyBar(this, 81, 30, container.energy, (int) tile.getMaxPower(), mouseX - guiLeft, mouseY - guiTop);
+		builder.drawMultiEnergyBar(this, 81, 30, container.getEnergy(), (int) tile.getMaxPower(), mouseX - guiLeft, mouseY - guiTop);
 	}
 }
